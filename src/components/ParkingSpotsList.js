@@ -2,12 +2,11 @@ import React from 'react'
 import ParkingSpot from './ParkingSpot'
 
 const ParkingSpotsList = (props) => {
-
-  const parkingSpot = props.spots.map((spots) => <ParkingSpot key={spots.id} address={spots.address} />)
+  const parkingSpot = props.spots.map((spots) => <ParkingSpot key={spots.id} spot={spots} />)
   return(
-    <ul>
+    <div className="ui middle aligned divided list">
       {parkingSpot}
-    </ul>
+    </div>
   )
 
 }

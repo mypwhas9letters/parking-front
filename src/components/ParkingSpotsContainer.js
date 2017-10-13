@@ -1,26 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ParkingSpotsList from './ParkingSpotsList'
+import { fetchParkingSpots } from '../actions/parkingSpots'
 
 class ParkingSpotsContainer extends React.Component {
 
   componentDidMount(){
-    fetch("http://localhost:3000/api/v1/parking_spots")
-    .then((res) => res.json())
-    .then((json) => {
-      const parkingSpots = json.items
-      this.setState({
-        parkingSpots: parkingSpots
-      })
-    })
+    this.props.fetchParkingSpots()
   }
 
   render(){
     return (
-      <ParkingSpotsList spots={this.props.parkingSpots}/>
-    )
+      <div>
+        <ParkingSpotsList spots={this.props.parkingSpots}/>
+      </div>
+      )
+    }
   }
-}
 
 function mapStateToProps(state){
   return{
@@ -28,4 +24,13 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(ParkingSpotsContainer)
+function mapDispatchToProps(dispatch){
+  return {
+    fetchParkingSpots: () => {
+      dispatch(fetchParkingSpots())
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotsContainer)
