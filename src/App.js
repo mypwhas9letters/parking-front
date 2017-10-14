@@ -4,6 +4,8 @@ import Footer from './components/Footer'
 import Search from './components/Search'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import AddNew from './components/AddParkingSpotForm'
+
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
 import { Route } from 'react-router-dom'
 
@@ -18,6 +20,7 @@ class App extends Component {
           <Route exact path='/' component={ParkingSpotsContainer} />
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
+          <Route path="/addnew" component={AddNew}/>
         <Footer />
       </div>
     );

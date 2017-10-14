@@ -11,8 +11,6 @@ function fetchedSpots(parkingSpots) {
   }
 }
 
-
-
 export function fetchParkingSpots(){
   return function(dispatch){
     dispatch(fetchingSpots())

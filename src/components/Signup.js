@@ -1,6 +1,31 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { signup } from '../actions/users'
+
 
 class Signup extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    }
+  }
+
+  onChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    console.log(this.state);
+    signup(this.state)
+
+  }
+
   render() {
     return(
       <div className="ui container">
@@ -11,27 +36,31 @@ class Signup extends React.Component {
                 Create a New Account
               </div>
             </h2>
-            <form onSubmit={""} className="ui large form">
+            <form onSubmit={this.onSubmit} className="ui large form">
               <div className="ui stacked segment">
                 <div className="field">
-                  <input onChange={""} type="text" name="username" placeholder="Username" value={""}/>
+                  <input onChange={this.onChange} type="text" name="username" placeholder="Username" value={this.state.username} required/>
                 </div>
                 <div className="field">
-                  <input onChange={""} type="password" name="password" placeholder="Password" value={""}/>
+                  <input onChange={this.onChange} type="text" name="email" placeholder="Email" value={this.state.email} required/>
                 </div>
                 <div className="field">
-                  <input onChange={""} type="password" name="confirm password" placeholder="Confirm Password" value={""}/>
+                  <input onChange={this.onChange} type="password" name="password" placeholder="Password" value={this.state.password} required/>
+                </div>
+                <div className="field">
+                  <input onChange={this.onChange} type="password" name="confirmPassword" placeholder="Confirm Password" value={this.state.confirmPassword} required/>
                 </div>
                 <input className="ui fluid large submit button" type="submit" value="Sign Up"/>
               </div>
             </form>
-            <div className="ui message">Existing User?
-              <a href="/login"> Log In</a>
+            <div className="ui message">
+              Existing User?<NavLink className="item" to="/login"> Log In</NavLink>
             </div>
           </div>
         </div>
       </div>
-      )
-      }
+    )
   }
+}
+
 export default Signup
