@@ -7,15 +7,14 @@ const ParkingSpot = (props) => {
       <div className="right floated content">
         <div className="ui button">Contact Owner</div>
       </div>
-      <img className="ui medium image" src={props.spot.photo}/>
+      <img className="ui medium image" src={props.spot.photo} alt=""/>
       <div className="content">
+        <h1>{props.spot.title}</h1>
+        <div>{props.spot.description}</div>
         <div>
-          {props.spot.description}
+          Address: {props.spot.address}{props.spot.city}{props.spot.state}{props.spot.zip}
         </div>
-        <div>
-          {props.spot.address}
-        </div>
-
+        <div>Price: ${props.spot.price}</div>
       </div>
     </div>
   )

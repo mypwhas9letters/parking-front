@@ -5,6 +5,7 @@ import Search from './components/Search'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
+import { Route } from 'react-router-dom'
 
 
 
@@ -13,10 +14,10 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <div className="ui container">
-          <Search />
-          <ParkingSpotsContainer />
-        </div>
+        <Search />
+          <Route exact path='/' component={ParkingSpotsContainer} />
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" component={Signup}/>
         <Footer />
       </div>
     );
