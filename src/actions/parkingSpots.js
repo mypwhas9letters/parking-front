@@ -11,14 +11,39 @@ function fetchedSpots(parkingSpots) {
   }
 }
 
+function addNewListing(newListing){
+  return {
+    type: "ADD_NEW_LISTING",
+    payload: newListing
+  }
+}
+
 export function fetchParkingSpots(){
   return function(dispatch){
     dispatch(fetchingSpots())
     fetch("http://localhost:3000/api/v1/parking_spots")
       .then((res) => res.json())
       .then((json) => {
-        const parkingSpots = json
-        dispatch(fetchedSpots(parkingSpots))
+        dispatch(fetchedSpots(json))
       })
     }
   }
+
+
+export function postNewListing(listingParams) {
+  const body = JSON.stringify(listingParams)
+  return function(dispatch){
+    fetch("http://localhost:3000/api/v1/parking_spots", {
+      method: 'post',
+      body: body,
+      headers: {
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+        }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(addNewListing(json))
+    })
+  }
+}

@@ -10,6 +10,7 @@ class NavBar extends React.Component{
           <NavLink className="item" to="/">Parking App</NavLink>
           <div className="right item">
             <NavLink className="item" to="/addnew">Add New</NavLink>
+            <NavLink className="item" to="/profile">Profile</NavLink>
             <NavLink className="item" to="/login">Log in </NavLink>
             <NavLink className="item" to="/signup">Sign up </NavLink>
           </div>

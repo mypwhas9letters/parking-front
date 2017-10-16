@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ParkingSpot = (props) => {
-  console.log(props);
   return (
     <div className="item">
       <div className="right floated content">

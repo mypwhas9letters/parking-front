@@ -11,5 +11,13 @@ import thunk from 'redux-thunk'
 
 
 const store = createStore(parkingSpotsReducer, applyMiddleware(thunk))
-ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+document.getElementById('root'));
+
 registerServiceWorker();
