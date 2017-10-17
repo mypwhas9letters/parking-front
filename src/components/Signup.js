@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { signup } from '../actions/users'
+import { connect } from 'react-redux'
 
 
 class Signup extends React.Component {
@@ -22,9 +23,10 @@ class Signup extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     console.log(this.state);
-    signup(this.state)
-
+    this.props.signup(this.state)
+    this.props.history.push('/profile')
   }
+
 
   render() {
     return(
@@ -63,4 +65,13 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup
+function mapDispatchToProps(dispatch){
+  return {
+    signup: (listing) => {
+      dispatch(signup(listing))
+    }
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(Signup)

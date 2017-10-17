@@ -4,16 +4,17 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Profile from './components/UsersProfile'
-
 import AddNew from './components/AddNewListing'
-
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
 import { Route } from 'react-router-dom'
+import Authorize from './components/Authorize'
 
 
 
 class App extends Component {
   render() {
+
+
     return (
       <div>
         <NavBar />
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/addnew" component={AddNew}/>
+          <Route exact path="/user/:id" component={Profile}/>
         <Footer />
       </div>
     );

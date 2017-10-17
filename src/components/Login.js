@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { login } from '../actions/users'
+import { connect } from 'react-redux'
 
 
 class Login extends React.Component {
@@ -19,7 +20,9 @@ class Login extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    login(this.state)
+    this.props.login(this.state)
+    console.log(this.props);
+    this.props.history.push('/profile')
 
   }
 
@@ -54,4 +57,14 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+
+function mapDispatchToProps(dispatch){
+  return {
+    login: (loginParams) => {
+      dispatch(login(loginParams))
+    }
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(Login)

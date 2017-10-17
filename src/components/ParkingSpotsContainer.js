@@ -14,7 +14,7 @@ class ParkingSpotsContainer extends React.Component {
     return (
       <div className="ui container">
         <Search />
-        <ParkingSpotsList spots={this.props.parkingSpots}/>
+        <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
       </div>
       )
     }
