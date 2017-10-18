@@ -2,9 +2,6 @@ import React from 'react'
 import { postNewListing } from '../actions/parkingSpots'
 import { connect } from 'react-redux'
 
-
-
-
 class AddNew extends React.Component {
 
   constructor(props){
@@ -18,7 +15,7 @@ class AddNew extends React.Component {
       description: "",
       photo: "",
       price: "",
-      owner_id: 1
+      owner_id: this.props.currentUser.id
     }
   }
 
@@ -34,6 +31,7 @@ class AddNew extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return(
       <div className="ui container">
         <form onSubmit={this.onSubmit} className="ui form">
@@ -162,6 +160,14 @@ class AddNew extends React.Component {
   }
 }
 
+function mapStateToProps(state){
+  debugger
+  return{
+    currentUser: state.user.currentUser
+  }
+}
+
+
 function mapDispatchToProps(dispatch){
   return {
     postNewListing: (listing) => {
@@ -171,4 +177,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(null, mapDispatchToProps)(AddNew)
+export default connect(mapStateToProps, mapDispatchToProps)(AddNew)

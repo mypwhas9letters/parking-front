@@ -1,13 +1,30 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getCurrentUser } from '../actions/users'
+import ParkingSpotsList from './ParkingSpotsList'
+
 
 
 class Profile extends React.Component {
+
+  componentDidMount(){
+    const jwt = localStorage.getItem('jwt')
+    this.props.getCurrentUser(jwt)
+  }
+
   render(){
+
+
     return(
-      <div>
+      <div className="ui container">
           <NavLink to="/addnew"><button className="ui primary button">Add New</button></NavLink>
-        <p>Hello</p>
+          <h1>Welcome {this.props.currentUser.username}</h1>
+        <h1>Your Listing</h1>
+          <ParkingSpotsList spots={this.props.parkingSpots}/>
+          <h1>Your Reservations</h1>
+
+          <h1>Your Trips</h1>
 
       </div>
     )
@@ -15,4 +32,24 @@ class Profile extends React.Component {
 
 }
 
-export default Profile
+
+function mapStateToProps(state){
+  return{
+    currentUser: state.user.currentUser,
+    parkingSpots: state.user.parkingSpots,
+    reservations: state.user.reservations,
+    trips: state.user.trips
+
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getCurrentUser: (jwt) => {
+      dispatch(getCurrentUser(jwt))
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

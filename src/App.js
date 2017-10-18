@@ -8,6 +8,8 @@ import AddNew from './components/AddNewListing'
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
 import { Route } from 'react-router-dom'
 import Authorize from './components/Authorize'
+import ErrorPage from './components/ErrorPage'
+import ParkingSpotDetail from './components/ParkingSpotDetail'
 
 
 
@@ -23,7 +25,8 @@ class App extends Component {
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/addnew" component={AddNew}/>
-          <Route exact path="/user/:id" component={Profile}/>
+          <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
+
         <Footer />
       </div>
     );

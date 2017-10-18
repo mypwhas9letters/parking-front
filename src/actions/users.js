@@ -20,38 +20,30 @@ export function login(usersParams) {
   }
 }
 
-// export function getUserData(jwt){
-//
-//
-//     return function(dispatch) {
-//       const url = 'http://localhost:3000/api/v1/getcurrentuser'
-//
-//       const headers = {
-//         method: 'get',
-//         headers: {
-//           "Authorization":`Bearer ${jwt}`,
-//           "Accept":"application/json"
-//         }
-//       }
-//
-//       fetch(url, headers)
-//       .then(res => res.json())
-//       .then(json => {
-//         if (json.success) {
-//           dispatch({type: "GET_CURRENT_USER", payload: json})
-//         }
-//       })
-//     }
-// }
+export function getCurrentUser(jwt){
+    return function(dispatch) {
+      fetch('http://localhost:3000/api/v1/users/me',{
+        method: 'get',
+        headers: {
+          "Authorization":`Bearer ${jwt}`,
+          "Accept":"application/json"
+        }
+      })
+
+      .then(res => res.json())
+      .then(json => {
+          dispatch({type: "GET_CURRENT_USER", payload: json})
+      })
+    }
+}
 
 
 
 
 
-
-// export function logoutUser() {
-//   localStorage.removeItem("jwtToken")
-// }
+export function logoutUser() {
+  localStorage.removeItem("jwt")
+}
 
 
 
