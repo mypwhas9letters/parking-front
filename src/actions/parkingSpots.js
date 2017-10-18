@@ -47,3 +47,13 @@ export function postNewListing(listingParams) {
     })
   }
 }
+
+export function getParkingSpot(id){
+  return function(dispatch){
+    fetch(`http://localhost:3000/api/v1/parking_spots/${id}`)
+    .then(res => res.json())
+    .then(json => {
+        dispatch({type: "GET_PARKING_SPOT", payload: json})
+    })
+  }
+}

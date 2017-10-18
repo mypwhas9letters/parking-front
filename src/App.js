@@ -16,17 +16,15 @@ import ParkingSpotDetail from './components/ParkingSpotDetail'
 class App extends Component {
   render() {
 
-
     return (
       <div>
         <NavBar />
-          <Route exact path='/' component={ParkingSpotsContainer} />
+          <Route exact path='/home' component={ParkingSpotsContainer} />
           <Route path="/profile" component={Profile}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/addnew" component={AddNew}/>
           <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
-
         <Footer />
       </div>
     );

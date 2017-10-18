@@ -42,8 +42,11 @@ export function getCurrentUser(jwt){
 
 
 export function logoutUser() {
-  localStorage.removeItem("jwt")
+  return{
+    type: "LOG_OUT"
+  }
 }
+
 
 
 

@@ -21,7 +21,9 @@ class Login extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.props.login(this.state)
-    this.props.history.push('/')
+    console.log(this.props);
+    
+    this.props.history.push('/profile')
   }
 
   render() {

@@ -10,6 +10,7 @@ class AddNew extends React.Component {
       title: "",
       address: "",
       city: "",
+      country: "",
       state: "",
       zip: "",
       description: "",
@@ -68,7 +69,7 @@ class AddNew extends React.Component {
           </div>
 
 
-        <div className="three fields">
+        <div className="four fields">
 
         <div className="field">
           <div className="ui fluid">
@@ -142,6 +143,13 @@ class AddNew extends React.Component {
             </div>
           </div>
 
+          <div className="field">
+            <div className="ui fluid">
+              <input type="text" name="country" placeholder="Country" onChange={this.onChange} value={this.state.country}/>
+            </div>
+          </div>
+
+
         </div>
 
 
@@ -161,7 +169,6 @@ class AddNew extends React.Component {
 }
 
 function mapStateToProps(state){
-  debugger
   return{
     currentUser: state.user.currentUser
   }

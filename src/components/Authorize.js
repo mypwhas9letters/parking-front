@@ -8,7 +8,7 @@ function Authorize(RenderedComponent) {
     render() {
 
       if (localStorage.getItem('jwt') && this.props.location.pathname === "/login") {
-        return <Redirect to="/profile" />
+        return <Redirect to="/login" />
 
         // I am logged in
       } else if (!localStorage.getItem('jwt') && this.props.location.pathname !== "/login") {
