@@ -6,21 +6,33 @@ import Signup from './components/Signup'
 import Profile from './components/UsersProfile'
 import AddNew from './components/AddNewListing'
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
-import { Route } from 'react-router-dom'
+import { Route, withRouter} from 'react-router-dom'
 import Authorize from './components/Authorize'
 import ErrorPage from './components/ErrorPage'
 import ParkingSpotDetail from './components/ParkingSpotDetail'
-
-
+import LandingPage from './components/LandingPage'
+import { connect } from 'react-redux'
+import { getCurrentUser } from './actions/users'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    const jwtexist = localStorage.getItem('jwt')
+    if(jwtexist){
+      props.getCurrentUser(jwtexist)
+    }
+  }
+
   render() {
+    const AuthProfile = Authorize(Profile)
 
     return (
       <div>
         <NavBar />
           <Route exact path='/home' component={ParkingSpotsContainer} />
-          <Route path="/profile" component={Profile}/>
+          <Route exact path="/" component={LandingPage}/>
+          <Route path="/profile" component={AuthProfile}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/addnew" component={AddNew}/>
@@ -31,4 +43,14 @@ class App extends Component {
   }
 }
 
-export default App;
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getCurrentUser: (jwtexist) => {
+      dispatch(getCurrentUser(jwtexist))
+    }
+  }
+}
+
+
+export default withRouter(connect(null, mapDispatchToProps)(App))

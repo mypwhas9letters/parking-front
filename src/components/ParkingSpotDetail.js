@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getParkingSpot } from '../actions/parkingSpots'
+import MyMapComponent from './MyMapComponent'
 
 
 class ParkingSpotDetail extends React.Component{
@@ -30,7 +31,10 @@ class ParkingSpotDetail extends React.Component{
     return(
       <div className="ui segment container">
         <div className="ui header">{showSpot.detail.title}</div>
-        <img className="ui centered large image" src={showSpot.detail.photo} alt=""/>
+        <img className="ui huge image" src={showSpot.detail.photo} alt=""/>
+        <div>
+          <MyMapComponent />
+        </div>
           <div className="ui message">
             <div className="header">
               Reviews

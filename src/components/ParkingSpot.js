@@ -1,7 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import MyMapComponent from './MyMapComponent'
-
 
 const ParkingSpot = (props) => {
   const detailLink = `/parkingSpot/${props.spot.id}`
@@ -9,7 +7,6 @@ const ParkingSpot = (props) => {
 
     <div className="item">
       <div className="right floated content">
-        <MyMapComponent />
       </div>
       <div className="ui medium image">
         <NavLink to={detailLink}><img src={props.spot.photo} alt=""/></NavLink>
