@@ -18,8 +18,6 @@ const ParkingSpot = (props) => {
           Address: {props.spot.address}{props.spot.city}{props.spot.state}{props.spot.zip}
         </div>
         <div>Price: ${props.spot.price}</div>
-        <div className="ui primary button">Contact Owner</div>
-
       </div>
     </div>
   )

@@ -64,10 +64,6 @@ var _invoke2 = require('lodash/invoke');
 
 var _invoke3 = _interopRequireDefault(_invoke2);
 
-var _isEqual2 = require('lodash/isEqual');
-
-var _isEqual3 = _interopRequireDefault(_isEqual2);
-
 var _without2 = require('lodash/without');
 
 var _without3 = _interopRequireDefault(_without2);
@@ -400,19 +396,19 @@ var Search = function (_Component) {
       if (open) this.open();
     }
   }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return !(0, _isEqual3.default)(nextProps, this.props) || !(0, _isEqual3.default)(nextState, this.state);
-    }
-  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       (0, _get4.default)(Search.prototype.__proto__ || Object.getPrototypeOf(Search.prototype), 'componentWillReceiveProps', this).call(this, nextProps);
 
 
-      if (!(0, _isEqual3.default)(nextProps.value, this.props.value)) {
+      if (!(0, _lib.shallowEqual)(nextProps.value, this.props.value)) {
         this.setValue(nextProps.value);
       }
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return !(0, _lib.shallowEqual)(nextProps, this.props) || !(0, _lib.shallowEqual)(nextState, this.state);
     }
   }, {
     key: 'componentDidUpdate',

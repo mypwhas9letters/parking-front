@@ -40,6 +40,15 @@ Object.defineProperty(exports, 'Radio', {
   }
 });
 
+var _Ref = require('./addons/Ref');
+
+Object.defineProperty(exports, 'Ref', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Ref).default;
+  }
+});
+
 var _Select = require('./addons/Select');
 
 Object.defineProperty(exports, 'Select', {

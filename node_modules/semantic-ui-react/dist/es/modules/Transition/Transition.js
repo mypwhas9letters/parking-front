@@ -55,6 +55,7 @@ var Transition = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
 
+      this.mounted = true;
       this.updateStatus();
     }
   }, {
@@ -65,7 +66,7 @@ var Transition = function (_Component) {
           next = _computeStatuses.next;
 
       this.nextStatus = next;
-      if (status) this.setState({ status: status });
+      if (status) this.setSafeState({ status: status });
     }
   }, {
     key: 'componentDidUpdate',
@@ -75,7 +76,10 @@ var Transition = function (_Component) {
     }
   }, {
     key: 'componentWillUnmount',
-    value: function componentWillUnmount() {}
+    value: function componentWillUnmount() {
+
+      this.mounted = false;
+    }
 
     // ----------------------------------------
     // Callback handling
@@ -138,7 +142,7 @@ var _initialiseProps = function _initialiseProps() {
     var status = _this2.nextStatus;
 
     _this2.nextStatus = null;
-    _this2.setState({ status: status, animating: true }, function () {
+    _this2.setSafeState({ status: status, animating: true }, function () {
       _invoke(_this2.props, 'onStart', null, _extends({}, _this2.props, { status: status }));
       setTimeout(_this2.handleComplete, normalizeTransitionDuration(duration, 'show'));
     });
@@ -158,7 +162,7 @@ var _initialiseProps = function _initialiseProps() {
     var status = _this2.computeCompletedStatus();
     var callback = current === Transition.ENTERING ? 'onShow' : 'onHide';
 
-    _this2.setState({ status: status, animating: false }, function () {
+    _this2.setSafeState({ status: status, animating: false }, function () {
       _invoke(_this2.props, callback, null, _extends({}, _this2.props, { status: status }));
     });
   };
@@ -262,6 +266,10 @@ var _initialiseProps = function _initialiseProps() {
     var animationDuration = type && normalizeTransitionDuration(duration, type) + 'ms';
 
     return _extends({}, childStyle, { animationDuration: animationDuration });
+  };
+
+  this.setSafeState = function () {
+    return _this2.mounted && _this2.setState.apply(_this2, arguments);
   };
 };
 

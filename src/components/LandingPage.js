@@ -4,12 +4,11 @@ import React from 'react';
 const LandingPage = () => {
 
   return (
-    <div>
       <div className="landing-image">
-          <p >Hello, world!</p>
+          <div className="ui text container" >Hello, world!</div>
+          <h1>HELLO</h1>
       </div>
 
-    </div>
   )
 }
 

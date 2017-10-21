@@ -14,18 +14,18 @@ class Profile extends React.Component {
   }
 
   render(){
-    console.log(this.props.reservations);
+    console.log(this.props);
 
 
     return(
       <div className="ui container">
           <NavLink to="/addnew"><button className="ui primary button">Add New</button></NavLink>
           <h1>Welcome {this.props.currentUser.username}</h1>
-        <h1>Your Listings</h1>
-          <ParkingSpotsList spots={this.props.parkingSpots}/>
-          <h1>Your Reservations</h1>
+          <h1>Your Listings</h1>
+            <ParkingSpotsList spots={this.props.parkingSpots}/>
+          <h1>Requests</h1>
 
-          <h1>Your Trips</h1>
+          <h1>Your Bookings</h1>
 
       </div>
     )

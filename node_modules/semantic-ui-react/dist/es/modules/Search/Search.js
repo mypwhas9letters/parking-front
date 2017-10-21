@@ -13,14 +13,13 @@ import _map from 'lodash/map';
 import _get from 'lodash/get';
 import _reduce from 'lodash/reduce';
 import _invoke from 'lodash/invoke';
-import _isEqual from 'lodash/isEqual';
 import _without from 'lodash/without';
 import cx from 'classnames';
 
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { AutoControlledComponent as Component, customPropTypes, eventStack, getElementType, getUnhandledProps, htmlInputAttrs, isBrowser, keyboardKey, META, objectDiff, partitionHTMLInputProps, SUI, useKeyOnly, useValueAndKey } from '../../lib';
+import { AutoControlledComponent as Component, customPropTypes, eventStack, getElementType, getUnhandledProps, htmlInputAttrs, isBrowser, keyboardKey, META, objectDiff, partitionHTMLInputProps, shallowEqual, SUI, useKeyOnly, useValueAndKey } from '../../lib';
 import Input from '../../elements/Input';
 import SearchCategory from './SearchCategory';
 import SearchResult from './SearchResult';
@@ -324,19 +323,19 @@ var Search = function (_Component) {
       if (open) this.open();
     }
   }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return !_isEqual(nextProps, this.props) || !_isEqual(nextState, this.state);
-    }
-  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       _get2(Search.prototype.__proto__ || Object.getPrototypeOf(Search.prototype), 'componentWillReceiveProps', this).call(this, nextProps);
 
 
-      if (!_isEqual(nextProps.value, this.props.value)) {
+      if (!shallowEqual(nextProps.value, this.props.value)) {
         this.setValue(nextProps.value);
       }
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return !shallowEqual(nextProps, this.props) || !shallowEqual(nextState, this.state);
     }
   }, {
     key: 'componentDidUpdate',

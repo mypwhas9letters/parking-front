@@ -5,7 +5,7 @@ body {
 }
 
 .footerBottom {
-   position: fixed;
+   /*position: fixed;*/
    bottom: 0;
    width: 100%;
    margin-bottom: 0;
@@ -15,3 +15,14 @@ body {
      background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center center fixed;
      height:100vh
  }
+
+
+ /*
+ .landing-image {
+  background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
+   background-size: 100%;
+   width: 100%;
+   padding-top: 54.166666666667%;
+   height: 0;
+}
+   */

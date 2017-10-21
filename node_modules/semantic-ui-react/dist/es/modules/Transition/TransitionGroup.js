@@ -59,25 +59,30 @@ var TransitionGroup = function (_React$Component) {
 
         var isLeaving = !_get(prevChild, 'props.visible');
 
-        // item is new (entering), should be wrapped
+        // Heads up!
+        // An item is new (entering), it will be picked from `nextChildren`, so it should be wrapped
         if (hasNext && (!hasPrev || isLeaving)) {
-          children[key] = _this2.wrapChild(child, true);
+          children[key] = _this2.wrapChild(child, { transitionOnMount: true });
           return;
         }
 
-        // item is old (exiting), should be updated
+        // Heads up!
+        // An item is old (exiting), it will be picked from `prevChildren`, so it has been already
+        // wrapped, so should be only updated
         if (!hasNext && hasPrev && !isLeaving) {
           children[key] = cloneElement(prevChild, { visible: false });
           return;
         }
 
-        // item hasn't changed transition states, copy over the last transition props;
+        // Heads up!
+        // An item item hasn't changed transition states, but it will be picked from `nextChildren`,
+        // so we should wrap it again
         var _prevChild$props = prevChild.props,
             visible = _prevChild$props.visible,
             transitionOnMount = _prevChild$props.transitionOnMount;
 
 
-        children[key] = cloneElement(child, { visible: visible, transitionOnMount: transitionOnMount });
+        children[key] = _this2.wrapChild(child, { transitionOnMount: transitionOnMount, visible: visible });
       });
 
       this.setState({ children: children });
@@ -128,11 +133,15 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.wrapChild = function (child) {
-    var transitionOnMount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var _props = _this3.props,
         animation = _props.animation,
         duration = _props.duration;
     var key = child.key;
+    var _options$visible = options.visible,
+        visible = _options$visible === undefined ? true : _options$visible,
+        _options$transitionOn = options.transitionOnMount,
+        transitionOnMount = _options$transitionOn === undefined ? false : _options$transitionOn;
 
 
     return React.createElement(
@@ -143,7 +152,8 @@ var _initialiseProps = function _initialiseProps() {
         key: key,
         onHide: _this3.handleOnHide,
         reactKey: key,
-        transitionOnMount: transitionOnMount
+        transitionOnMount: transitionOnMount,
+        visible: visible
       },
       child
     );
