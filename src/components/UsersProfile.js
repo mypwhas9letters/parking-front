@@ -1,21 +1,27 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getCurrentUser } from '../actions/users'
+import { fetchReservations } from '../actions/reservations'
 import ParkingSpotsList from './ParkingSpotsList'
-
+import ReservationsList from './reservations/ReservationsList'
+import { bindActionCreators } from 'redux'
 
 
 class Profile extends React.Component {
 
   componentDidMount(){
-    const jwt = localStorage.getItem('jwt')
-    this.props.getCurrentUser(jwt)
+    const userID = {id: this.props.currentUser.id}
+    this.props.fetchReservations(userID)
   }
 
   render(){
-    console.log(this.props);
-
+    let reservationsFetch = null
+    if (this.props.reservations.reservations.error !== "Not Found") {
+     reservationsFetch = <ReservationsList reservations={this.props.reservations.reservations}/>
+    }
+    if(!localStorage.getItem('jwt')){
+      return <Redirect to="/home"/>
+    }
 
     return(
       <div className="ui container">
@@ -24,7 +30,10 @@ class Profile extends React.Component {
           <h1>Your Listings</h1>
             <ParkingSpotsList spots={this.props.parkingSpots}/>
           <h1>Requests</h1>
-
+            <h2>Pending</h2>
+            {reservationsFetch}
+            <h2>Confirmed</h2>
+            <h2>Denied</h2>
           <h1>Your Bookings</h1>
 
       </div>
@@ -38,18 +47,14 @@ function mapStateToProps(state){
   return{
     currentUser: state.user.currentUser,
     parkingSpots: state.user.parkingSpots,
-    reservations: state.user.reservations,
+    reservations: state.reservations,
     trips: state.user.trips
 
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    getCurrentUser: (jwt) => {
-      dispatch(getCurrentUser(jwt))
-    }
-  }
+  return  bindActionCreators({fetchReservations}, dispatch)
 }
 
 

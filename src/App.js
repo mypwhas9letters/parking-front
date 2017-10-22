@@ -13,6 +13,7 @@ import ParkingSpotDetail from './components/ParkingSpotDetail'
 import LandingPage from './components/LandingPage'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/users'
+import Confirmation from './components/Confirmation.js'
 
 class App extends Component {
   constructor(props){
@@ -25,17 +26,17 @@ class App extends Component {
   }
 
   render() {
-    const AuthProfile = Authorize(Profile)
 
     return (
       <div>
         <NavBar />
           <Route exact path='/home' component={ParkingSpotsContainer} />
           <Route exact path="/" component={LandingPage}/>
-          <Route path="/profile" component={AuthProfile}/>
+          <Route path="/profile" component={Profile}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
           <Route path="/addnew" component={AddNew}/>
+          <Route path="/confirmation" component={Confirmation}/>
           <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
         <Footer />
       </div>

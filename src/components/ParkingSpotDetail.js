@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 import { getParkingSpot } from '../actions/parkingSpots'
 import MyMapComponent from './MyMapComponent'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import { postNewListing } from '../actions/reservations'
 
 import { SingleDatePicker } from 'react-dates';
 
@@ -25,11 +27,15 @@ class ParkingSpotDetail extends React.Component{
   }
 
   onClick = (event) => {
-    //convert to date before sending the date
-    console.log(this.props);
-    var moment = require('moment');
+    let moment = require('moment');
     let x = moment(this.state.date).format('LL')
-    console.log(x);
+    let newRes = {
+      date: x,
+      guest_id: this.props.user.currentUser.id,
+      parking_spot_id: this.props.parkingSpot.detail.id
+    }
+    this.props.postNewListing(newRes)
+    this.props.history.push('/confirmation')
   }
 
 
@@ -45,7 +51,7 @@ class ParkingSpotDetail extends React.Component{
     const isDayBlocked = day => BAD_DATES.filter(d => moment(d).isSame(day, 'day')).length > 0
 
     if (this.props.parkingSpot.unavailableDates !== null ) {
-      this.props.parkingSpot.unavailableDates.map((dates) => BAD_DATES.push(dates.unavailable_dates))
+      this.props.parkingSpot.unavailableDates.filter(dates => dates.status !== "denied").map((dates) => BAD_DATES.push(dates.date))
     }
 
 
@@ -122,11 +128,13 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return {
-    getParkingSpot: (id) => {
-      dispatch(getParkingSpot(id))
-    }
-  }
+  return  bindActionCreators({getParkingSpot, postNewListing}, dispatch)
+  //
+  // return {
+  //   getParkingSpot: (id) => {
+  //     dispatch(getParkingSpot(id))
+  //   }
+  // }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail)

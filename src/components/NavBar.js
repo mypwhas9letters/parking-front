@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { logoutUser } from '../actions/users'
 import { connect } from 'react-redux'
 
@@ -18,7 +18,7 @@ class NavBar extends React.Component{
   }
 
   render() {
-    
+
     const isAuthenticated = this.props.auth;
 
 
