@@ -11,6 +11,7 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      history: this.props.history
     }
   }
 
@@ -21,7 +22,6 @@ class Login extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.props.login(this.state)
-    this.props.history.push('/home')
   }
 
   render() {

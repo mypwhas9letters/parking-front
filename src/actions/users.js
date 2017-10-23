@@ -16,8 +16,10 @@ export function login(usersParams) {
     } else {
         return user.message
       }
+
      })
-  }
+     .then(() => usersParams.history.push("/profile"))
+   }
 }
 
 export function getCurrentUser(jwt){

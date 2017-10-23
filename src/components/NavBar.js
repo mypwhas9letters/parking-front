@@ -24,6 +24,7 @@ class NavBar extends React.Component{
 
     const userLinks = (
       <div className="right item">
+        <NavLink className="item" to="">Notifications</NavLink>
         <NavLink className="item" to="/profile">Profile</NavLink>
         <a className="item" onClick={this.onClick}>Logout</a>
       </div>

@@ -32,7 +32,6 @@ class AddNew extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return(
       <div className="ui container">
         <form onSubmit={this.onSubmit} className="ui form">

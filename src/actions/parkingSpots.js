@@ -12,6 +12,7 @@ function fetchedSpots(parkingSpots) {
 }
 
 function addNewListing(newListing){
+  debugger
   return {
     type: "ADD_NEW_LISTING",
     payload: newListing
@@ -43,6 +44,7 @@ export function postNewListing(listingParams) {
     })
     .then((res) => res.json())
     .then((json) => {
+      debugger
       dispatch(addNewListing(json))
     })
   }

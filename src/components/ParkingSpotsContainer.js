@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ParkingSpotsList from './ParkingSpotsList'
 import { fetchParkingSpots } from '../actions/parkingSpots'
-import Search from './Search'
 
 class ParkingSpotsContainer extends React.Component {
 
@@ -13,7 +12,14 @@ class ParkingSpotsContainer extends React.Component {
   render(){
     return (
       <div className="ui container">
-        <Search />
+        <div className="ui container">
+          <div className="ui icon input">
+            <input type="text" placeholder="Address"/>
+            <i className="search icon"></i>
+          </div>
+            <button className="ui primary button">By Price</button>
+            <button className="ui primary button">By Rating</button>
+          </div>
         <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
       </div>
       )

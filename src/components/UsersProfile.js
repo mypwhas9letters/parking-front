@@ -10,32 +10,50 @@ import { bindActionCreators } from 'redux'
 class Profile extends React.Component {
 
   componentDidMount(){
-    const userID = {id: this.props.currentUser.id}
-    this.props.fetchReservations(userID)
+    const jwt = localStorage.getItem('jwt')
+    this.props.fetchReservations(jwt)
   }
 
   render(){
-    let reservationsFetch = null
+
+    let reservationsPending = null
+    let reservationsApproved = null
+    let reservationsDenied = null
     if (this.props.reservations.reservations.error !== "Not Found") {
-     reservationsFetch = <ReservationsList reservations={this.props.reservations.reservations}/>
-    }
+     reservationsPending = <ReservationsList reservations={this.props.reservations.reservations.filter(res => res.status === "pending")}/>
+     reservationsApproved = <ReservationsList reservations={this.props.reservations.reservations.filter(res => res.status === "approved")}/>
+     reservationsDenied = <ReservationsList reservations={this.props.reservations.reservations.filter(res => res.status === "denied")}/>
+}
+
+// .filter(dates => dates.status !== "denied").map((dates) => BAD_DATES.push(dates.date))
+
+
+
+
+
     if(!localStorage.getItem('jwt')){
       return <Redirect to="/home"/>
     }
+    console.log(this.props);
 
     return(
       <div className="ui container">
           <NavLink to="/addnew"><button className="ui primary button">Add New</button></NavLink>
           <h1>Welcome {this.props.currentUser.username}</h1>
+
+
+
+
           <h1>Your Listings</h1>
             <ParkingSpotsList spots={this.props.parkingSpots}/>
           <h1>Requests</h1>
             <h2>Pending</h2>
-            {reservationsFetch}
-            <h2>Confirmed</h2>
+            {reservationsPending}
+            <h2>Approved</h2>
+            {reservationsApproved}
             <h2>Denied</h2>
+            {reservationsDenied}
           <h1>Your Bookings</h1>
-
       </div>
     )
   }

@@ -5,7 +5,6 @@ function fetchingReservations() {
 }
 
 function fetchedReservations(reservations) {
-  debugger
   return {
     type: "FETCHED_RESERVATIONS",
     payload: reservations
@@ -19,15 +18,14 @@ function fetchedReservations(reservations) {
 //   }
 // }
 
-export function fetchReservations(userID){
-  const body = JSON.stringify(userID)
+export function fetchReservations(jwt){
   return function(dispatch){
     dispatch(fetchingReservations())
     fetch("http://localhost:3000/api/v1/reservations",{
-      method: 'post',
-      body: body,
+      method: 'get',
       headers: {
-        "Content-Type":"application/json"
+        "Authorization":`Bearer ${jwt}`,
+        "Accept":"application/json"
       }
     })
       .then((res) => res.json())
@@ -36,6 +34,27 @@ export function fetchReservations(userID){
       })
     }
   }
+
+  // export function getCurrentUser(jwt){
+  //     return function(dispatch) {
+  //       fetch('http://localhost:3000/api/v1/users/me',{
+  //         method: 'get',
+  //         headers: {
+  //           "Authorization":`Bearer ${jwt}`,
+  //           "Accept":"application/json"
+  //         }
+  //       })
+  //
+  //       .then(res => res.json())
+  //       .then(json => {
+  //           dispatch({type: "GET_CURRENT_USER", payload: json})
+  //       })
+  //     }
+  // }
+
+
+
+
 
 
 
