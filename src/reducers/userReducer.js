@@ -1,4 +1,4 @@
-function userReducer(state = {currentUser:{}, parkingSpots:[], reservations:[], trips: [], isLoggedIn:false}, action){
+function userReducer(state = {currentUser:{}, parkingSpots:[], reservations:null, trips: [], isLoggedIn:false}, action){
     switch (action.type){
       case "LOG_IN":
   			localStorage.setItem('jwt', action.payload.jwt)

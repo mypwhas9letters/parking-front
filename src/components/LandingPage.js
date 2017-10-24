@@ -1,11 +1,15 @@
 import React from 'react';
+import { getFilterByZip } from '../actions/parkingSpots'
+import { connect } from 'react-redux'
+
 
 class LandingPage extends React.Component {
 
   constructor(props){
     super(props)
     this.state = {
-      address: "",
+      zip: "",
+      distance: ""
     }
   }
 
@@ -15,7 +19,9 @@ class LandingPage extends React.Component {
 
   onClick = (event) => {
     event.preventDefault()
-    console.log(this.state.address);
+    this.props.getFilterByZip(this.state)
+    this.props.history.push('/home')
+
   }
 
 
@@ -25,7 +31,9 @@ class LandingPage extends React.Component {
           <div className="ui container">
             <h1>Search for nearby parking spaces</h1>
             <div className="ui icon input">
-              <input type="text" name="address" placeholder="Address" onChange={this.onChange} value={this.state.title}/>
+              <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxlength="5"/>
+              <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
+
               <button className="ui primary button" onClick={this.onClick}>Search</button>
             </div>
           </div>
@@ -34,4 +42,11 @@ class LandingPage extends React.Component {
     }
 }
 
-export default LandingPage
+function mapDispatchToProps(dispatch){
+  return {
+    getFilterByZip: (zip) => {
+      dispatch(getFilterByZip(zip))
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(LandingPage)

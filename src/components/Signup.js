@@ -12,7 +12,9 @@ class Signup extends React.Component {
       username: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      history: this.props.history
+
     }
   }
 
@@ -22,9 +24,7 @@ class Signup extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state);
     this.props.signup(this.state)
-    this.props.history.push('/profile')
   }
 
 

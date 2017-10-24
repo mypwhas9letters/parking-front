@@ -34,7 +34,7 @@ export function fetchParkingSpots(){
 export function postNewListing(listingParams) {
   const body = JSON.stringify(listingParams)
   return function(dispatch){
-    fetch("http://localhost:3000/api/v1/parking_spots", {
+    fetch("http://localhost:3000/api/v1/newparkingspot", {
       method: 'post',
       body: body,
       headers: {
@@ -44,7 +44,6 @@ export function postNewListing(listingParams) {
     })
     .then((res) => res.json())
     .then((json) => {
-      debugger
       dispatch(addNewListing(json))
     })
   }
@@ -58,4 +57,25 @@ export function getParkingSpot(id){
         dispatch({type: "GET_PARKING_SPOT", payload: json})
     })
   }
+}
+
+
+export function getFilterByZip(zip){
+  const body = JSON.stringify(zip)
+  console.log(body);
+    return function(dispatch) {
+      fetch('http://localhost:3000/api/v1/filterbyzip',{
+        method: 'post',
+        body: body,
+        headers: {
+          "Accept":"application/json",
+          "Content-Type":"application/json"
+        }
+      })
+
+      .then(res => res.json())
+      .then(json => {
+      dispatch(fetchedSpots(json))
+      })
+    }
 }

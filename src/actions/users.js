@@ -16,7 +16,6 @@ export function login(usersParams) {
     } else {
         return user.message
       }
-
      })
      .then(() => usersParams.history.push("/profile"))
    }
@@ -55,7 +54,7 @@ export function logoutUser() {
 
 export function signup(usersParams) {
   const body = JSON.stringify(usersParams)
-  debugger
+
   return function(dispatch){
     fetch("http://localhost:3000/api/v1/users", {
       method: 'post',
@@ -65,7 +64,9 @@ export function signup(usersParams) {
         "Content-Type":"application/json"
         }
     })
-    .then((res) => res.json())
+    .then(res => res.json())
+    
+    .then(() => usersParams.history.push("/home"))
 
   }
 }

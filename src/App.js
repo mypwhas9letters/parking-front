@@ -6,7 +6,7 @@ import Signup from './components/Signup'
 import Profile from './components/UsersProfile'
 import AddNew from './components/AddNewListing'
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
-import { Route, withRouter} from 'react-router-dom'
+import { Route, withRouter, Switch} from 'react-router-dom'
 import Authorize from './components/Authorize'
 import ErrorPage from './components/ErrorPage'
 import ParkingSpotDetail from './components/ParkingSpotDetail'
@@ -26,18 +26,21 @@ class App extends Component {
   }
 
   render() {
-
+    const authProfile = Authorize(Profile)
     return (
       <div>
         <NavBar />
-          <Route exact path='/home' component={ParkingSpotsContainer} />
-          <Route exact path="/" component={LandingPage}/>
-          <Route path="/profile" component={Profile}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={Signup}/>
-          <Route path="/addnew" component={AddNew}/>
-          <Route path="/confirmation" component={Confirmation}/>
-          <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
+          <Switch>
+            <Route exact path='/home' component={ParkingSpotsContainer} />
+            <Route exact path="/" component={LandingPage}/>
+            <Route exact path="/profile" component={authProfile}/>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/signup" component={Signup}/>
+            <Route exact path="/addnew" component={AddNew}/>
+            <Route exact path="/confirmation" component={Confirmation}/>
+            <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
+            <Route component={ErrorPage}/>
+          </Switch>
         <Footer />
       </div>
     );

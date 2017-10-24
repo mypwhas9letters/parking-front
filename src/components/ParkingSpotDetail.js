@@ -98,7 +98,7 @@ console.log(this.props);
                 focused={this.state.focused}
                 onFocusChange={({ focused }) => this.setState({ focused })}
               />
-                {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="ui primary button right floated content">Request Reservation</div> : null}
+            {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="ui primary button right floated content">Request Reservation</div> : <div className="right floated content">Please Log In Or SignUp to Book</div>}
             </div>
       </div>
 
@@ -129,14 +129,15 @@ console.log(this.props);
               User1: List of Reviews
             </ul>
           </div>
-          <form className="ui reply form">
-            <div className="field">
-              <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}></textarea>
-            </div>
-            <div className="ui blue labeled submit icon button">
-              <i className="icon edit"></i> Add Review
-            </div>
-          </form>
+            {localStorage.getItem('jwt') ?
+              <form className="ui reply form">
+                <div className="field">
+                  <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
+                </div>
+                <div className="ui blue labeled submit icon button">
+                  <i className="icon edit"></i> Add Review
+                </div>
+              </form>: null}
       </div>
     )
   }

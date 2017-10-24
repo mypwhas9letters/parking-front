@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { logoutUser } from '../actions/users'
 import { connect } from 'react-redux'
+import logo from '../images/logo.png'
 
 class NavBar extends React.Component{
 
@@ -40,6 +41,9 @@ class NavBar extends React.Component{
     return (
       <div className="ui inverted menu">
         <div className="ui container">
+          <NavLink className="header item" to="/">
+            <img className="logo" src={logo} alt=""/>
+          </NavLink>
           <NavLink className="item" to="/home">Parking App</NavLink>
             { isAuthenticated ? userLinks : guestLinks }
         </div>
