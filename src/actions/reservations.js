@@ -11,12 +11,18 @@ function fetchedReservations(reservations) {
   }
 }
 
-// function addNewListing(newListing){
-//   return {
-//     type: "ADD_NEW_LISTING",
-//     payload: newListing
-//   }
-// }
+function addNewListing(newListing){
+  return {
+    type: "ADD_NEW_LISTING",
+    payload: newListing
+  }
+}
+function updateRes(json){
+  return {
+    type: "UPDATE_RESERVATION",
+    payload: json
+  }
+}
 
 export function fetchReservations(jwt){
   return function(dispatch){
@@ -34,6 +40,23 @@ export function fetchReservations(jwt){
       })
     }
   }
+
+  export function fetchTrips(jwt){
+    return function(dispatch){
+      dispatch(fetchingReservations())
+      fetch("http://localhost:3000/api/v1/trips",{
+        method: 'get',
+        headers: {
+          "Authorization":`Bearer ${jwt}`,
+          "Accept":"application/json"
+        }
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          dispatch({type: "FETCHED_TRIPS", payload: json})
+        })
+      }
+    }
 
   // export function getCurrentUser(jwt){
   //     return function(dispatch) {
@@ -72,6 +95,9 @@ export function postNewListing(reservationParams) {
         }
     })
     .then((res) => res.json())
+    .then(json => {
+      dispatch(addNewListing(json))
+    })
     }
   }
 
@@ -85,3 +111,22 @@ export function postNewListing(reservationParams) {
 //     })
 //   }
 // }
+
+
+export function updateReservation(updateParams){
+  const body = JSON.stringify(updateParams)
+  return function(dispatch){
+    fetch("http://localhost:3000/api/v1/reservationupdate", {
+      method: 'PATCH',
+      body: body,
+      headers: {
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+        }
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(updateRes(json))
+    })
+    }
+  }

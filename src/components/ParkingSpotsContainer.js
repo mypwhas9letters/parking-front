@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import ParkingSpotsList from './ParkingSpotsList'
 import { getFilterByZip } from '../actions/parkingSpots'
 
+
 class ParkingSpotsContainer extends React.Component {
 
   constructor(props){

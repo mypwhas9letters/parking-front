@@ -3,8 +3,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Profile from './components/UsersProfile'
-import AddNew from './components/AddNewListing'
+import UsersDashboard from './components/UsersDashboard'
 import ParkingSpotsContainer from './components/ParkingSpotsContainer'
 import { Route, withRouter, Switch} from 'react-router-dom'
 import Authorize from './components/Authorize'
@@ -26,17 +25,16 @@ class App extends Component {
   }
 
   render() {
-    const authProfile = Authorize(Profile)
+    const authUsersDashboard = Authorize(UsersDashboard)
     return (
       <div>
         <NavBar />
           <Switch>
             <Route exact path='/home' component={ParkingSpotsContainer} />
             <Route exact path="/" component={LandingPage}/>
-            <Route exact path="/profile" component={authProfile}/>
+            <Route exact path="/usersDashboard" component={authUsersDashboard}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/signup" component={Signup}/>
-            <Route exact path="/addnew" component={AddNew}/>
             <Route exact path="/confirmation" component={Confirmation}/>
             <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
             <Route component={ErrorPage}/>

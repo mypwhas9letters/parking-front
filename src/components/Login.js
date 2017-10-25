@@ -34,7 +34,7 @@ class Login extends React.Component {
                 Log Into Your Account
               </div>
             </h2>
-            <form onSubmit={this.onSubmit} className="ui large form">
+            <form onSubmit={this.onSubmit} className="ui large form ">
               <div className="ui stacked segment">
                 <div className="field">
                   <input type="text" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
@@ -42,7 +42,7 @@ class Login extends React.Component {
                 <div className="field">
                   <input type="password" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
                 </div>
-                <input className="ui fluid large submit button" type="submit" value="Log In"/>
+                <input className="ui fluid large  submit primary button" type="submit" value="Log In"/>
               </div>
             </form>
             <div className="ui message">New User?

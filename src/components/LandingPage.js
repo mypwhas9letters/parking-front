@@ -31,7 +31,7 @@ class LandingPage extends React.Component {
           <div className="ui container">
             <h1>Search for nearby parking spaces</h1>
             <div className="ui icon input">
-              <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxlength="5"/>
+              <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxLength="5"/>
               <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
 
               <button className="ui primary button" onClick={this.onClick}>Search</button>

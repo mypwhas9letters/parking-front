@@ -25,8 +25,8 @@ class NavBar extends React.Component{
 
     const userLinks = (
       <div className="right item">
-        <NavLink className="item" to="">Notifications</NavLink>
-        <NavLink className="item" to="/profile">Profile</NavLink>
+        <NavLink className="item" to="">Messages</NavLink>
+        <NavLink className="item" to="/UsersDashboard">Profile</NavLink>
         <a className="item" onClick={this.onClick}>Logout</a>
       </div>
     )
@@ -39,12 +39,12 @@ class NavBar extends React.Component{
     )
 
     return (
-      <div className="ui inverted menu">
+      <div className="ui blue inverted menu">
         <div className="ui container">
           <NavLink className="header item" to="/">
             <img className="logo" src={logo} alt=""/>
           </NavLink>
-          <NavLink className="item" to="/home">Parking App</NavLink>
+          <NavLink className="item" to="/home"><h3>Parking App</h3></NavLink>
             { isAuthenticated ? userLinks : guestLinks }
         </div>
       </div>

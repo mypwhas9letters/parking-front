@@ -17,7 +17,7 @@ export function login(usersParams) {
         return user.message
       }
      })
-     .then(() => usersParams.history.push("/profile"))
+     .then(() => usersParams.history.push("/usersDashboard"))
    }
 }
 
@@ -65,7 +65,7 @@ export function signup(usersParams) {
         }
     })
     .then(res => res.json())
-    
+
     .then(() => usersParams.history.push("/home"))
 
   }

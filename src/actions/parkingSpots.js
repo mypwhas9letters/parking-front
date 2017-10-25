@@ -12,7 +12,6 @@ function fetchedSpots(parkingSpots) {
 }
 
 function addNewListing(newListing){
-  debugger
   return {
     type: "ADD_NEW_LISTING",
     payload: newListing

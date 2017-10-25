@@ -16,7 +16,7 @@ class AddNew extends React.Component {
       description: "",
       photo: "",
       price: "",
-      owner_id: this.props.currentUser.id
+      owner_id: this.props.currentUser.id,
     }
   }
 
@@ -28,7 +28,8 @@ class AddNew extends React.Component {
     event.preventDefault()
     const listing = this.state
     this.props.postNewListing(listing)
-    this.props.history.push('/profile')
+    console.log(this.props);
+    window.location.href = ("/UsersDashboard")
   }
 
   render() {
@@ -36,7 +37,7 @@ class AddNew extends React.Component {
       <div className="ui container">
         <form onSubmit={this.onSubmit} className="ui form">
 
-        <h4 className="ui dividing header">New Listing</h4>
+        <h2 className="ui dividing header">New Listing</h2>
 
         <div className="field">
         <label>Name Of Your Space</label>
@@ -68,7 +69,7 @@ class AddNew extends React.Component {
           </div>
 
 
-        <div className="four fields">
+        <div className="three fields">
 
         <div className="field">
           <div className="ui fluid">
@@ -142,12 +143,6 @@ class AddNew extends React.Component {
             </div>
           </div>
 
-          <div className="field">
-            <div className="ui fluid">
-              <input type="text" name="country" placeholder="Country" onChange={this.onChange} value={this.state.country}/>
-            </div>
-          </div>
-
 
         </div>
 
@@ -168,6 +163,7 @@ class AddNew extends React.Component {
 }
 
 function mapStateToProps(state){
+  console.log(state);
   return{
     currentUser: state.user.currentUser
   }
