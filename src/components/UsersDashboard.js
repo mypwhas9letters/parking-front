@@ -4,8 +4,9 @@ import ReservationsContainer from './reservations/ReservationsContainer'
 import AddNew from './AddNewListing'
 import { Redirect } from 'react-router-dom'
 import Profile from './Profile'
-import YourReservations from './reservations/YourReservations'
+import YourReservationsContainer from './reservations/YourReservationsContainer'
 import { Menu, Segment } from 'semantic-ui-react'
+import EditProfile from './EditProfile'
 
 
 
@@ -26,7 +27,9 @@ class UsersDashboard extends React.Component {
       case "Requests":
         return this.setState({tab: <ReservationsContainer />})
       case "Your Reservations":
-        return this.setState({tab: <YourReservations />})
+        return this.setState({tab: <YourReservationsContainer />})
+      case "EditProfile":
+        return this.setState({tab: <EditProfile />})
       default:
         return this.setState({tab: <Profile/>})
     }
@@ -47,7 +50,9 @@ class UsersDashboard extends React.Component {
           <Menu.Item name="Requests" active={activeItem === "Requests"} onClick={this.onClick}/>
           <Menu.Item name="Your Reservations" active={activeItem === "Your Reservations"} onClick={this.onClick}/>
           <Menu.Item name="AddNew" active={activeItem === "AddNew"} onClick={this.onClick}/>
-        </Menu>
+          <Menu.Item name="EditProfile" active={activeItem === "EditProfile"} onClick={this.onClick}/>
+
+      </Menu>
         <Segment attached='bottom'>
           {tabToRender}
         </Segment>

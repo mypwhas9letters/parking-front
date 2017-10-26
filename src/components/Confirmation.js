@@ -4,7 +4,7 @@ const Confirmation = () => {
 
   return (
     <div className="ui container">
-      <h1>Your requst has been sent the owner</h1>
+      <h1>Thank You. Your requst has been sent the owner</h1>
     </div>
   )
 }

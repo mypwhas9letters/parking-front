@@ -28,6 +28,7 @@ class App extends Component {
     const authUsersDashboard = Authorize(UsersDashboard)
     return (
       <div>
+        <div  className="bodymargin">
         <NavBar />
           <Switch>
             <Route exact path='/home' component={ParkingSpotsContainer} />
@@ -39,7 +40,9 @@ class App extends Component {
             <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
             <Route component={ErrorPage}/>
           </Switch>
+          </div>
         <Footer />
+
       </div>
     );
   }

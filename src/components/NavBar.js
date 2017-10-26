@@ -16,6 +16,8 @@ class NavBar extends React.Component{
   onClick = (event) => {
     event.preventDefault()
     this.props.logoutUser()
+    window.location.href = ("/")
+
   }
 
   render() {

@@ -16,6 +16,7 @@ class AddNew extends React.Component {
       description: "",
       photo: "",
       price: "",
+      type: "",
       owner_id: this.props.currentUser.id,
     }
   }
@@ -53,13 +54,23 @@ class AddNew extends React.Component {
           </div>
         </div>
 
-
-        <div className="field">
-          <label>Photo URL</label>
-          <div className="ui fluid">
-            <input type="tel" name="photo" placeholder="Image URL" onChange={this.onChange} value={this.state.photo}/>
+        <div className="two fields">
+          <div className="field">
+            <label>Photo URL</label>
+            <div className="ui fluid">
+              <input type="tel" name="photo" placeholder="Image URL" onChange={this.onChange} value={this.state.photo}/>
+            </div>
+          </div>
+          <div className="field">
+            <label>Type</label>
+            <select className="ui fluid dropdown" name="type" onChange={this.onChange} value={this.state.type}>
+              <option value="">Select A Type</option>
+              <option value="driveway">Driveway</option>
+              <option value="garage">Garage</option>
+            </select>
           </div>
         </div>
+
 
         <div className="field">
           <label>Address</label>
@@ -155,7 +166,7 @@ class AddNew extends React.Component {
         </div>
 
 
-          <input className="ui fluid large submit button" type="submit" value="Add New Listing"/>
+          <input className="ui fluid large primary submit button" type="submit" value="Add New Listing"/>
         </form>
       </div>
     )

@@ -61,20 +61,19 @@ export function getParkingSpot(id){
 
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
-  console.log(body);
-    return function(dispatch) {
-      fetch('http://localhost:3000/api/v1/filterbyzip',{
-        method: 'post',
-        body: body,
-        headers: {
-          "Accept":"application/json",
-          "Content-Type":"application/json"
-        }
-      })
+  return function(dispatch) {
+    fetch('http://localhost:3000/api/v1/filterbyzip',{
+      method: 'post',
+      body: body,
+      headers: {
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(json => {
+      dispatch(fetchedSpots(json)
+    )})
 
-      .then(res => res.json())
-      .then(json => {
-      dispatch(fetchedSpots(json))
-      })
-    }
+  }
 }

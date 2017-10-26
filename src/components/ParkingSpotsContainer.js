@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ParkingSpotsList from './ParkingSpotsList'
-import { getFilterByZip } from '../actions/parkingSpots'
-
+import { getFilterByZip, fetchParkingSpots } from '../actions/parkingSpots'
+import { bindActionCreators } from 'redux'
+import MyMapComponent from './MyMapComponent'
 
 class ParkingSpotsContainer extends React.Component {
 
@@ -23,14 +24,14 @@ class ParkingSpotsContainer extends React.Component {
     this.props.getFilterByZip(this.state)
   }
 
-  // componentDidMount(){
-  //   this.props.fetchParkingSpots()
-  // }
+  componentDidMount(){
+    // this.props.fetchParkingSpots()
+  }
 
   render(){
-    return (
+  return (
       <div className="ui container">
-        <div className="ui container">
+        <div className="ui segment">
           <h1>Search for nearby parking spaces</h1>
 
           <div className="ui icon input">
@@ -41,8 +42,20 @@ class ParkingSpotsContainer extends React.Component {
             <button className="ui primary button">By Price</button>
             <button className="ui primary button">By Rating</button>
           </div>
-        <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
-      </div>
+          <div className="ui segment">
+            <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
+          </div>
+          <div className="ui segment">
+            <MyMapComponent
+              markers={this.props.parkingSpots}
+              isMarkerShown
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOf9SR36Oz4MaKIBqhN5S4TBxcbRr75TE&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+            />
+          </div>
+        </div>
       )
     }
   }
@@ -54,11 +67,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return {
-    getFilterByZip: (zip) => {
-      dispatch(getFilterByZip(zip))
-    }
-  }
+  return  bindActionCreators({getFilterByZip, fetchParkingSpots}, dispatch)
 }
 
 

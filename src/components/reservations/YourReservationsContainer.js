@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ReservationsList from './ReservationsList'
+import YourReservationsList from './YourReservationsList'
 import { bindActionCreators } from 'redux'
 import { fetchTrips } from '../../actions/reservations'
 
 
-class ReservationsContainer extends React.Component {
+class YourReservationsContainer extends React.Component {
 
   componentDidMount(){
     const jwt = localStorage.getItem('jwt')
@@ -16,11 +16,14 @@ class ReservationsContainer extends React.Component {
   render(){
     let myTrips = []
     if(this.props.trips.trips !== null){
-      myTrips = <ReservationsList reservations={this.props.trips.trips}/>
+      myTrips = <YourReservationsList reservations={this.props.trips.trips}/>
     }
     return (
       <div className="ui container">
-        {myTrips}
+        <h1>Reservations</h1>
+        <div className="ui segment">
+          {myTrips}
+        </div>
       </div>
     )
   }
@@ -36,4 +39,4 @@ function mapDispatchToProps(dispatch) {
   return  bindActionCreators({fetchTrips}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReservationsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(YourReservationsContainer)

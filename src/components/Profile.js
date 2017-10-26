@@ -56,11 +56,7 @@ class Profile extends React.Component {
           <div className="description">
             Parking Spaces: {this.props.parkingSpots.length}
           </div>
-          <div className="extra">
-            <div className="ui right floated button">
-              Edit
-            </div>
-          </div>
+
         </div>
         </div>
         </div>
@@ -70,9 +66,8 @@ class Profile extends React.Component {
 
 
         <div className="ui segment">
-
-      <h1>Your Listings</h1>
-        <ParkingSpotsList spots={this.props.parkingSpots}/>
+          <h1>Your Listings</h1>
+          <ParkingSpotsList spots={this.props.parkingSpots}/>
       </div>
       </div>
 

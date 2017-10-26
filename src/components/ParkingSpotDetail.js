@@ -21,14 +21,12 @@ class ParkingSpotDetail extends React.Component{
   }
 
   onChange = (event) => {
-    console.log(this.state);
     this.setState({[event.target.name]: event.target.value})
   }
 
   onClick = (event) => {
     let moment = require('moment');
     let x = moment(this.state.date).format('LL')
-    console.log(x);
     let newRes = {
       date: x,
       guest_id: this.props.user.currentUser.id,
@@ -57,9 +55,6 @@ console.log(this.props);
       mapAddress = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCNUIlhwaQ4xLbNM5Qs2of7wx7pcw8yjaM&q=${address},${city}+${state}+${zip}`
     }
 
-    // if (this.props.reservations.reservations.error !== "Not Found") {
-    //  reservationsFetch = <ReservationsList reservations={this.props.reservations.reservations}/>
-    // }
 
     var moment = require('moment');
     const BAD_DATES = [];
@@ -68,28 +63,37 @@ console.log(this.props);
      this.props.parkingSpot.unavailableDates.filter(dates => dates.status !== "denied").map((dates) => BAD_DATES.push(dates.date))
    }
 
-  //  let reviews = ""
+   let reviews = ""
 
-    // if (this.props.parkingSpot.reviews !== null ) {
-    //   this.props.parkingSpot.reviews.map((dates) => BAD_DATES.push(dates.date))
-    // }
+    if (this.props.parkingSpot.reviews !== null ) {
+      reviews = this.props.parkingSpot.reviews.map((each) => (<li>{each.review}</li>))
+    }
 
 
     return(
-      <div className="ui segment container">
-        <div className="ui header">{this.props.parkingSpot.detail.title}</div>
-        <img className="ui huge image" src={this.props.parkingSpot.detail.photo} alt=""/>
-
+      <div className="ui container">
 
         <div className="ui segment">
-          <div className="ui primary button">Contact Owner</div>
-        </div>
+          <div className="ui header">{this.props.parkingSpot.detail.title}</div>
+          <img className="divImg" src={this.props.parkingSpot.detail.photo} alt=""/>
+      </div>
 
 
-        <div className="ui segment">
-          <h1 className="ui header">Availability</h1>
-            <div  className="content">
-
+        <div className="ui horizontal segments">
+          <div className="ui segment">
+            <div className="content">
+              <h1>Detail</h1>
+              <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
+              <div className="description">Rating: </div>
+              <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
+              <div className="description">Price: ${this.props.parkingSpot.detail.price}</div>
+              <div className="description">Cancellation: Full refund up to 7 days before reservation. </div>
+              <div className="description">Amenities: Electric Car charger included. </div>
+            </div>
+          </div>
+          <div className="ui segment">
+            <h1 className="ui header">Availability</h1>
+            <div className="content">
               <SingleDatePicker
                 numberOfMonths={1}
                 isDayBlocked={isDayBlocked}
@@ -98,20 +102,19 @@ console.log(this.props);
                 focused={this.state.focused}
                 onFocusChange={({ focused }) => this.setState({ focused })}
               />
-            {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="ui primary button right floated content">Request Reservation</div> : <div className="right floated content">Please Log In Or SignUp to Book</div>}
+              {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="ui primary button right floated content">Request Reservation</div> : <div className="right floated content">Please Log In Or SignUp to Book</div>}
             </div>
-      </div>
-
-
+          </div>
+        </div>
 
 
         <div className="ui segment">
-          <p>Location</p>
-            <iframe title="map"
-              width="600"
-              height="450"
-              src={mapAddress}>
-            </iframe>
+          <iframe
+            title="map"
+            width="100%"
+            height="700px"
+            src={mapAddress}>
+          </iframe>
         </div>
 
 
@@ -126,7 +129,7 @@ console.log(this.props);
             Reviews
           </div>
             <ul className="list">
-              User1: List of Reviews
+              {reviews}
             </ul>
           </div>
             {localStorage.getItem('jwt') ?
@@ -145,6 +148,7 @@ console.log(this.props);
 }
 
 function mapStateToProps(state){
+  console.log(state);
   return{
     parkingSpot: state.parkingSpots,
     user: state.user
@@ -153,12 +157,6 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return  bindActionCreators({getParkingSpot, postNewListing}, dispatch)
-  //
-  // return {
-  //   getParkingSpot: (id) => {
-  //     dispatch(getParkingSpot(id))
-  //   }
-  // }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail)

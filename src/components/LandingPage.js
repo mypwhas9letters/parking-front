@@ -9,7 +9,8 @@ class LandingPage extends React.Component {
     super(props)
     this.state = {
       zip: "",
-      distance: ""
+      distance: "",
+      history: this.props.history
     }
   }
 
@@ -20,8 +21,7 @@ class LandingPage extends React.Component {
   onClick = (event) => {
     event.preventDefault()
     this.props.getFilterByZip(this.state)
-    this.props.history.push('/home')
-
+    this.props.history.push("/home")
   }
 
 

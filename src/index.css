@@ -5,7 +5,7 @@ body {
 }
 
 .footerBottom {
-   /*position: fixed;*/
+   position: fixed;
    bottom: 0;
    width: 100%;
    margin-bottom: 0;
@@ -23,6 +23,22 @@ body {
  .smallimg {
    height:160px
  }
+
+.bodymargin {
+  margin-bottom: 50px;
+}
+
+.divImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain
+}
+
+.textSize {
+    font-weight: bold;
+}
+
+
  /*
  .landing-image {
   background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
