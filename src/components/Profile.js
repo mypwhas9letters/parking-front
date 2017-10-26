@@ -39,7 +39,7 @@ class Profile extends React.Component {
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : "http://loyalkng.com/wp-content/uploads/2010/01/facebook-art-no-photo-image-batman-mickey-mouse-spock-elvis-rick-roll.jpg"
     return(
       <div className="ui container">
-      <h2>Welcome Back {this.props.currentUser.username}</h2>
+      <h1>Welcome Back {this.props.currentUser.username}</h1>
 
 
   <div className="ui segment">

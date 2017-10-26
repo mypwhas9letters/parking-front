@@ -1,6 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+ import { connect } from 'react-redux'
 
 
 class EditProfile extends React.Component {
@@ -34,11 +33,11 @@ class EditProfile extends React.Component {
       <div className="ui container">
         <div className="ui middle aligned grid">
           <div className="column">
-            <h2 className="ui image header">
+            <h1 className="ui image header">
               <div className="content">
                 Update Your Profile
               </div>
-            </h2>
+            </h1>
             <form onSubmit={this.onSubmit} className="ui large form">
               <div className="ui stacked segment">
                 <div className="field">

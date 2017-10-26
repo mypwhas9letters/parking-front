@@ -12,7 +12,7 @@ body {
  }
 
  .landing-image {
-     background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center center fixed;
+     background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
      height:100vh
  }
 
@@ -36,8 +36,14 @@ body {
 
 .textSize {
     font-weight: bold;
+    font-size: 1.2em
 }
 
+.logoSize{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
 
  /*
  .landing-image {
@@ -48,3 +54,52 @@ body {
    height: 0;
 }
    */
+
+
+   .ui.steps .step {
+     position: relative;
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-flex: 1;
+         -ms-flex: 1 0 auto;
+             flex: 1 0 auto;
+     -ms-flex-wrap: wrap;
+         flex-wrap: wrap;
+     -webkit-box-orient: horizontal;
+     -webkit-box-direction: normal;
+         -ms-flex-direction: row;
+             flex-direction: row;
+     vertical-align: middle;
+     -webkit-box-align: center;
+         -ms-flex-align: center;
+             align-items: center;
+     -webkit-box-pack: center;
+         -ms-flex-pack: center;
+             justify-content: center;
+     margin: 0em 0em;
+     padding: 1.14285714em 2em;
+     background: #0E6EB8;
+     color: rgba(0, 0, 0, 0.87);
+     box-shadow: none;
+     border-radius: 0em;
+     border: none;
+     border-right: 1px solid rgba(34, 36, 38, 0.15);
+     -webkit-transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+     transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+   }
+
+   .ui.steps .step.active {
+  cursor: auto;
+  background: #00CC66;
+}
+
+.ui.steps .step.nextStep {
+cursor: auto;
+background: #FFFFFF;
+}
+
+.ui.steps .step.deniedStep {
+cursor: auto;
+background: #ef2867;
+}

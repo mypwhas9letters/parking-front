@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { logoutUser } from '../actions/users'
 import { connect } from 'react-redux'
 import logo from '../images/logo.png'
+import title from '../images/title.png'
+
 
 class NavBar extends React.Component{
 
@@ -35,8 +37,8 @@ class NavBar extends React.Component{
 
     const guestLinks = (
       <div className="right item">
-        <NavLink className="item" to="/login">Log in </NavLink>
-        <NavLink className="item" to="/signup">Sign up </NavLink>
+        <NavLink className="item textSize" to="/login">LogIn </NavLink>
+        <NavLink className="item textSize" to="/signup">SignUp </NavLink>
       </div>
     )
 
@@ -46,7 +48,7 @@ class NavBar extends React.Component{
           <NavLink className="header item" to="/">
             <img className="logo" src={logo} alt=""/>
           </NavLink>
-          <NavLink className="item" to="/home"><h3>Parking App</h3></NavLink>
+          <NavLink to="/home"><img className="logoSize" src={title} alt=""/></NavLink>
             { isAuthenticated ? userLinks : guestLinks }
         </div>
       </div>

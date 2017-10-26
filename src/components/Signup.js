@@ -52,7 +52,7 @@ class Signup extends React.Component {
                 <div className="field">
                   <input onChange={this.onChange} type="password" name="confirmPassword" placeholder="Confirm Password" value={this.state.confirmPassword} required/>
                 </div>
-                <input className="ui fluid large submit button" type="submit" value="Sign Up"/>
+                <input className="ui fluid large primary submit button" type="submit" value="Sign Up"/>
               </div>
             </form>
             <div className="ui message">

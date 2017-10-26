@@ -33,6 +33,7 @@ class ReservationsContainer extends React.Component {
   }
     return (
       <div className="ui container">
+        <h1>Reservation Requests</h1>
         <div className="ui segment">
           <h2>Pending Requests</h2>
           {reservationsPending}

@@ -38,7 +38,7 @@ class AddNew extends React.Component {
       <div className="ui container">
         <form onSubmit={this.onSubmit} className="ui form">
 
-        <h2 className="ui dividing header">New Listing</h2>
+        <h1 className="ui dividing header">New Listing</h1>
 
         <div className="field">
         <label>Name Of Your Space</label>

@@ -29,12 +29,29 @@ class LandingPage extends React.Component {
     return (
         <div className="landing-image">
           <div className="ui container">
-            <h1>Search for nearby parking spaces</h1>
-            <div className="ui icon input">
-              <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxLength="5"/>
-              <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
+          <div className="ui middle aligned center aligned grid">
+          <div className="column">
+            <h1 className="ui image header">
+            <div className="content">Search For Nearby Parking Spaces</div>
+            </h1>
 
-              <button className="ui primary button" onClick={this.onClick}>Search</button>
+
+              <form className="ui large form">
+                <div className="ui stacked segment">
+                <div className="two fields">
+                  <div className="field">
+                    <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxLength="5" required/>
+                  </div>
+                  <div className="field">
+                    <input type="text" name="distance" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
+                  </div>
+                  </div>
+                  <input className="ui fluid large primary button" type="submit" onClick={this.onClick} value="Search"/>
+
+                </div>
+              </form>
+
+            </div>
             </div>
           </div>
         </div>
