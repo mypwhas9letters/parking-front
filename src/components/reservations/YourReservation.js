@@ -21,9 +21,9 @@ const YourReservation = (props) => {
                           <div className="step">
                             <i><img className="ui avatar image" src={profileImg} alt=""/></i>
                             <div className="content">
-                              <div className="title">{props.reservation.guest.username}</div>
-                              <NavLink to={detailLink}><div className="description">{props.reservation.parking_spot.title}</div></NavLink>
-                              <div className="description">Date {props.reservation.date}</div>
+                              <div className="title"><p className="whiteText">{props.reservation.guest.username}</p></div>
+                              <NavLink to={detailLink}><div className="description"><p className="whiteText">{props.reservation.parking_spot.title}</p></div></NavLink>
+                              <div className="description"><p className="whiteText">Date {props.reservation.date}</p></div>
                             </div>
                           </div>
 
@@ -32,15 +32,15 @@ const YourReservation = (props) => {
                           <div className={currentStep === "pending" ? "active step": "completed step"}>
                             <i className="check circle icon"></i>
                             <div className="content">
-                              <div className="title">{currentStep === "pending" ? "Awaiting Confirmation": "Confirmed"}</div>
-                              <div className="description">{currentStep === "pending" ? "Awaiting Confirmation From Host": ""}</div>
+                              <div className="title" style={{color:"white"}}>{currentStep === "pending" ? "Awaiting Confirmation": "Confirmed"}</div>
+                              <div className="description" style={{color:"white"}}>{currentStep === "pending" ? "Awaiting Confirmation From Host": ""}</div>
                             </div>
                           </div>
                           <div className={currentStep === "approved" ? "active step": "step disabled"}>
                             <i className="payment icon"></i>
                             <div className="content">
-                              <div className="title">Billing</div>
-                              <div className="description">Enter billing information</div>
+                              <div className="title" style={{color:"white"}}>Billing</div>
+                              <div className="description" style={{color:"white"}}>Enter billing information</div>
                             </div>
                           </div>
                           <div className="step disabled">
@@ -57,16 +57,16 @@ const YourReservation = (props) => {
                           <div className="step">
                             <i><img className="ui avatar image" src={profileImg} alt=""/></i>
                             <div className="content">
-                              <div className="title">{props.reservation.guest.username}</div>
-                              <div className="description">Requested to book {props.reservation.parking_spot.title}</div>
-                              <div className="description">Date {props.reservation.date}</div>
+                              <div className="title" style={{color:"white"}}>{props.reservation.guest.username}</div>
+                              <NavLink to={detailLink}><div className="description" style={{color:"white"}}>Requested to book {props.reservation.parking_spot.title}</div></NavLink>
+                              <div className="description" style={{color:"white"}}>Date {props.reservation.date}</div>
                             </div>
                           </div>
                         <div className="step deniedStep">
                           <i className="remove icon"></i>
                           <div className="content">
-                            <div className="title">Denied</div>
-                            <div className="description">Sorry, your request was denied</div>
+                            <div className="title" style={{color:"white"}}>Denied</div>
+                            <div className="description" style={{color:"white"}}>Sorry, your request was denied</div>
                           </div>
                         </div>
                         </div>

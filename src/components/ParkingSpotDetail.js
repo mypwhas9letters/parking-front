@@ -74,7 +74,7 @@ console.log(this.props);
       <div className="ui container">
 
         <div className="ui segment">
-          <div className="ui header">{this.props.parkingSpot.detail.title}</div>
+          <div className="ui header"><h1>{this.props.parkingSpot.detail.title}</h1></div>
           <img className="divImg" src={this.props.parkingSpot.detail.photo} alt=""/>
       </div>
 
@@ -84,7 +84,7 @@ console.log(this.props);
             <div className="content">
               <h1>Detail</h1>
               <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
-              <div className="description">Rating: </div>
+              <div className="description">Rating: {this.props.parkingSpot.detail.rating}</div>
               <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
               <div className="description">Price: ${this.props.parkingSpot.detail.price}</div>
               <div className="description">Cancellation: Full refund up to 7 days before reservation. </div>
@@ -126,7 +126,7 @@ console.log(this.props);
 
         <div className="ui message">
           <div className="header">
-            Reviews
+            <h1>Reviews</h1>
           </div>
             <ul className="list">
               {reviews}

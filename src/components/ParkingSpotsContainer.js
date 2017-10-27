@@ -41,6 +41,8 @@ class ParkingSpotsContainer extends React.Component {
           </div>
             <button className="ui primary button">By Price</button>
             <button className="ui primary button">By Rating</button>
+            <button className="ui primary button">By Type</button>
+
           </div>
           <div className="ui segment">
             <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>

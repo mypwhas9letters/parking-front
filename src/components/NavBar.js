@@ -29,7 +29,7 @@ class NavBar extends React.Component{
 
     const userLinks = (
       <div className="right item">
-        <NavLink className="item" to="">Messages</NavLink>
+        <NavLink className="item" to="/home">Home</NavLink>
         <NavLink className="item" to="/UsersDashboard">Profile</NavLink>
         <a className="item" onClick={this.onClick}>Logout</a>
       </div>
@@ -37,8 +37,8 @@ class NavBar extends React.Component{
 
     const guestLinks = (
       <div className="right item">
-        <NavLink className="item textSize" to="/login">LogIn </NavLink>
-        <NavLink className="item textSize" to="/signup">SignUp </NavLink>
+        <NavLink className="item textSize" to="/login">Log In </NavLink>
+        <NavLink className="item textSize" to="/signup">Sign Up </NavLink>
       </div>
     )
 

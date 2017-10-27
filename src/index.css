@@ -45,6 +45,10 @@ body {
   padding: 10px;
 }
 
+.whiteText {
+  color: white;
+}
+
  /*
  .landing-image {
   background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
@@ -91,7 +95,7 @@ body {
 
    .ui.steps .step.active {
   cursor: auto;
-  background: #00CC66;
+  background: #309636;
 }
 
 .ui.steps .step.nextStep {

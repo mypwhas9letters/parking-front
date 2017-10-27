@@ -1,6 +1,7 @@
 import React from 'react';
 import { getFilterByZip } from '../actions/parkingSpots'
 import { connect } from 'react-redux'
+import logo from '../images/logo.png'
 
 
 class LandingPage extends React.Component {
@@ -31,7 +32,9 @@ class LandingPage extends React.Component {
           <div className="ui container">
           <div className="ui middle aligned center aligned grid">
           <div className="column">
-            <h1 className="ui image header">
+            <h1 className="ui center aligned icon header">
+              <i><img className="ui avatar image" src={logo} alt=""/></i>
+
             <div className="content">Search For Nearby Parking Spaces</div>
             </h1>
 
