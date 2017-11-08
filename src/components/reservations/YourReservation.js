@@ -39,8 +39,9 @@ const YourReservation = (props) => {
                           <div className={currentStep === "approved" ? "active step": "step disabled"}>
                             <i className="payment icon"></i>
                             <div className="content">
-                              <div className="title" style={{color:"white"}}>Billing</div>
-                              <div className="description" style={{color:"white"}}>Enter billing information</div>
+                              {currentStep === "approved" ? <div className="title" style={{color:"white"}}>Billing</div> : <div className="title">Billing</div> }
+                              {currentStep === "approved" ? <div className="description" style={{color:"white"}}>Enter billing information</div> : <div className="description">Enter billing information</div> }
+  
                             </div>
                           </div>
                           <div className="step disabled">

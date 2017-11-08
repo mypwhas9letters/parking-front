@@ -28,8 +28,8 @@ class App extends Component {
     const authUsersDashboard = Authorize(UsersDashboard)
     return (
       <div>
-        <div  className="bodymargin">
-        <NavBar />
+        <div className="bodymargin">
+          <NavBar />
           <Switch>
             <Route exact path='/home' component={ParkingSpotsContainer} />
             <Route exact path="/" component={LandingPage}/>
@@ -40,14 +40,12 @@ class App extends Component {
             <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
             <Route component={ErrorPage}/>
           </Switch>
-          </div>
+        </div>
         <Footer />
-
       </div>
-    );
+    )
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -56,6 +54,5 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-
 
 export default withRouter(connect(null, mapDispatchToProps)(App))

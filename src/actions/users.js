@@ -54,7 +54,6 @@ export function logoutUser() {
 
 export function signup(usersParams) {
   const body = JSON.stringify(usersParams)
-
   return function(dispatch){
     fetch("http://localhost:3000/api/v1/users", {
       method: 'post',
@@ -65,8 +64,8 @@ export function signup(usersParams) {
         }
     })
     .then(res => res.json())
-
-    .then(() => usersParams.history.push("/home"))
+    .then(res => dispatch({type: "LOG_IN", payload: res}))
+    .then(() => window.location.href = ("/UsersDashboard"))
 
   }
 }

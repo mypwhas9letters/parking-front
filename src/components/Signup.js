@@ -14,7 +14,6 @@ class Signup extends React.Component {
       password: "",
       confirmPassword: "",
       history: this.props.history
-
     }
   }
 

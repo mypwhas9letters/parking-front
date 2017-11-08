@@ -8,8 +8,6 @@ const ParkingSpotsList = (props) => {
       {parkingSpot}
     </div>
   )
-
 }
-
 
 export default ParkingSpotsList

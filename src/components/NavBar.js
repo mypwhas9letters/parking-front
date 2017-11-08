@@ -23,10 +23,7 @@ class NavBar extends React.Component{
   }
 
   render() {
-
     const isAuthenticated = this.props.auth;
-
-
     const userLinks = (
       <div className="right item">
         <NavLink className="item" to="/home">Home</NavLink>
@@ -34,14 +31,12 @@ class NavBar extends React.Component{
         <a className="item" onClick={this.onClick}>Logout</a>
       </div>
     )
-
     const guestLinks = (
       <div className="right item">
         <NavLink className="item textSize" to="/login">Log In </NavLink>
         <NavLink className="item textSize" to="/signup">Sign Up </NavLink>
       </div>
     )
-
     return (
       <div className="ui blue inverted menu">
         <div className="ui container">

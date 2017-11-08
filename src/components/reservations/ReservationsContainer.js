@@ -6,6 +6,15 @@ import { bindActionCreators } from 'redux'
 import { updateReservation } from '../../actions/reservations'
 
 class ReservationsContainer extends React.Component {
+  constructor(props){
+    super(props)
+      this.state = {}
+  }
+
+  componentDidMount(){
+    const jwt = localStorage.getItem('jwt')
+    this.props.fetchReservations(jwt)
+  }
 
   onClick = (event) => {
     event.preventDefault()
@@ -16,10 +25,7 @@ class ReservationsContainer extends React.Component {
     this.props.updateReservation(updateParams)
   }
 
-  componentDidMount(){
-    const jwt = localStorage.getItem('jwt')
-    this.props.fetchReservations(jwt)
-  }
+
 
 
   render(){

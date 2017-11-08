@@ -29,7 +29,6 @@ class AddNew extends React.Component {
     event.preventDefault()
     const listing = this.state
     this.props.postNewListing(listing)
-    console.log(this.props);
     window.location.href = ("/UsersDashboard")
   }
 
@@ -37,23 +36,19 @@ class AddNew extends React.Component {
     return(
       <div className="ui container">
         <form onSubmit={this.onSubmit} className="ui form">
-
-        <h1 className="ui dividing header">New Listing</h1>
-
+          <h1 className="ui dividing header">New Listing</h1>
         <div className="field">
-        <label>Name Of Your Space</label>
+          <label>Name Of Your Space</label>
           <div className="ui fluid">
             <input type="text" name="title" placeholder="Title" onChange={this.onChange} value={this.state.title}/>
           </div>
         </div>
-
         <div className="field">
-        <label>Description</label>
+          <label>Description</label>
           <div className="ui fluid">
             <input type="text" name="description" placeholder="Description" onChange={this.onChange} value={this.state.description}/>
           </div>
         </div>
-
         <div className="two fields">
           <div className="field">
             <label>Photo URL</label>
@@ -70,26 +65,19 @@ class AddNew extends React.Component {
             </select>
           </div>
         </div>
-
-
         <div className="field">
           <label>Address</label>
-              <div className="ui fluid">
-              <input type="text" name="address" placeholder="Street Address" onChange={this.onChange} value={this.state.address}/>
-            </div>
-          </div>
-
-
-        <div className="three fields">
-
-        <div className="field">
           <div className="ui fluid">
-            <input type="text" name="city" placeholder="City" onChange={this.onChange} value={this.state.city}/>
+            <input type="text" name="address" placeholder="Street Address" onChange={this.onChange} value={this.state.address}/>
           </div>
         </div>
+        <div className="three fields">
+          <div className="field">
+            <div className="ui fluid">
+              <input type="text" name="city" placeholder="City" onChange={this.onChange} value={this.state.city}/>
+            </div>
 
-
-
+          </div>
           <div className="field">
             <select className="ui fluid dropdown" name="state" onChange={this.onChange} value={this.state.state}>
               <option value="">Select A State</option>
