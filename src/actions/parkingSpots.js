@@ -21,7 +21,7 @@ function addNewListing(newListing){
 export function fetchParkingSpots(){
   return function(dispatch){
     dispatch(fetchingSpots())
-    fetch("http://localhost:3000/api/v1/parking_spots")
+    fetch("https://parallelp-server.herokuapp.com/api/v1/parking_spots")
       .then((res) => res.json())
       .then((json) => {
         dispatch(fetchedSpots(json))
@@ -33,7 +33,7 @@ export function fetchParkingSpots(){
 export function postNewListing(listingParams) {
   const body = JSON.stringify(listingParams)
   return function(dispatch){
-    fetch("http://localhost:3000/api/v1/newparkingspot", {
+    fetch("https://parallelp-server.herokuapp.com/api/v1/newparkingspot", {
       method: 'post',
       body: body,
       headers: {
@@ -50,7 +50,7 @@ export function postNewListing(listingParams) {
 
 export function getParkingSpot(id){
   return function(dispatch){
-    fetch(`http://localhost:3000/api/v1/parking_spots/${id}`)
+    fetch(`https://parallelp-server.herokuapp.com/api/v1/parking_spots/${id}`)
     .then(res => res.json())
     .then(json => {
         dispatch({type: "GET_PARKING_SPOT", payload: json})
@@ -62,7 +62,7 @@ export function getParkingSpot(id){
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
   return function(dispatch) {
-    fetch('http://localhost:3000/api/v1/filterbyzip',{
+    fetch('https://parallelp-server.herokuapp.com/api/v1/filterbyzip',{
       method: 'post',
       body: body,
       headers: {

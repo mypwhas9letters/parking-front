@@ -1,7 +1,7 @@
 export function login(usersParams) {
   const body = JSON.stringify(usersParams)
   return function(dispatch){
-    fetch("http://localhost:3000/api/v1/login", {
+    fetch("https://parallelp-server.herokuapp.com/api/v1/login", {
       method: 'post',
       body: body,
       headers: {
@@ -23,7 +23,7 @@ export function login(usersParams) {
 
 export function getCurrentUser(jwt){
     return function(dispatch) {
-      fetch('http://localhost:3000/api/v1/users/me',{
+      fetch('https://parallelp-server.herokuapp.com/api/v1/users/me',{
         method: 'get',
         headers: {
           "Authorization":`Bearer ${jwt}`,
@@ -55,7 +55,7 @@ export function logoutUser() {
 export function signup(usersParams) {
   const body = JSON.stringify(usersParams)
   return function(dispatch){
-    fetch("http://localhost:3000/api/v1/users", {
+    fetch("https://parallelp-server.herokuapp.com/api/v1/users", {
       method: 'post',
       body: body,
       headers: {
