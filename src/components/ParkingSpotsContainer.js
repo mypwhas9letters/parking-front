@@ -10,8 +10,8 @@ class ParkingSpotsContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      zip: "",
-      distance: ""
+      zip: "10004",
+      distance: "5"
     }
   }
 
@@ -33,7 +33,7 @@ class ParkingSpotsContainer extends React.Component {
       <div className="ui container">
         <div className="ui segment">
           <h1>Search for nearby parking spaces</h1>
-
+          <p>The database is seeding with spaces around 10004</p>
           <div className="ui icon input">
             <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip}/>
             <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>

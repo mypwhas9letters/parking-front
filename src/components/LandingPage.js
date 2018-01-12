@@ -9,8 +9,8 @@ class LandingPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      zip: "",
-      distance: "",
+      zip: "10004",
+      distance: "10",
       history: this.props.history
     }
   }
@@ -36,11 +36,14 @@ class LandingPage extends React.Component {
               <i><img className="ui avatar image" src={logo} alt=""/></i>
 
             <div className="content">Search For Nearby Parking Spaces</div>
+
             </h1>
 
 
               <form className="ui large form">
                 <div className="ui stacked segment">
+                  <label>The database is seeded with spaces located around 10004</label>
+
                 <div className="two fields">
                   <div className="field">
                     <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxLength="5" required/>
