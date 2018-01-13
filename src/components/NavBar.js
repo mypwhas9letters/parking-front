@@ -1,25 +1,25 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { logoutUser } from '../actions/users'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+
 import logo from '../images/logo.png'
 import title from '../images/title.png'
+import { logoutUser } from '../actions/users'
 
 
-class NavBar extends React.Component{
-
+class NavBar extends Component{
   constructor(props){
     super(props)
-      this.state = {
-      loggedIn: this.props.auth
-      }
+
+    this.state = {
+    loggedIn: this.props.auth
+    }
   }
 
   onClick = (event) => {
     event.preventDefault()
     this.props.logoutUser()
     window.location.href = ("/")
-
   }
 
   render() {
@@ -51,20 +51,10 @@ class NavBar extends React.Component{
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( { user } ) {
   return {
-    auth: state.user.loggedIn,
+    auth: user.loggedIn
   };
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    logoutUser: () => {
-      dispatch(logoutUser())
-    }
-  }
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, { logoutUser })(NavBar)

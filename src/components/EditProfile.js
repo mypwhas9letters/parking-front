@@ -1,11 +1,10 @@
-import React from 'react'
- import { connect } from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-
-class EditProfile extends React.Component {
-
+class EditProfile extends Component {
   constructor(props){
     super(props)
+
     this.state = {
       username: "",
       email: "",
@@ -14,7 +13,6 @@ class EditProfile extends React.Component {
       profile_pic: "",
       bio: "",
       history: this.props.history
-
     }
   }
 
@@ -28,7 +26,6 @@ class EditProfile extends React.Component {
 
 
   render() {
-    console.log(this.props);
     return(
       <div className="ui container">
         <div className="ui middle aligned grid">
@@ -86,12 +83,4 @@ function mapStateToProps(state){
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-
-    }
-  }
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)
+export default connect(mapStateToProps)(EditProfile)

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Confirmation extends React.Component{
-
+class Confirmation extends Component{
   constructor(props){
     super(props)
+
     this.state = {
       message: ""
     }
@@ -27,7 +27,6 @@ class Confirmation extends React.Component{
               <textarea type="text" name="message" placeholder="Send the owner a message..." onChange={this.onChange} value={this.state.city}/>
             </div>
             <input className="ui fluid large primary submit button" type="submit" value="Send Message"/>
-
           </form>
       </div>
     )

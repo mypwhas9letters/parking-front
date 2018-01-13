@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import MyMapComponent from './MyMapComponent'
 import ParkingSpotsList from './ParkingSpotsList'
 import { getFilterByZip, fetchParkingSpots } from '../actions/parkingSpots'
-import { bindActionCreators } from 'redux'
-import MyMapComponent from './MyMapComponent'
 
-class ParkingSpotsContainer extends React.Component {
-
+class ParkingSpotsContainer extends Component {
   constructor(props){
     super(props)
+    
     this.state = {
       zip: "10004",
       distance: "5"

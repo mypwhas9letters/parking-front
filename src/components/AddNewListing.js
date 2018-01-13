@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { postNewListing } from '../actions/parkingSpots'
 import { connect } from 'react-redux'
 
-class AddNew extends React.Component {
-
+class AddNew extends Component {
   constructor(props){
     super(props)
+
     this.state = {
       title: "",
       address: "",
@@ -161,21 +161,10 @@ class AddNew extends React.Component {
   }
 }
 
-function mapStateToProps(state){
-  console.log(state);
+function mapStateToProps({ user }){
   return{
-    currentUser: state.user.currentUser
+    currentUser: user.currentUser
   }
 }
 
-
-function mapDispatchToProps(dispatch){
-  return {
-    postNewListing: (listing) => {
-      dispatch(postNewListing(listing))
-    }
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddNew)
+export default connect(mapStateToProps, { postNewListing })(AddNew)

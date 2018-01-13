@@ -1,18 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
-import { getParkingSpot } from '../actions/parkingSpots'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { postNewListing } from '../actions/reservations'
-
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
 import { SingleDatePicker } from 'react-dates';
 
+import { getParkingSpot } from '../actions/parkingSpots'
+import { postNewListing } from '../actions/reservations'
 
-class ParkingSpotDetail extends React.Component{
-
+class ParkingSpotDetail extends Component{
   constructor(props){
     super(props)
+
     this.state = {
       review: "",
       date: null,
@@ -44,8 +43,6 @@ class ParkingSpotDetail extends React.Component{
   }
 
   render(){
-console.log(this.props);
-
     let mapAddress = ""
     if (this.props.parkingSpot.detail.address) {
       let address = this.props.parkingSpot.detail.address.split(" ").join("+")
@@ -148,7 +145,6 @@ console.log(this.props);
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return{
     parkingSpot: state.parkingSpots,
     user: state.user

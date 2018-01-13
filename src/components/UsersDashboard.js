@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ReservationsContainer from './reservations/ReservationsContainer'
-import AddNew from './AddNewListing'
 import { Redirect } from 'react-router-dom'
-import Profile from './Profile'
-import YourReservationsContainer from './reservations/YourReservationsContainer'
 import { Menu, Segment } from 'semantic-ui-react'
-import EditProfile from './EditProfile'
 
-class UsersDashboard extends React.Component {
+import AddNew from './AddNewListing'
+import EditProfile from './EditProfile'
+import Profile from './Profile'
+import ReservationsContainer from './reservations/ReservationsContainer'
+import YourReservationsContainer from './reservations/YourReservationsContainer'
+
+class UsersDashboard extends Component {
   constructor(props){
     super(props)
+
       this.state = {
       tab: <Profile />,
       activeItem: 'Profile'

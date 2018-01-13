@@ -1,13 +1,12 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { login } from '../actions/users'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { login } from '../actions/users'
+import { NavLink } from 'react-router-dom'
 
-
-class Login extends React.Component {
-
+class Login extends Component {
   constructor(props){
     super(props)
+
     this.state = {
       username: "hui",
       password: "123",
@@ -55,14 +54,4 @@ class Login extends React.Component {
   }
 }
 
-
-function mapDispatchToProps(dispatch){
-  return {
-    login: (loginParams) => {
-      dispatch(login(loginParams))
-    }
-  }
-}
-
-
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, { login })(Login)

@@ -1,13 +1,13 @@
-import React from 'react';
-import { getFilterByZip } from '../actions/parkingSpots'
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
+
 import logo from '../images/logo.png'
+import { getFilterByZip } from '../actions/parkingSpots'
 
-
-class LandingPage extends React.Component {
-
+class LandingPage extends Component {
   constructor(props){
     super(props)
+
     this.state = {
       zip: "10004",
       distance: "10",
@@ -65,11 +65,4 @@ class LandingPage extends React.Component {
     }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    getFilterByZip: (zip) => {
-      dispatch(getFilterByZip(zip))
-    }
-  }
-}
-export default connect(null, mapDispatchToProps)(LandingPage)
+export default connect(null, { getFilterByZip })(LandingPage)

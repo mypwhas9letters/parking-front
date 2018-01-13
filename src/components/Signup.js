@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { signup } from '../actions/users'
 import { connect } from 'react-redux'
 
-
-class Signup extends React.Component {
-
+class Signup extends Component {
   constructor(props){
     super(props)
+
     this.state = {
       username: "",
       email: "",
@@ -25,7 +24,6 @@ class Signup extends React.Component {
     event.preventDefault()
     this.props.signup(this.state)
   }
-
 
   render() {
     return(
@@ -64,13 +62,4 @@ class Signup extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    signup: (listing) => {
-      dispatch(signup(listing))
-    }
-  }
-}
-
-
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(null, { signup })(Signup)

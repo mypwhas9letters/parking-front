@@ -1,7 +1,8 @@
-import reservationReducer from './reservationReducer';
-import parkingSpotsReducer from './parkingSpotsReducer';
-import userReducer from './userReducer';
 import { combineReducers } from 'redux';
+
+import parkingSpotsReducer from './parkingSpotsReducer';
+import reservationReducer from './reservationReducer';
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers(
   {

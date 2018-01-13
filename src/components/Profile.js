@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ParkingSpotsList from './ParkingSpotsList'
 import { connect } from 'react-redux'
 
 
-class Profile extends React.Component {
-
+class Profile extends Component {
   render(){
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : "http://loyalkng.com/wp-content/uploads/2010/01/facebook-art-no-photo-image-batman-mickey-mouse-spock-elvis-rick-roll.jpg"
     return(
