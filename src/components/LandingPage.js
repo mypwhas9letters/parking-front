@@ -42,7 +42,6 @@ class LandingPage extends Component {
 
               <form className="ui large form">
                 <div className="ui stacked segment">
-                  <label>The database is seeded with spaces located around 10004</label>
 
                 <div className="two fields">
                   <div className="field">
@@ -52,6 +51,8 @@ class LandingPage extends Component {
                     <input type="text" name="distance" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
                   </div>
                   </div>
+                  <label>The database is seeded with locations around 10004</label>
+
                   <input className="ui fluid large primary button" type="submit" onClick={this.onClick} value="Search"/>
 
                 </div>

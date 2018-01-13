@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
 
 function Authorize(RenderedComponent) {
-  return class extends React.Component {
+  return class extends Component {
     debugger
     render() {
-
       if (localStorage.getItem('jwt') && this.props.location.pathname === "/login") {
         return <Redirect to="/login" />
       } else if (!localStorage.getItem('jwt') && this.props.location.pathname !== "/login") {

@@ -28,7 +28,7 @@ class Profile extends Component {
         </div>
         <div className="ui segment">
           <h1>Your Listings</h1>
-          <ParkingSpotsList spots={this.props.parkingSpots}/>
+          <ParkingSpotsList spots={this.props.parkingSpots} className="ui three stackable cards"/>
         </div>
       </div>
     )

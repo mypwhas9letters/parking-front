@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 const ParkingSpot = (props) => {
   const detailLink = `/parkingSpot/${props.spot.id}`
   return (
-    <div className="column">
       <div className="ui fluid card">
         <div className="ui image">
           <NavLink to={detailLink}><img src={props.spot.photo} alt=""/></NavLink>
@@ -25,7 +24,6 @@ const ParkingSpot = (props) => {
 
       </div>
     </div>
-  </div>
   )
 }
 

@@ -7,11 +7,11 @@ import Confirmation from './components/Confirmation.js';
 import ErrorPage from './components/ErrorPage';
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
-import Login from './components/Login';
+import Login from './components/forms/Login';
 import NavBar from './components/NavBar';
 import ParkingSpotDetail from './components/ParkingSpotDetail';
-import ParkingSpotsContainer from './components/ParkingSpotsContainer';
-import Signup from './components/Signup';
+import Home from './components/Home';
+import Signup from './components/forms/Signup';
 import UsersDashboard from './components/UsersDashboard';
 import { getCurrentUser } from './actions/users';
 
@@ -34,7 +34,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LandingPage}/>
             <Route exact path="/confirmation" component={Confirmation}/>
-            <Route exact path='/home' component={ParkingSpotsContainer} />
+            <Route exact path='/home' component={Home} />
             <Route exact path="/login" component={Login}/>
             <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
             <Route exact path="/signup" component={Signup}/>

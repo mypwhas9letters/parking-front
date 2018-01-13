@@ -4,12 +4,23 @@ body {
   font-family: sans-serif;
 }
 
-.footerBottom {
-   position: fixed;
+/* NavBar */
+.logoSize{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+
+
+
+
+
+/* .footerBottom {
    bottom: 0;
    width: 100%;
    margin-bottom: 0;
- }
+ } */
 
  .landing-image {
      background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
@@ -39,11 +50,6 @@ body {
     font-size: 1.2em
 }
 
-.logoSize{
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
 
 .whiteText {
   color: white;
