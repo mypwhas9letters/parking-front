@@ -51,7 +51,7 @@ class LandingPage extends Component {
                     <input type="text" name="distance" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
                   </div>
                   </div>
-                  <label>The database is seeded with locations around 10004</label>
+                  <label>Currently only serving the NYC area. Please use NYC zip codes (ex. 10004, 11217)</label>
 
                   <input className="ui fluid large primary button" type="submit" onClick={this.onClick} value="Search"/>
 

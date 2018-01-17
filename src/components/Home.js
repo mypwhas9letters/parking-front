@@ -35,17 +35,41 @@ class ParkingSpotsContainer extends Component {
       <div className="ui container">
         <div className="ui segment">
           <h1>Search for nearby parking spaces</h1>
-          <p>The database is seeding with spaces around 10004</p>
-          <div className="ui icon input">
-            <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip}/>
-            <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
-            <button className="ui primary button" onClick={this.onClick}>Search</button>
-          </div>
+          <p>Currently only serving the NYC area. Please use NYC zip codes (ex. 10004, 11217)</p>
+
+            <div className="ui form">
+              <div className="inline fields">
+                <div className="field">
+                  <label>Zip</label>
+                  <input type="text" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip}/>
+                </div>
+                <div className="field">
+                  <label>Distance</label>
+                  <input type="text" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
+                </div>
+                <div className="field">
+                <button className="ui primary button" onClick={this.onClick}>Search</button>
+                </div>
+
+              </div>
+            </div>
+            <label>Sort: </label>
+
+            <div className="ui buttons">
+
             <button className="ui primary button">By Price</button>
             <button className="ui primary button">By Rating</button>
             <button className="ui primary button">By Type</button>
+            </div>
+
 
           </div>
+
+
+
+
+
+
           <div className="ui segment">
             <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
           </div>

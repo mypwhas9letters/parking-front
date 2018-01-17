@@ -80,6 +80,11 @@ class ParkingSpotDetail extends Component{
           <div className="ui segment">
             <div className="content">
               <h1>Detail</h1>
+                <div class="ui rating" data-rating="3" data-max-rating="5"></div>
+
+                <div className="ui star rating" data-rating="4"></div>
+
+
               <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
               <div className="description">Rating: {this.props.parkingSpot.detail.rating}</div>
               <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
