@@ -11,8 +11,8 @@ class ParkingSpotsContainer extends Component {
     super(props)
 
     this.state = {
-      zip: "10004",
-      distance: "5"
+      zip: "",
+      distance: ""
     }
   }
 
@@ -30,7 +30,6 @@ class ParkingSpotsContainer extends Component {
   }
 
   render(){
-    console.log(this.props.parkingSpots.isFetching)
     return (
       <div className="ui container">
         <div className="ui segment">
@@ -53,6 +52,10 @@ class ParkingSpotsContainer extends Component {
 
               </div>
             </div>
+          </div>
+
+          <div className="ui segment">
+
             <label>Sort: </label>
 
             <div className="ui buttons">
@@ -61,17 +64,23 @@ class ParkingSpotsContainer extends Component {
             <button className="ui primary button">By Rating</button>
             <button className="ui primary button">By Type</button>
             </div>
-
-
           </div>
 
 
-
-
-
-
           <div className="ui segment">
-            <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
+            {this.props.parkingSpots.isFetching ?
+              <div>
+                <div className="ui active inverted dimmer">
+                  <div className="ui large text loader">Loading</div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </div>
+            :
+              <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
+            }
           </div>
           <div className="ui segment">
             <MyMapComponent

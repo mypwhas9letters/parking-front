@@ -62,6 +62,7 @@ export function getParkingSpot(id){
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
   return function(dispatch) {
+    dispatch(fetchingSpots())
     fetch('https://parallelp-server.herokuapp.com/api/v1/filterbyzip',{
       method: 'post',
       body: body,

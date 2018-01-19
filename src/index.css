@@ -7,9 +7,17 @@ body {
 /* NavBar */
 .logoSize{
   margin: auto;
-  width: 50%;
+  height: 62px;
   padding: 10px;
 }
+
+/* Landing Page */
+.landing-image {
+    background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
+    height:100vh
+}
+
+
 
 
 
@@ -22,10 +30,7 @@ body {
    margin-bottom: 0;
  } */
 
- .landing-image {
-     background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
-     height:100vh
- }
+
 
  .smallSize {
    height:180px
