@@ -64,6 +64,7 @@ class ParkingSpotsContainer extends Component {
             <button className="ui primary button">By Rating</button>
             <button className="ui primary button">By Type</button>
             </div>
+            
           </div>
 
 
@@ -71,7 +72,7 @@ class ParkingSpotsContainer extends Component {
             {this.props.parkingSpots.isFetching ?
               <div>
                 <div className="ui active inverted dimmer">
-                  <div className="ui large text loader">Loading</div>
+                  <div className="ui large text loader">Loading<br/>Due to inactivity on Heroku Servers. First load may take a couple of seconds.</div>
                 </div>
                 <br/>
                 <br/>

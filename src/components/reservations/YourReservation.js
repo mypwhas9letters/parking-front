@@ -16,7 +16,7 @@ const YourReservation = (props) => {
       <div className="content">
 
         {currentStep !== "denied" ?
-                        <div className="ui small steps">
+                        <div className="ui four steps">
 
                           <div className="step">
                             <i><img className="ui avatar image" src={profileImg} alt=""/></i>
@@ -41,7 +41,7 @@ const YourReservation = (props) => {
                             <div className="content">
                               {currentStep === "approved" ? <div className="title" style={{color:"white"}}>Billing</div> : <div className="title">Billing</div> }
                               {currentStep === "approved" ? <div className="description" style={{color:"white"}}>Enter billing information</div> : <div className="description">Enter billing information</div> }
-  
+
                             </div>
                           </div>
                           <div className="step disabled">

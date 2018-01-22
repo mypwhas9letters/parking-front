@@ -22,12 +22,15 @@ class Profile extends Component {
                 <div className="description">
                   Parking Spaces: {this.props.parkingSpots.length}
                 </div>
+                <button className="ui primary button">Edit User</button>
               </div>
             </div>
           </div>
         </div>
         <div className="ui segment">
           <h1>Your Listings</h1>
+            <button className="ui primary button">Add New</button>
+
           <ParkingSpotsList spots={this.props.parkingSpots} className="ui three stackable cards"/>
         </div>
       </div>

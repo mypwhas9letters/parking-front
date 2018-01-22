@@ -43,13 +43,16 @@ class UsersDashboard extends Component {
     const tabToRender = (this.state.tab)
     return(
       <div className="ui container">
-        <Menu attached='top' tabular  >
-          <Menu.Item color={"blue"} name="Profile" active={activeItem === "Profile"} onClick={this.onClick}><p className="textSize">Profile Page</p></Menu.Item>
-          <Menu.Item color={"blue"} name="Requests" active={activeItem === "Requests"} onClick={this.onClick}><p className="textSize">Requests</p></Menu.Item>
-          <Menu.Item color={"blue"} name="Your Reservations" active={activeItem === "Your Reservations"} onClick={this.onClick}><p className="textSize">Your Reservations</p></Menu.Item>
-          <Menu.Item color={"blue"} name="AddNew" active={activeItem === "AddNew"} onClick={this.onClick}><p className="textSize">Add New</p></Menu.Item>
-          <Menu.Item color={"blue"} name="EditProfile" active={activeItem === "EditProfile"} onClick={this.onClick}><p className="textSize">Edit Profile</p></Menu.Item>
-        </Menu>
+
+        <div className="">
+          <Menu attached='top' tabular  >
+            <Menu.Item color={"blue"} name="Profile" active={activeItem === "Profile"} onClick={this.onClick}><p className="textSize">Profile Page</p></Menu.Item>
+            <Menu.Item color={"blue"} name="Requests" active={activeItem === "Requests"} onClick={this.onClick}><p className="textSize">Requests</p></Menu.Item>
+            <Menu.Item color={"blue"} name="Your Reservations" active={activeItem === "Your Reservations"} onClick={this.onClick}><p className="textSize">Your Reservations</p></Menu.Item>
+
+          </Menu>
+        </div>
+
         <Segment attached='bottom'>
           {tabToRender}
         </Segment>

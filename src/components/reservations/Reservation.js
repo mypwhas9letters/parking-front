@@ -12,7 +12,7 @@ const Reservation = (props) => {
     <div className="item">
       <div className="content">
         {currentStep !== "denied" ?
-                        <div className="ui small steps">
+                        <div className="ui four steps">
 
                           <div className="step">
                             <i><img className="ui avatar image" src={profileImg} alt=""/></i>

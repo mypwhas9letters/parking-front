@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import logo from '../images/logo.png'
-import title from '../images/title.png'
-import { logoutUser } from '../actions/users'
+import logo from '../images/logo.png';
+import title from '../images/title.png';
+import { logoutUser } from '../actions/users';
 
 
 class NavBar extends Component{
@@ -26,28 +26,28 @@ class NavBar extends Component{
     const isAuthenticated = this.props.auth;
     const userLinks = (
       <div className="right item">
-        <NavLink className="item" to="/home">Home</NavLink>
-        <NavLink className="item" to="/UsersDashboard">Profile</NavLink>
+        <Link className="item" to="/home">Home</Link>
+        <Link className="item" to="/UsersDashboard">Profile</Link>
         <a className="item" onClick={this.onClick}>Logout</a>
       </div>
-    )
+    );
     const guestLinks = (
       <div className="right item">
-        <NavLink className="item textSize" to="/login">Log In </NavLink>
-        <NavLink className="item textSize" to="/signup">Sign Up </NavLink>
+        <Link className="item textSize" to="/login">Log In </Link>
+        <Link className="item textSize" to="/signup">Sign Up </Link>
       </div>
-    )
+    );
     return (
       <div className="ui blue inverted menu">
         <div className="ui container">
-          <NavLink className="header item" to="/">
+          <Link className="header item" to="/">
             <img className="logo" src={logo} alt=""/>
-          </NavLink>
-          <NavLink to="/home"><img className="logoSize" src={title} alt=""/></NavLink>
+          </Link>
+          <Link to="/home"><h1 className="navLinkTitle">Parallel</h1></Link>
             { isAuthenticated ? userLinks : guestLinks }
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -57,4 +57,4 @@ function mapStateToProps( { user } ) {
   };
 }
 
-export default connect(mapStateToProps, { logoutUser })(NavBar)
+export default connect(mapStateToProps, { logoutUser })(NavBar);

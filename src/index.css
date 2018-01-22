@@ -11,6 +11,15 @@ body {
   padding: 10px;
 }
 
+.navLinkTitle {
+  font-family: 'Audiowide', cursive;
+  color: white;
+  font-size: 60px;
+}
+
+
+
+
 /* Landing Page */
 .landing-image {
     background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
@@ -118,3 +127,36 @@ body {
   cursor: auto;
   background: #ef2867;
 }
+
+
+@media only screen and (max-width: 767px) {
+    .mobile-hide{
+        display: none !important;
+    }
+  }
+
+@media only screen and (min-width: 768px) {
+  .large-hide{
+      display: none !important;
+  }
+}
+    /*
+    .ui.stackable.grid>.wide.column {
+      margin-top: 30px !important;
+      margin-bottom: 25px !important;
+    }
+    .ui.items:not(.unstackable)>.item>.imgMargin {
+      margin-bottom: 40px;
+    }
+    .ui.button {
+      margin: 2px;
+    }
+    .ui.divided.items>.item {
+      text-align: center;
+    }
+    .ui.cards~.ui.cards {
+      text-align: center;
+    }
+}
+
+ */
