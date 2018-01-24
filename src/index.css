@@ -1,7 +1,11 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  font-family: 'Exo 2', sans-serif;
+  margin-bottom: 120px;
 }
 
 .blue {
@@ -12,34 +16,35 @@ body {
 .navLinkTitle {
   font-family: 'Audiowide', cursive;
   color: white;
-  font-size: 60px;
+  font-size: 320%;
 }
 
 .nav-link {
-  color: white;
-  font-size: 130%;
+  padding-bottom: 0px;
 }
 
 .navbar {
-  margin-bottom: 10px;
+  padding: 0px;
 }
 
 /* Landing Page */
 .landing-image {
   background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
   height:100vh;
-  margin-bottom: 10px;
 }
 
+.landingText {
+  font-weight: bold;
+  color: #0E6EB8;
+}
 
 /* Footer */
 .footer {
-  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
 }
-
-
-
-
 
 
 

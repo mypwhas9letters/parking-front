@@ -2,12 +2,11 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer class="blue footer">
-      <div class="container">
+    <footer className="blue footer">
+      <div className="container">
         <p>Sticky footer content</p>
-          <p>Sticky footer content</p>
-            <p>Sticky footer content</p>
-
+        <p>Sticky footer content</p>
+        <p>Sticky footer content</p>
       </div>
     </footer>
   )
