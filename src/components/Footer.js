@@ -2,18 +2,14 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="footerBottom">
-      <div className="ui inverted vertical footer segment blue">
-        <div className="ui center aligned container">
-          <div className="ui horizontal inverted small divided link list">
-            <a className="item">Parking App</a>
-            <a className="item">Contact Us</a>
-            <a className="item">Parking App</a>
-            <a className="item">Parking App</a>
-          </div>
-        </div>
+    <footer class="blue footer">
+      <div class="container">
+        <p>Sticky footer content</p>
+          <p>Sticky footer content</p>
+            <p>Sticky footer content</p>
+
       </div>
-    </div>
+    </footer>
   )
 }
 

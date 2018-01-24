@@ -6,7 +6,6 @@ import logo from '../images/logo.png';
 import title from '../images/title.png';
 import { logoutUser } from '../actions/users';
 
-
 class NavBar extends Component{
   constructor(props){
     super(props)
@@ -25,28 +24,35 @@ class NavBar extends Component{
   render() {
     const isAuthenticated = this.props.auth;
     const userLinks = (
-      <div className="right item">
-        <Link className="item" to="/home">Home</Link>
-        <Link className="item" to="/UsersDashboard">Profile</Link>
-        <a className="item" onClick={this.onClick}>Logout</a>
+      <div className="navbar-nav">
+        <Link className="nav-item nav-link" to="/home">Home</Link>
+        <Link className="nav-item nav-link" to="/UsersDashboard">Profile</Link>
+        <a className="nav-item nav-link" onClick={this.onClick}>Logout</a>
       </div>
     );
     const guestLinks = (
-      <div className="right item">
-        <Link className="item textSize" to="/login">Log In </Link>
-        <Link className="item textSize" to="/signup">Sign Up </Link>
+      <div className="navbar-nav">
+        <Link className="nav-item nav-link" to="/login">Log In </Link>
+        <Link className="nav-item nav-link" to="/signup">Sign Up </Link>
       </div>
     );
     return (
-      <div className="ui blue inverted menu">
-        <div className="ui container">
-          <Link className="header item" to="/">
-            <img className="logo" src={logo} alt=""/>
+      <nav className="navbar navbar-expand-lg navbar-dark blue">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            <img src={logo} width="50" height="50" alt=""/>
           </Link>
-          <Link to="/home"><h1 className="navLinkTitle">Parallel</h1></Link>
-            { isAuthenticated ? userLinks : guestLinks }
-        </div>
-      </div>
+          <Link className="nav-item nav-link" to="/home">
+            <h1 className="navLinkTitle">Parallel</h1>
+          </Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+           { isAuthenticated ? userLinks : guestLinks }
+         </div>
+       </div>
+      </nav>
     );
   }
 }

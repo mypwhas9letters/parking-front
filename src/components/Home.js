@@ -64,7 +64,7 @@ class ParkingSpotsContainer extends Component {
             <button className="ui primary button">By Rating</button>
             <button className="ui primary button">By Type</button>
             </div>
-            
+
           </div>
 
 

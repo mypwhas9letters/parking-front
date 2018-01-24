@@ -4,26 +4,37 @@ body {
   font-family: sans-serif;
 }
 
-/* NavBar */
-.logoSize{
-  margin: auto;
-  height: 62px;
-  padding: 10px;
+.blue {
+  background-color: #0E6EB8;
 }
 
+/* NavBar */
 .navLinkTitle {
   font-family: 'Audiowide', cursive;
   color: white;
   font-size: 60px;
 }
 
+.nav-link {
+  color: white;
+  font-size: 130%;
+}
 
-
+.navbar {
+  margin-bottom: 10px;
+}
 
 /* Landing Page */
 .landing-image {
-    background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
-    height:100vh
+  background: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg') no-repeat center fixed;
+  height:100vh;
+  margin-bottom: 10px;
+}
+
+
+/* Footer */
+.footer {
+  margin-top: 10px;
 }
 
 
@@ -33,13 +44,11 @@ body {
 
 
 
-/* .footerBottom {
-   bottom: 0;
-   width: 100%;
-   margin-bottom: 0;
- } */
 
 
+
+
+/*
 
  .smallSize {
    height:180px
@@ -48,10 +57,6 @@ body {
  .smallimg {
    height:160px
  }
-
-.bodymargin {
-  margin-bottom: 50px;
-}
 
 .divImg {
   height: 100%;
@@ -69,7 +74,6 @@ body {
   color: white;
 }
 
- /*
  .landing-image {
   background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
    background-size: 100%;
@@ -77,7 +81,6 @@ body {
    padding-top: 54.166666666667%;
    height: 0;
 }
-   */
 
 
 .ui.steps .step {

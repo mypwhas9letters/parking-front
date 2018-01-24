@@ -29,7 +29,7 @@ class App extends Component {
     const authUsersDashboard = Authorize(UsersDashboard)
     return (
       <div>
-        <div className="bodymargin">
+        <div>
           <NavBar />
           <Switch>
             <Route exact path="/" component={LandingPage}/>
