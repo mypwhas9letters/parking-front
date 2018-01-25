@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { login } from '../../actions/users'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/users';
+import { NavLink } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props){
@@ -25,33 +25,23 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="ui container">
-        <div className="ui middle aligned center aligned grid">
-          <div className="column">
-            <h2 className="ui image header">
-              <div className="content">
-                Log Into Your Account
-              </div>
-            </h2>
-            <form onSubmit={this.onSubmit} className="ui large form ">
-              <div className="ui stacked segment">
-                <div className="field">
-                  <input type="text" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
-                </div>
-                <div className="field">
-                  <input type="password" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
-                </div>
-                <input className="ui fluid large  submit primary button" type="submit" value="Log In"/>
-              </div>
-            </form>
-            <div className="ui message">New User?
-              <NavLink className="item" to="/signup"> Sign Up</NavLink>
-            </div>
+      <div className="container">
+        <h1>Log Into Your Account</h1>
+        <form onSubmit={this.onSubmit}>
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
           </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
+          </div>
+          <button type="submit" class="btn btn-primary blue btn-block" value="Log In">Log In</button>
+        </form>
+        <div className="ui message">New User?
+          <NavLink className="item" to="/signup"> Sign Up</NavLink>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, { login })(Login)
+export default connect(null, { login })(Login);

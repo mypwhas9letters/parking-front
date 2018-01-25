@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import logo from '../images/logo.png';
 import { getFilterByZip } from '../actions/parkingSpots';
 
 class LandingPage extends Component {
