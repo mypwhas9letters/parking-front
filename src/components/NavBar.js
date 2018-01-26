@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import logo from '../images/logo.png';
-import title from '../images/title.png';
 import { logoutUser } from '../actions/users';
 
 class NavBar extends Component{

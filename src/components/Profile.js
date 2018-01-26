@@ -7,32 +7,28 @@ class Profile extends Component {
   render(){
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : "http://loyalkng.com/wp-content/uploads/2010/01/facebook-art-no-photo-image-batman-mickey-mouse-spock-elvis-rick-roll.jpg"
     return(
-      <div className="ui container">
+      <div>
+      <div className="card">
         <h1>Welcome Back {this.props.currentUser.username}</h1>
-        <div className="ui segment">
-          <div className="ui items">
-            <div className="item">
-              <div className="ui small image">
-                <img src={profileImg} alt=""/>
-              </div>
-              <div className="middle aligned content">
-                <div className="header">
-                  {this.props.currentUser.bio}
-                </div>
-                <div className="description">
-                  Parking Spaces: {this.props.parkingSpots.length}
-                </div>
-                <button className="ui primary button">Edit User</button>
-              </div>
-            </div>
+          <img src={profileImg} alt="" className="img-thumbnail float-left"/>
+          <div className="header">
+            {this.props.currentUser.bio}
           </div>
-        </div>
-        <div className="ui segment">
-          <h1>Your Listings</h1>
-            <button className="ui primary button">Add New</button>
+            Parking Spaces: {this.props.parkingSpots.length}
+          <button className="primary button">Edit User</button>
+          </div>
 
-          <ParkingSpotsList spots={this.props.parkingSpots} className="ui three stackable cards"/>
-        </div>
+            <div className="card">
+              <div className="card-body">
+
+      <h1>Your Listings</h1>
+            <button className="primary button">Add New</button>
+
+
+          <ParkingSpotsList spots={this.props.parkingSpots}/>
+          </div>
+
+          </div>
       </div>
     )
   }

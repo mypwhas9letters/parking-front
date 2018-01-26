@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
+
 
 import AddNew from './forms/AddNewListing'
 import EditProfile from './forms/EditProfile'
@@ -19,9 +20,9 @@ class UsersDashboard extends Component {
     }
   }
 
-  onClick = (event, { name }) => {
-    this.setState({ activeItem: name })
-    switch (name){
+  onClick = (event) => {
+    this.setState({ activeItem: event.target.name })
+    switch (event.target.name){
       case "AddNew":
         return this.setState({tab: <AddNew />})
       case "Requests":
@@ -36,26 +37,18 @@ class UsersDashboard extends Component {
   }
 
   render(){
-    const { activeItem } = this.state
-    if (!localStorage.getItem('jwt')){
-      return <Redirect to="/login" />
-      }
+    if (!localStorage.getItem('jwt')){return <Redirect to="/login" />}
     const tabToRender = (this.state.tab)
     return(
-      <div className="ui container">
-
-        <div className="">
-          <Menu attached='top' tabular  >
-            <Menu.Item color={"blue"} name="Profile" active={activeItem === "Profile"} onClick={this.onClick}><p className="textSize">Profile Page</p></Menu.Item>
-            <Menu.Item color={"blue"} name="Requests" active={activeItem === "Requests"} onClick={this.onClick}><p className="textSize">Requests</p></Menu.Item>
-            <Menu.Item color={"blue"} name="Your Reservations" active={activeItem === "Your Reservations"} onClick={this.onClick}><p className="textSize">Your Reservations</p></Menu.Item>
-
-          </Menu>
+      <div className="container pageMargin">
+        <div className="nav nav-tabs">
+          <a className="nav-item nav-link" name="Profile" onClick={this.onClick}>Profile Page</a>
+          <a className="nav-item nav-link" name="Requests" onClick={this.onClick}>Requests</a>
+          <a className="nav-item nav-link" name="Your Reservations" onClick={this.onClick}>Your Reservations</a>
         </div>
-
-        <Segment attached='bottom'>
+        <div>
           {tabToRender}
-        </Segment>
+        </div>
       </div>
     )
   }

@@ -28,24 +28,24 @@ class Signup extends Component {
 
   render() {
     return(
-      <div className="container">
-        <h1>Create a New Account</h1>
+      <div className="container text-center pageMargin card">
+        <h1 className="boldBlueText card-body">Create a New Account</h1>
         <form onSubmit={this.onSubmit}>
-          <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
+          <div className="form-group">
+            <input type="text" className="form-control" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Email" onChange={this.onChange} value={this.state.email} required/>
+          <div className="form-group">
+            <input type="text" className="form-control" name="email" placeholder="Email" onChange={this.onChange} value={this.state.email} required/>
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
+          <div className="form-group">
+            <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} value={this.state.password} required/>
+          <div className="form-group">
+            <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} value={this.state.password} required/>
           </div>
-          <button type="submit" class="btn btn-primary blue btn-block" value="Sign Up">Sign Up</button>
+          <button type="submit" className="btn btn-primary blue btn-block" value="Sign Up">Sign Up</button>
         </form>
-        <div className="ui message">Existing User?
+        <div className="ui message card-body">Existing User?
           <NavLink className="item" to="/login"> Log In</NavLink>
         </div>
       </div>

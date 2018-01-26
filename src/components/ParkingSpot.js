@@ -4,24 +4,20 @@ import { NavLink } from 'react-router-dom'
 const ParkingSpot = (props) => {
   const detailLink = `/parkingSpot/${props.spot.id}`
   return (
-      <div className="ui fluid card">
-        <div className="ui image">
-          <NavLink to={detailLink}><img src={props.spot.photo} alt=""/></NavLink>
-        </div>
-      <div className="content">
-        <div className="header">{props.spot.title}</div>
-        <div className="right floated meta">New York</div>
-
-        <div className="meta">
-          <span>Price: ${props.spot.price}</span>
-        </div>
-        <div className="description">Description: {props.spot.description}</div>
-        <div className="description">
+      <div className="col-sm-12 col-md-6 col-lg-4">
+        <div className="card">
+        <NavLink to={detailLink}><img className="card-img-top" src={props.spot.photo} alt=""/></NavLink>
+        <div className="card-body">
+          <h4 className="card-title">{props.spot.title}</h4>
+          <small className="text-muted">New York</small>
+          <small className="text-muted">Price: ${props.spot.price}</small>
+        <div className="card-text">Description: {props.spot.description}</div>
+        <div className="card-text">
           Address:<br/>
           {props.spot.address}<br/>
           {props.spot.city}, {props.spot.state} {props.spot.zip}
         </div>
-
+      </div>
       </div>
     </div>
   )

@@ -80,7 +80,7 @@ class ParkingSpotDetail extends Component{
           <div className="ui segment">
             <div className="content">
               <h1>Detail</h1>
-                <div class="ui rating" data-rating="3" data-max-rating="5"></div>
+                <div className="ui rating" data-rating="3" data-max-rating="5"></div>
 
                 <div className="ui star rating" data-rating="4"></div>
 

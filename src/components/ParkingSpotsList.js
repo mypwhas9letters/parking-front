@@ -4,7 +4,7 @@ import ParkingSpot from './ParkingSpot'
 const ParkingSpotsList = (props) => {
   const parkingSpot = props.spots.map((spots) => <ParkingSpot key={spots.id} spot={spots} />)
   return(
-    <div className="ui three stackable cards">
+    <div className="row">
       {parkingSpot}
     </div>
   )

@@ -25,18 +25,18 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="container">
-        <h1>Log Into Your Account</h1>
+      <div className="container text-center pageMargin card">
+        <h1 className="boldBlueText card-body">Log Into Your Account</h1>
         <form onSubmit={this.onSubmit}>
-          <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
+          <div className="form-group">
+            <input type="text" className="form-control" name="username" placeholder="Username" onChange={this.onChange} value={this.state.username} required/>
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
+          <div className="form-group">
+            <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
           </div>
-          <button type="submit" class="btn btn-primary blue btn-block" value="Log In">Log In</button>
+          <button type="submit" className="btn btn-primary blue btn-block" value="Log In">Log In</button>
         </form>
-        <div className="ui message">New User?
+        <div class="card-body">New User?
           <NavLink className="item" to="/signup"> Sign Up</NavLink>
         </div>
       </div>
