@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom'
-import { Menu, Segment } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-
-import AddNew from './forms/AddNewListing'
-import EditProfile from './forms/EditProfile'
-import Profile from './Profile'
-import ReservationsContainer from './reservations/ReservationsContainer'
-import YourReservationsContainer from './reservations/YourReservationsContainer'
+import AddNew from './forms/AddNewListing';
+import EditProfile from './forms/EditProfile';
+import Profile from './Profile';
+import ReservationsContainer from './reservations/ReservationsContainer';
+import YourReservationsContainer from './reservations/YourReservationsContainer';
 
 class UsersDashboard extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
-      this.state = {
+    this.state = {
       tab: <Profile />,
       activeItem: 'Profile'
     }
@@ -45,12 +43,14 @@ class UsersDashboard extends Component {
           <a className="nav-item nav-link" name="Profile" onClick={this.onClick}>Profile Page</a>
           <a className="nav-item nav-link" name="Requests" onClick={this.onClick}>Requests</a>
           <a className="nav-item nav-link" name="Your Reservations" onClick={this.onClick}>Your Reservations</a>
+          <a className="nav-item nav-link" name="AddNew" onClick={this.onClick}>AddNew</a>
+          <a className="nav-item nav-link" name="EditProfile" onClick={this.onClick}>EditProfile</a>
         </div>
         <div>
           {tabToRender}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -63,4 +63,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(UsersDashboard)
+export default connect(mapStateToProps)(UsersDashboard);

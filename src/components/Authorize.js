@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Authorize(RenderedComponent) {
   return class extends Component {
-    debugger
     render() {
       if (localStorage.getItem('jwt') && this.props.location.pathname === "/login") {
         return <Redirect to="/login" />
@@ -15,9 +13,8 @@ function Authorize(RenderedComponent) {
           <RenderedComponent />
         )
       }
-
     }
   }
 }
 
-export default Authorize
+export default Authorize;

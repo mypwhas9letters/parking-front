@@ -1,31 +1,28 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const YourReservation = (props) => {
-  console.log(props.reservation.status);
   const profileImg = props.reservation.guest.profile_pic ? props.reservation.guest.profile_pic : "http://loyalkng.com/wp-content/uploads/2010/01/facebook-art-no-photo-image-batman-mickey-mouse-spock-elvis-rick-roll.jpg"
   // const statusButtons = props.reservation.status === "pending" ? (<div><button name="approved" value={props.reservation.id} className="ui primary button">Confirm</button><button name="denied" value={props.reservation.id} onClick={props.onclick} className="ui red button">Deny</button></div>) : null
   // const YourReservationStatus = props.reservation.status.charAt(0).toUpperCase() + props.reservation.status.slice(1)
   const currentStep = props.reservation.status
   const detailLink = `/parkingSpot/${props.reservation.parking_spot.id}`
 
-
   return (
-    <div className="item">
+    <div className="card">
       <div className="content">
 
         {currentStep !== "denied" ?
-                        <div className="ui four steps">
+          <div className="ui four steps">
 
-                          <div className="step">
-                            <i><img className="ui avatar image" src={profileImg} alt=""/></i>
-                            <div className="content">
-                              <div className="title"><p className="whiteText">{props.reservation.guest.username}</p></div>
-                              <NavLink to={detailLink}><div className="description"><p className="whiteText">{props.reservation.parking_spot.title}</p></div></NavLink>
-                              <div className="description"><p className="whiteText">Date {props.reservation.date}</p></div>
-                            </div>
-                          </div>
+            <div className="step">
+              <i><img className="ui avatar image" src={profileImg} width="100px" alt=""/></i>
+              <div className="content">
+                <div className="title"><p className="whiteText">{props.reservation.guest.username}</p></div>
+                <NavLink to={detailLink}><div className="description"><p className="whiteText">{props.reservation.parking_spot.title}</p></div></NavLink>
+                <div className="description"><p className="whiteText">Date {props.reservation.date}</p></div>
+              </div>
+            </div>
 
 
 
@@ -78,4 +75,4 @@ const YourReservation = (props) => {
   )
 }
 
-export default YourReservation
+export default YourReservation;

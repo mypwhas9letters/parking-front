@@ -1,5 +1,5 @@
-import React from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from 'react';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 // onst ParkingSpotsList = (props) => {
 //   const parkingSpot = props.spots.map((spots) => <ParkingSpot key={spots.id} spot={spots} />)
 //   return(
@@ -9,11 +9,13 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) => {
   return(
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: 40.705253, lng: -74.01407 }}
+      defaultCenter={
+        { lat: 40.705253, lng: -74.01407 }
+      }
     >
     {markers}
     </GoogleMap>
   )}
 ))
 
-export default MyMapComponent
+export default MyMapComponent;

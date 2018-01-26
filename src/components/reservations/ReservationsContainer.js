@@ -1,32 +1,31 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import ReservationsList from './ReservationsList'
-import { fetchReservations } from '../../actions/reservations'
-import { bindActionCreators } from 'redux'
-import { updateReservation } from '../../actions/reservations'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-class ReservationsContainer extends React.Component {
+import ReservationsList from './ReservationsList';
+import { fetchReservations } from '../../actions/reservations';
+import { updateReservation } from '../../actions/reservations';
+
+class ReservationsContainer extends Component {
   constructor(props){
-    super(props)
-      this.state = {}
+    super(props);
+
+    this.state = {}
   }
 
   componentDidMount(){
-    const jwt = localStorage.getItem('jwt')
-    this.props.fetchReservations(jwt)
+    const jwt = localStorage.getItem('jwt');
+    this.props.fetchReservations(jwt);
   }
 
   onClick = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     let updateParams = {
       id: event.target.value,
       status: event.target.name
     }
-    this.props.updateReservation(updateParams)
+    this.props.updateReservation(updateParams);
   }
-
-
-
 
   render(){
     let reservationsPending = []
@@ -36,9 +35,9 @@ class ReservationsContainer extends React.Component {
       reservationsPending = <ReservationsList reservations={this.props.reservations.filter(res => res.status === "pending")} onclick={this.onClick}/>
       reservationsApproved = <ReservationsList reservations={this.props.reservations.filter(res => res.status === "approved")}/>
       reservationsDenied = <ReservationsList reservations={this.props.reservations.filter(res => res.status === "denied")}/>
-  }
+    }
     return (
-      <div className="ui container">
+      <div className="container">
         <h1>Reservation Requests</h1>
         <div className="ui segment">
           <h2>Pending Requests</h2>
@@ -53,12 +52,11 @@ class ReservationsContainer extends React.Component {
           {reservationsDenied}
         </div>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return{
     reservations: state.reservations.reservations
   }
@@ -68,4 +66,4 @@ function mapDispatchToProps(dispatch) {
   return  bindActionCreators({fetchReservations, updateReservation}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReservationsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ReservationsContainer);

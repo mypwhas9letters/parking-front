@@ -9,13 +9,13 @@ const Reservation = (props) => {
   const detailLink = `/parkingSpot/${props.reservation.parking_spot.id}`
 
   return (
-    <div className="item">
+    <div className="card">
       <div className="content">
         {currentStep !== "denied" ?
                         <div className="ui four steps">
 
                           <div className="step">
-                            <i><img className="ui avatar image" src={profileImg} alt=""/></i>
+                            <i><img className="ui avatar image" src={profileImg} width="100px" alt=""/></i>
                             <div className="content">
                               <div className="title" style={{color:"white"}}>{props.reservation.guest.username}</div>
                               <NavLink to={detailLink}><div className="description" style={{color:"white"}}>{props.reservation.parking_spot.title}</div></NavLink>

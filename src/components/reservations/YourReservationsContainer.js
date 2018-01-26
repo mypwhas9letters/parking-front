@@ -1,17 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import YourReservationsList from './YourReservationsList'
-import { bindActionCreators } from 'redux'
-import { fetchTrips } from '../../actions/reservations'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import YourReservationsList from './YourReservationsList';
+import { fetchTrips } from '../../actions/reservations';
 
-class YourReservationsContainer extends React.Component {
-
+class YourReservationsContainer extends Component {
   componentDidMount(){
-    const jwt = localStorage.getItem('jwt')
-    this.props.fetchTrips(jwt)
+    const jwt = localStorage.getItem('jwt');
+    this.props.fetchTrips(jwt);
   }
-
 
   render(){
     let myTrips = []
@@ -19,13 +16,13 @@ class YourReservationsContainer extends React.Component {
       myTrips = <YourReservationsList reservations={this.props.trips.trips}/>
     }
     return (
-      <div className="ui container">
+      <div className="container">
         <h1>Reservations</h1>
         <div className="ui segment">
           {myTrips}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -35,8 +32,4 @@ function mapStateToProps(state){
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return  bindActionCreators({fetchTrips}, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(YourReservationsContainer)
+export default connect(mapStateToProps, { fetchTrips })(YourReservationsContainer)

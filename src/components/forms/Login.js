@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       username: "hui",
@@ -15,12 +15,12 @@ class Login extends Component {
   }
 
   onChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]: event.target.value});
   }
 
   onSubmit = (event) => {
-    event.preventDefault()
-    this.props.login(this.state)
+    event.preventDefault();
+    this.props.login(this.state);
   }
 
   render() {
@@ -36,7 +36,7 @@ class Login extends Component {
           </div>
           <button type="submit" className="btn btn-primary blue btn-block" value="Log In">Log In</button>
         </form>
-        <div class="card-body">New User?
+        <div className="card-body">New User?
           <NavLink className="item" to="/signup"> Sign Up</NavLink>
         </div>
       </div>

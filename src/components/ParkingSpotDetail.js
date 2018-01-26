@@ -1,16 +1,16 @@
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { SingleDatePicker } from 'react-dates';
 
-import { getParkingSpot } from '../actions/parkingSpots'
-import { postNewListing } from '../actions/reservations'
+import { getParkingSpot } from '../actions/parkingSpots';
+import { postNewListing } from '../actions/reservations';
 
 class ParkingSpotDetail extends Component{
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       review: "",
@@ -63,28 +63,26 @@ class ParkingSpotDetail extends Component{
    let reviews = ""
 
     if (this.props.parkingSpot.reviews !== null ) {
-      reviews = this.props.parkingSpot.reviews.map((each) => (<li>{each.review}</li>))
+      reviews = this.props.parkingSpot.reviews.map((each) => (<li key={each.id}>{each.review}</li>))
     }
 
 
     return(
-      <div className="ui container">
+      <div className="container pageMargin">
 
-        <div className="ui segment">
+        <div className="card">
           <div className="ui header"><h1>{this.props.parkingSpot.detail.title}</h1></div>
           <img className="divImg" src={this.props.parkingSpot.detail.photo} alt=""/>
       </div>
 
 
-        <div className="ui horizontal segments">
-          <div className="ui segment">
+      <div className="row">
+        <div className="col-sm-6">
+          <div className="card">
             <div className="content">
               <h1>Detail</h1>
-                <div className="ui rating" data-rating="3" data-max-rating="5"></div>
-
-                <div className="ui star rating" data-rating="4"></div>
-
-
+              <div className="ui rating" data-rating="3" data-max-rating="5"></div>
+              <div className="ui star rating" data-rating="4"></div>
               <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
               <div className="description">Rating: {this.props.parkingSpot.detail.rating}</div>
               <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
@@ -93,7 +91,10 @@ class ParkingSpotDetail extends Component{
               <div className="description">Amenities: Electric Car charger included. </div>
             </div>
           </div>
-          <div className="ui segment">
+        </div>
+
+        <div className="col-sm-6">
+          <div className="card">
             <h1 className="ui header">Availability</h1>
             <div className="content">
               <SingleDatePicker
@@ -108,45 +109,35 @@ class ParkingSpotDetail extends Component{
             </div>
           </div>
         </div>
+      </div>
 
 
-        <div className="ui segment">
-          <iframe
-            title="map"
-            width="100%"
-            height="700px"
-            src={mapAddress}>
-          </iframe>
+      <div className="card">
+        <iframe
+          title="map"
+          width="100%"
+          height="700px"
+          src={mapAddress}>
+        </iframe>
+      </div>
+
+
+      <div className="card">
+        <h1>Reviews</h1>
+        <ul className="list">
+          {reviews}
+        </ul>
+        {localStorage.getItem('jwt') ?
+          <form className="ui reply form">
+            <div className="field">
+              <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
+            </div>
+            <button className="btn-primary blue">Add Review</button>
+          </form>: null}
         </div>
-
-
-
-
-
-
-
-
-        <div className="ui message">
-          <div className="header">
-            <h1>Reviews</h1>
-          </div>
-            <ul className="list">
-              {reviews}
-            </ul>
-          </div>
-            {localStorage.getItem('jwt') ?
-              <form className="ui reply form">
-                <div className="field">
-                  <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
-                </div>
-                <div className="ui blue labeled submit icon button">
-                  <i className="icon edit"></i> Add Review
-                </div>
-              </form>: null}
       </div>
     )
   }
-
 }
 
 function mapStateToProps(state){
@@ -160,4 +151,4 @@ function mapDispatchToProps(dispatch){
   return  bindActionCreators({getParkingSpot, postNewListing}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail);

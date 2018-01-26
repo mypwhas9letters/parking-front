@@ -20,18 +20,17 @@ class Confirmation extends Component{
 
   render(){
     return (
-      <div className="ui container">
+      <div className="container">
         <h1>Thank You. Your request has been sent the owner</h1>
-          <form className="ui reply form" onSubmit={this.onSubmit}>
-            <div className="field">
-              <textarea type="text" name="message" placeholder="Send the owner a message..." onChange={this.onChange} value={this.state.city}/>
-            </div>
-            <input className="ui fluid large primary submit button" type="submit" value="Send Message"/>
-          </form>
+        <form className="ui reply form" onSubmit={this.onSubmit}>
+          <div className="field">
+            <textarea type="text" name="message" placeholder="Send the owner a message..." onChange={this.onChange} value={this.state.city}/>
+          </div>
+          <input className="ui fluid large primary submit button" type="submit" value="Send Message"/>
+        </form>
       </div>
-    )
+    );
   }
-
 }
 
-export default Confirmation
+export default Confirmation;
