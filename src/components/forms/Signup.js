@@ -41,7 +41,7 @@ class Signup extends Component {
             <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.onChange} value={this.state.password} required/>
           </div>
           <div className="form-group">
-            <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} value={this.state.password} required/>
+            <input type="password" className="form-control" name="confirmPassword" placeholder="Confirm Password" onChange={this.onChange} value={this.state.confirmPassword} required/>
           </div>
           <button type="submit" className="btn btn-primary blue btn-block" value="Sign Up">Sign Up</button>
         </form>

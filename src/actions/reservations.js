@@ -1,3 +1,6 @@
+const herokuServer = "https://parallelp-server.herokuapp.com"
+const testServer = "http://localhost:3000"
+
 function fetchingReservations() {
   return {
     type: "FETCHING_RESERVATIONS"
@@ -27,7 +30,7 @@ function updateRes(json){
 export function fetchReservations(jwt){
   return function(dispatch){
     dispatch(fetchingReservations())
-    fetch("https://parallelp-server.herokuapp.com/api/v1/reservations",{
+    fetch(`${testServer}/api/v1/reservations`,{
       method: 'get',
       headers: {
         "Authorization":`Bearer ${jwt}`,
@@ -44,7 +47,7 @@ export function fetchReservations(jwt){
   export function fetchTrips(jwt){
     return function(dispatch){
       dispatch(fetchingReservations())
-      fetch("https://parallelp-server.herokuapp.com/api/v1/trips",{
+      fetch(`${testServer}/api/v1/trips`,{
         method: 'get',
         headers: {
           "Authorization":`Bearer ${jwt}`,
@@ -60,7 +63,7 @@ export function fetchReservations(jwt){
 
   // export function getCurrentUser(jwt){
   //     return function(dispatch) {
-  //       fetch('https://parallelp-server.herokuapp.com/api/v1/users/me',{
+  //       fetch('${testServer}/api/v1/users/me',{
   //         method: 'get',
   //         headers: {
   //           "Authorization":`Bearer ${jwt}`,
@@ -86,7 +89,7 @@ export function fetchReservations(jwt){
 export function postNewListing(reservationParams) {
   const body = JSON.stringify(reservationParams)
   return function(dispatch){
-    fetch("https://parallelp-server.herokuapp.com/api/v1/newreservation", {
+    fetch(`${testServer}/api/v1/newreservation`, {
       method: 'post',
       body: body,
       headers: {
@@ -104,7 +107,7 @@ export function postNewListing(reservationParams) {
 //
 // export function getParkingSpot(id){
 //   return function(dispatch){
-//     fetch(`https://parallelp-server.herokuapp.com/api/v1/parking_spots/${id}`)
+//     fetch(`${testServer}/api/v1/parking_spots/${id}`)
 //     .then(res => res.json())
 //     .then(json => {
 //         dispatch({type: "GET_PARKING_SPOT", payload: json})
@@ -116,7 +119,7 @@ export function postNewListing(reservationParams) {
 export function updateReservation(updateParams){
   const body = JSON.stringify(updateParams)
   return function(dispatch){
-    fetch("https://parallelp-server.herokuapp.com/api/v1/reservationupdate", {
+    fetch(`${testServer}/api/v1/reservationupdate`, {
       method: 'PATCH',
       body: body,
       headers: {

@@ -12,11 +12,11 @@ class Profile extends Component {
           <img src={profileImg} alt="" className="float-left" width="200px"/>
           {this.props.currentUser.bio}
           Parking Spaces: {this.props.parkingSpots.length}
-          <button className="btn-primary">Edit User</button>
+          <button className="btn btn-primary">Edit User</button>
         </div>
         <div className="card">
           <h1>Your Listings</h1>
-          <button className="primary button">Add New</button>
+          <button className="btn btn-primary">Add New</button>
           <ParkingSpotsList spots={this.props.parkingSpots}/>
         </div>
       </div>
