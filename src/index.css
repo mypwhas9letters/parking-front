@@ -78,8 +78,8 @@ body {
 
 
 
-.fa.fa-star-o {
-  background-color: yellow;
+.fa-star, .fa-star-half{
+  color: yellow;
 }
 
 
