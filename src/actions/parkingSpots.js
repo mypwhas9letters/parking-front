@@ -82,3 +82,21 @@ export function getFilterByZip(zip){
 
   }
 }
+
+
+// export function getFilterByZip(zip){
+//   const body = JSON.stringify(zip)
+//   return async function(dispatch) {
+//     dispatch(fetchingSpots())
+//     let response = await fetch(`${testServer}/api/v1/filterbyzip`,{
+//       method: 'post',
+//       body: body,
+//       headers: {
+//         "Accept":"application/json",
+//         "Content-Type":"application/json"
+//       }
+//     })
+//     let data = await response.json();
+//     dispatch(fetchedSpots(data))
+//   }
+// }
