@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import ParkingSpotsList from './ParkingSpotsList';
 import { connect } from 'react-redux';
 
+import noImage from '../images/no-image.jpg';
+
 class Profile extends Component {
   render(){
-    const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : "http://loyalkng.com/wp-content/uploads/2010/01/facebook-art-no-photo-image-batman-mickey-mouse-spock-elvis-rick-roll.jpg"
+    const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : noImage
     return(
       <div>
+        <button className="btn btn-primary float-right">Edit User</button>
         <h1>Welcome Back {this.props.currentUser.username}</h1>
         <div className="card">
           <img src={profileImg} alt="" className="float-left" width="200px"/>
           {this.props.currentUser.bio}
           Parking Spaces: {this.props.parkingSpots.length}
-          <button className="btn btn-primary">Edit User</button>
         </div>
+        <button className="btn btn-primary float-right">Add A New Listing</button>
+        <h1>Your Listings</h1>
         <div className="card">
-          <h1>Your Listings</h1>
-          <button className="btn btn-primary">Add New</button>
           <ParkingSpotsList spots={this.props.parkingSpots}/>
         </div>
       </div>

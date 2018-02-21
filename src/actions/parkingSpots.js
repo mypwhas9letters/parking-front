@@ -63,32 +63,11 @@ export function getParkingSpot(id){
 }
 
 
-export function getFilterByZip(zip){
-  const body = JSON.stringify(zip)
-  return function(dispatch) {
-    dispatch(fetchingSpots())
-    fetch(`${testServer}/api/v1/filterbyzip`,{
-      method: 'post',
-      body: body,
-      headers: {
-        "Accept":"application/json",
-        "Content-Type":"application/json"
-      }
-    })
-    .then(res => res.json())
-    .then(json => {
-      dispatch(fetchedSpots(json)
-    )})
-
-  }
-}
-
-
 // export function getFilterByZip(zip){
 //   const body = JSON.stringify(zip)
-//   return async function(dispatch) {
+//   return function(dispatch) {
 //     dispatch(fetchingSpots())
-//     let response = await fetch(`${testServer}/api/v1/filterbyzip`,{
+//     fetch(`${testServer}/api/v1/filterbyzip`,{
 //       method: 'post',
 //       body: body,
 //       headers: {
@@ -96,7 +75,27 @@ export function getFilterByZip(zip){
 //         "Content-Type":"application/json"
 //       }
 //     })
-//     let data = await response.json();
-//     dispatch(fetchedSpots(data))
+//     .then(res => res.json())
+//     .then(json => {
+//       dispatch(fetchedSpots(json)
+//     )})
+//
 //   }
 // }
+
+
+export function getFilterByZip(zip){
+  const body = JSON.stringify(zip)
+  return async function(dispatch) {
+    dispatch(fetchingSpots())
+    let data = await (await fetch(`${testServer}/api/v1/filterbyzip`,{
+      method: 'post',
+      body: body,
+      headers: {
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+      }
+    })).json()
+    dispatch(fetchedSpots(data))
+  }
+}
