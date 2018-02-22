@@ -49,7 +49,7 @@ const Reservation = (props) => {
                         :
                         <div className="ui small steps">
                         <div className="step">
-                          <i><img className="ui avatar image" src={profileImg} alt=""/></i>
+                          <i><img className="ui avatar image" src={profileImg} width="100px" alt=""/></i>
                           <div className="content">
                             <div className="title" style={{color:"white"}}>{props.reservation.guest.username}</div>
                             <div className="description" style={{color:"white"}}>Requested to book {props.reservation.parking_spot.title}</div>
