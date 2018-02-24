@@ -14,6 +14,7 @@ import ParkingSpotDetail from './components/ParkingSpotDetail';
 import Signup from './components/forms/Signup';
 import UsersDashboard from './components/UsersDashboard';
 import { getCurrentUser } from './actions/users';
+import BillingForm from './components/forms/BillingForm';
 
 class App extends Component {
   constructor(props){
@@ -35,6 +36,8 @@ class App extends Component {
           <Route exact path="/confirmation" component={Confirmation}/>
           <Route exact path='/home' component={Home} />
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/billing" component={BillingForm}/>
+
           <Route exact path='/parkingSpot/:id' component={ParkingSpotDetail} />
           <Route exact path="/signup" component={Signup}/>
           <Route exact path="/usersDashboard" component={authUsersDashboard}/>
