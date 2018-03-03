@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ReactStars from 'react-stars';
 
-
 const ParkingSpot = (props) => {
   const detailLink = `/parkingSpot/${props.spot.id}`
   const roundedRating = (Math.round(props.spot.rating*2)/2).toFixed(1)
@@ -16,15 +15,14 @@ const ParkingSpot = (props) => {
   return (
       <div className="col-sm-12 col-md-6 col-lg-4">
         <div className="card">
-        <NavLink to={detailLink}><img className="card-img-top" src={props.spot.photo} alt=""/></NavLink>
-        <div className="card-body">
-        <small className="text-muted">City: {props.spot.city}</small>
-        <small className="text-muted float-right">Type: {props.spot.type_of_space}</small>
-        <h4 className="card-title">{props.spot.title}</h4>
-        <div className="card-text">Price: ${props.spot.price} Per Day</div>
-        <div className="card-text">Rating: {stars}</div>
-
-      </div>
+          <NavLink to={detailLink}><img className="card-img-top" src={props.spot.photo} alt=""/></NavLink>
+          <div className="card-body">
+            <small className="text-muted">City: {props.spot.city}</small>
+            <small className="text-muted float-right">Type: {props.spot.type_of_space}</small>
+            <h4 className="card-title">{props.spot.title}</h4>
+            <div className="card-text">Price: ${props.spot.price} Per Day</div>
+            <div className="card-text">Rating: {stars}</div>
+          </div>
       </div>
     </div>
   )

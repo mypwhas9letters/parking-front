@@ -3,9 +3,6 @@ import ParkingSpotsList from './ParkingSpotsList';
 import { connect } from 'react-redux';
 import noImage from '../images/no-image.jpg';
 
-// <button className="blue btn btn-primary float-right">Edit User</button>
-// <button className="blue btn btn-primary float-right">Add A New Listing</button>
-
 class Profile extends Component {
   render(){
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : noImage
