@@ -1,4 +1,4 @@
-const herokuServer = "https://parallelp-server.herokuapp.com"
+// const herokuServer = "https://parallelp-server.herokuapp.com"
 const testServer = "http://localhost:3000"
 
 export function login(usersParams) {
@@ -41,19 +41,11 @@ export function getCurrentUser(jwt){
     }
 }
 
-
-
-
-
 export function logoutUser() {
   return{
     type: "LOG_OUT"
   }
 }
-
-
-
-
 
 export function signup(usersParams) {
   const body = JSON.stringify(usersParams)
@@ -69,6 +61,5 @@ export function signup(usersParams) {
     .then(res => res.json())
     .then(res => dispatch({type: "LOG_IN", payload: res}))
     .then(() => window.location.href = ("/UsersDashboard"))
-
   }
 }

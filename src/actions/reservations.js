@@ -1,4 +1,4 @@
-const herokuServer = "https://parallelp-server.herokuapp.com"
+// const herokuServer = "https://parallelp-server.herokuapp.com"
 const testServer = "http://localhost:3000"
 
 function fetchingReservations() {
