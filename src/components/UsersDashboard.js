@@ -36,7 +36,7 @@ class UsersDashboard extends Component {
 
   render(){
     if (!localStorage.getItem('jwt')){return <Redirect to="/login" />}
-    const tabToRender = (this.state.tab)
+    const tabToRender = (this.state.tab);
     return(
       <div className="container pageMargin">
         <div className="nav nav-tabs">
@@ -47,7 +47,7 @@ class UsersDashboard extends Component {
           <a className="nav-item nav-link" name="EditProfile" onClick={this.onClick}>EditProfile</a>
         </div>
         <div>
-          {tabToRender}
+          { tabToRender }
         </div>
       </div>
     );

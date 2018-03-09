@@ -82,6 +82,13 @@ export function getParkingSpot(id){
 //   }
 // }
 
+export function sortByType() {
+  return function(dispatch) {
+    dispatch({type: "SORT_BY_TYPE"})
+  }
+}
+
+
 
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)

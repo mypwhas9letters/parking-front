@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import MyMapComponent from './MyMapComponent';
 import ParkingSpotsList from './ParkingSpotsList';
-import { getFilterByZip, fetchParkingSpots } from '../actions/parkingSpots';
+import { getFilterByZip, fetchParkingSpots, sortByType } from '../actions/parkingSpots';
 
 class ParkingSpotsContainer extends Component {
   constructor(props){
@@ -12,7 +12,8 @@ class ParkingSpotsContainer extends Component {
 
     this.state = {
       zip: "",
-      distance: ""
+      distance: "",
+      spaces: []
     }
   }
 
@@ -23,13 +24,22 @@ class ParkingSpotsContainer extends Component {
   onClick = (event) => {
     event.preventDefault()
     this.props.getFilterByZip(this.state)
+    this.setState({spaces:this.props.parkingSpots.parkingSpots})
   }
 
   componentDidMount(){
     // this.props.fetchParkingSpots()
   }
 
+  onTypeChange = (event) => {
+    event.preventDefault()
+    this.props.sortByType()
+    console.log(this.props.parkingSpots)
+    this.setState({spaces:this.props.filtered})
+  }
+
   render(){
+    console.log(this.props)
     return (
       <div className="container pageMargin">
         <div className="card">
@@ -55,21 +65,20 @@ class ParkingSpotsContainer extends Component {
             <div className="btn-group" >
               <button type="button" className="btn btn-primary blue">By Price</button>
               <button type="button" className="btn btn-primary blue">By Rating</button>
-              <button type="button" className="btn btn-primary blue">By Type</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange}>By Type</button>
             </div>
           </div>
         </div>
 
         <div className="card">
           <div className="card-body">
-          {this.props.parkingSpots.isFetching ?
-            <div className="text-center">
-              <div className="loader"></div>
-
+            {this.props.parkingSpots.isFetching ?
+              <div className="text-center">
+                <div className="loader"></div>
                 Loading...<br/>Due to inactivity on Heroku Servers, the first load may take a couple of seconds.
               </div>
-            :
-              <ParkingSpotsList spots={this.props.parkingSpots.parkingSpots}/>
+              :
+              <ParkingSpotsList spots={this.state.spaces}/>
             }
           </div>
         </div>
@@ -94,12 +103,13 @@ class ParkingSpotsContainer extends Component {
 
 function mapStateToProps(state){
   return{
-    parkingSpots: state.parkingSpots
+    parkingSpots: state.parkingSpots,
+    filtered: state.parkingSpots.sortedSpaces
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return  bindActionCreators({getFilterByZip, fetchParkingSpots}, dispatch)
+  return bindActionCreators({ getFilterByZip, fetchParkingSpots, sortByType }, dispatch)
 }
 
 
