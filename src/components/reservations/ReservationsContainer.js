@@ -38,7 +38,7 @@ class ReservationsContainer extends Component {
     }
     return (
       <div className="container">
-        <h1>Reservation Requests</h1>
+        <h1 className="boldBlueText">Reservation Requests</h1>
         <div className="ui segment">
           <h2>Pending Requests</h2>
           {reservationsPending}

@@ -17,7 +17,7 @@ class YourReservationsContainer extends Component {
     }
     return (
       <div className="container">
-        <h1>Reservations</h1>
+        <h1 className="boldBlueText">Reservations</h1>
         <div className="ui segment">
           {myTrips}
         </div>

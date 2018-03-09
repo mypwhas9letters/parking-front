@@ -8,13 +8,13 @@ class Profile extends Component {
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : noImage
     return(
       <div>
-        <h1>Welcome Back {this.props.currentUser.username}</h1>
+        <h1 className="boldBlueText">Welcome Back {this.props.currentUser.username}</h1>
         <div className="card">
           <img src={profileImg} alt="" className="float-left" width="200px"/>
           {this.props.currentUser.bio}
           Parking Spaces: {this.props.parkingSpots.length}
         </div>
-        <h1>Your Listings</h1>
+        <h1 className="boldBlueText">Your Listings</h1>
         <div className="card">
           <ParkingSpotsList spots={this.props.parkingSpots}/>
         </div>

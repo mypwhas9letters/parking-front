@@ -40,7 +40,7 @@ class UsersDashboard extends Component {
     return(
       <div className="container pageMargin">
         <div className="nav nav-tabs">
-          <a className="nav-item nav-link" name="Profile" onClick={this.onClick}>Profile Page</a>
+          <a className="nav-item nav-link active" name="Profile" onClick={this.onClick}>Profile Page</a>
           <a className="nav-item nav-link" name="Requests" onClick={this.onClick}>Requests</a>
           <a className="nav-item nav-link" name="Your Reservations" onClick={this.onClick}>Your Reservations</a>
           <a className="nav-item nav-link" name="AddNew" onClick={this.onClick}>AddNew</a>
