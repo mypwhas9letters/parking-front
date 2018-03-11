@@ -13,7 +13,6 @@ class ParkingSpotsContainer extends Component {
     this.state = {
       zip: "",
       distance: "",
-      spaces: []
     }
   }
 
@@ -24,7 +23,6 @@ class ParkingSpotsContainer extends Component {
   onClick = (event) => {
     event.preventDefault()
     this.props.getFilterByZip(this.state)
-    this.setState({spaces:this.props.parkingSpots.parkingSpots})
   }
 
   componentDidMount(){
@@ -32,14 +30,12 @@ class ParkingSpotsContainer extends Component {
   }
 
   onTypeChange = (event) => {
+    console.log(event.target.name)
     event.preventDefault()
-    this.props.sortByType()
-    console.log(this.props.parkingSpots)
-    this.setState({spaces:this.props.filtered})
+    this.props.sortByType(event.target.name)
   }
 
   render(){
-    console.log(this.props)
     return (
       <div className="container pageMargin">
         <div className="card">
@@ -65,7 +61,9 @@ class ParkingSpotsContainer extends Component {
             <div className="btn-group" >
               <button type="button" className="btn btn-primary blue">By Price</button>
               <button type="button" className="btn btn-primary blue">By Rating</button>
-              <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange}>By Type</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="all">All Types</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="driveway">Driveways</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="garage">Garages</button>
             </div>
           </div>
         </div>
@@ -78,7 +76,7 @@ class ParkingSpotsContainer extends Component {
                 Loading...<br/>Due to inactivity on Heroku Servers, the first load may take a couple of seconds.
               </div>
               :
-              <ParkingSpotsList spots={this.state.spaces}/>
+              <ParkingSpotsList spots={this.props.parkingSpots.sortedSpaces}/>
             }
           </div>
         </div>
@@ -96,15 +94,14 @@ class ParkingSpotsContainer extends Component {
           </div>
         </div>
 
-        </div>
-      )
-    }
+      </div>
+    )
   }
+}
 
 function mapStateToProps(state){
   return{
-    parkingSpots: state.parkingSpots,
-    filtered: state.parkingSpots.sortedSpaces
+    parkingSpots: state.parkingSpots
   }
 }
 
