@@ -12,7 +12,9 @@ class ParkingSpotsContainer extends Component {
 
     this.state = {
       zip: "",
-      distance: ""
+      distance: "",
+      price: true,
+      rating: true
     }
   }
 
@@ -37,9 +39,12 @@ class ParkingSpotsContainer extends Component {
   onSort = (event) => {
     event.preventDefault()
     this.props.sortBy(event.target.name)
+    // this.props.sortBy({by:event.target.name, ascOrDec: event.target.value})
+    this.setState({[event.target.name]: !event.target.value})
   }
 
   render(){
+    console.log(this.state)
     return (
       <div className="container pageMargin">
         <div className="card">
@@ -53,7 +58,7 @@ class ParkingSpotsContainer extends Component {
               </div>
               <div className="form-group">
                 <label>Distance</label>
-                <input type="text"  className="form-control mx-sm-3" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
+                <input type="text" className="form-control mx-sm-3" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
               </div>
               <button className="btn btn-primary blue" onClick={this.onClick}>Search</button>
             </form>
@@ -63,8 +68,8 @@ class ParkingSpotsContainer extends Component {
         <div className="card">
           <div className="card-body">
             <div className="btn-group" >
-              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="price">By Price</button>
-              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="rating">By Rating</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="price" value={this.state.price}>By Price</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="rating" value={this.state.rating}>By Rating</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="all">All Types</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="driveway">Driveways</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="garage">Garages</button>
