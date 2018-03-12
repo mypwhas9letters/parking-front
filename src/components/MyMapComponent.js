@@ -5,7 +5,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 //   return(
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) => {
-  const markers = props.markers.parkingSpots.map((spot) => (<Marker key={spot.id} position={{ lat: parseFloat(spot.lat), lng: parseFloat(spot.lng) }} />))
+  const markers = props.markers.sortedSpaces.map((spot) => (<Marker key={spot.id} position={{ lat: parseFloat(spot.lat), lng: parseFloat(spot.lng) }} />))
   return(
     <GoogleMap
       defaultZoom={10}

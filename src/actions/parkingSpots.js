@@ -82,12 +82,17 @@ export function getParkingSpot(id){
 //   }
 // }
 
-export function sortByType(type) {
+export function filterBy(type) {
   return function(dispatch) {
-    dispatch({type: "SORT_BY_TYPE", payload: type})
+    dispatch({type: "FILTER_BY", payload: type})
   }
 }
 
+export function sortBy(type) {
+  return function(dispatch) {
+    dispatch({type: "SORT_BY", payload: type})
+  }
+}
 
 
 export function getFilterByZip(zip){

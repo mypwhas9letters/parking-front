@@ -4,12 +4,20 @@ function parkingSpotsReducer(state = {isFetching: false, parkingSpots:[], detail
         return Object.assign({}, state, {parkingSpots: action.payload, sortedSpaces: action.payload, isFetching: false})
       case "FETCHING_SPOTS":
         return Object.assign({}, state, {isFetching: true})
-      case "SORT_BY_TYPE":
+      case "FILTER_BY":
       var filtered = state.parkingSpots.filter(space => space.type_of_space === action.payload)
       if(action.payload === "all"){
         filtered = state.parkingSpots
       }
         return Object.assign({}, state, {sortedSpaces: [...filtered]})
+      case "SORT_BY":
+        var sorted = []
+        if(action.payload === "price"){
+          sorted = state.sortedSpaces.sort((a,b) => a.price > b.price )
+        }else if(action.payload === "rating"){
+          sorted = state.sortedSpaces.sort((a,b) => a.rating > b.rating )
+        }
+        return Object.assign({}, state, {sortedSpaces: [...sorted]})
       case "ADD_NEW_LISTING":
         return Object.assign({}, state, {parkingSpots: [...state.parkingSpots, action.payload]})
       case "GET_PARKING_SPOT":

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import MyMapComponent from './MyMapComponent';
 import ParkingSpotsList from './ParkingSpotsList';
-import { getFilterByZip, fetchParkingSpots, sortByType } from '../actions/parkingSpots';
+import { getFilterByZip, fetchParkingSpots, filterBy, sortBy } from '../actions/parkingSpots';
 
 class ParkingSpotsContainer extends Component {
   constructor(props){
@@ -12,7 +12,7 @@ class ParkingSpotsContainer extends Component {
 
     this.state = {
       zip: "",
-      distance: "",
+      distance: ""
     }
   }
 
@@ -30,9 +30,13 @@ class ParkingSpotsContainer extends Component {
   }
 
   onTypeChange = (event) => {
-    console.log(event.target.name)
     event.preventDefault()
-    this.props.sortByType(event.target.name)
+    this.props.filterBy(event.target.name)
+  }
+
+  onSort = (event) => {
+    event.preventDefault()
+    this.props.sortBy(event.target.name)
   }
 
   render(){
@@ -59,8 +63,8 @@ class ParkingSpotsContainer extends Component {
         <div className="card">
           <div className="card-body">
             <div className="btn-group" >
-              <button type="button" className="btn btn-primary blue">By Price</button>
-              <button type="button" className="btn btn-primary blue">By Rating</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="price">By Price</button>
+              <button type="button" className="btn btn-primary blue" onClick={this.onSort} name="rating">By Rating</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="all">All Types</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="driveway">Driveways</button>
               <button type="button" className="btn btn-primary blue" onClick={this.onTypeChange} name="garage">Garages</button>
@@ -106,7 +110,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ getFilterByZip, fetchParkingSpots, sortByType }, dispatch)
+  return bindActionCreators({ getFilterByZip, fetchParkingSpots, filterBy, sortBy }, dispatch)
 }
 
 
