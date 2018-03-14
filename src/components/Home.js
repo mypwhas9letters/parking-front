@@ -38,9 +38,12 @@ class ParkingSpotsContainer extends Component {
 
   onSort = (event) => {
     event.preventDefault()
+    let ascOrDsc = !event.target.value
+    console.log(ascOrDsc)
+    this.setState({[event.target.name]: ascOrDsc})
+
     this.props.sortBy(event.target.name)
     // this.props.sortBy({by:event.target.name, ascOrDec: event.target.value})
-    this.setState({[event.target.name]: !event.target.value})
   }
 
   render(){
