@@ -27,10 +27,6 @@ class ParkingSpotsContainer extends Component {
     this.props.getFilterByZip(this.state)
   }
 
-  componentDidMount(){
-    // this.props.fetchParkingSpots()
-  }
-
   onTypeChange = (event) => {
     event.preventDefault()
     this.props.filterBy(event.target.name)
@@ -39,7 +35,6 @@ class ParkingSpotsContainer extends Component {
   onSort = (event) => {
     event.preventDefault()
     let ascOrDsc = !event.target.value
-    console.log(ascOrDsc)
     this.setState({[event.target.name]: ascOrDsc})
 
     this.props.sortBy(event.target.name)
@@ -47,7 +42,6 @@ class ParkingSpotsContainer extends Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <div className="container pageMargin">
         <div className="card">
