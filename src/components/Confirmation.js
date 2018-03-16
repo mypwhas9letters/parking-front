@@ -21,8 +21,7 @@ class Confirmation extends Component{
   render(){
     return (
       <div className="container pageMargin">
-        <h1 className="boldBlueText">Thank You</h1>
-        <h1 className="boldBlueText">Your request has been sent the owner</h1>
+        <h1 className="boldBlueText">Thank You! Your request has been sent the owner</h1>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <textarea className="form-control" rows="3" placeholder="Feel Free To Send Any Additional Messages"></textarea>

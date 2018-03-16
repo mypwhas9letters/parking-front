@@ -44,6 +44,7 @@ class ParkingSpotDetail extends Component{
   }
 
   render(){
+    // Formatting the address for the Google Maps
     let mapAddress = ""
     if (this.props.parkingSpot.detail.address) {
       let address = this.props.parkingSpot.detail.address.split(" ").join("+")
@@ -53,30 +54,31 @@ class ParkingSpotDetail extends Component{
       mapAddress = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCNUIlhwaQ4xLbNM5Qs2of7wx7pcw8yjaM&q=${address},${city}+${state}+${zip}`
     }
 
-
+    // Block out unavailable dates
     var moment = require('moment');
     const BAD_DATES = [];
     const isDayBlocked = day => BAD_DATES.filter(d => moment(d).isSame(day, 'day')).length > 0
     if (this.props.parkingSpot.unavailableDates !== null ) {
      this.props.parkingSpot.unavailableDates.filter(dates => dates.status !== "denied").map((dates) => BAD_DATES.push(dates.date))
+    }
+
+   //render reviews
+   let reviews = ""
+   let reviewLength = 0
+   if (this.props.parkingSpot.reviews !== null ) {
+     reviewLength = this.props.parkingSpot.reviews.length
+     reviews = this.props.parkingSpot.reviews.map((each) => (<li className="list-group-item" key={each.id}>{each.review}</li>))
    }
 
-   let reviews = ""
-
-    if (this.props.parkingSpot.reviews !== null ) {
-      reviews = this.props.parkingSpot.reviews.map((each) => (<li className="list-group-item" key={each.id}>{each.review}</li>))
-    }
-    console.log(this.props)
-
-    const roundedRating = (Math.round(this.props.parkingSpot.detail.rating*2)/2).toFixed(1)
-    let stars = <ReactStars
-      count={5}
-      value={Number(roundedRating)}
-      edit={false}
-      half={true}
-      size={20}
-      color2={'#ffd700'}/>
-
+   //render stars
+   const roundedRating = (Math.round(this.props.parkingSpot.detail.rating*2)/2).toFixed(1)
+   let stars = <ReactStars
+     count={5}
+     value={Number(roundedRating)}
+     edit={false}
+     half={true}
+     size={20}
+     color2={'#ffd700'}/>
 
     return(
       <div className="container pageMargin">
@@ -87,35 +89,34 @@ class ParkingSpotDetail extends Component{
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <div className="card">
               <div className="card-body">
                 <h1 className="card-title boldBlueText">Detail</h1>
-
-                <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
-                <div className="description">Rating: { stars } </div>
-                <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
-                <div className="description">Price: ${this.props.parkingSpot.detail.price}</div>
-                <div className="description">Cancellation: Full refund up to 7 days before reservation. </div>
-                <div className="description">Amenities: Electric Car charger included. </div>
+                <div><span className="bold">Description:</span> {this.props.parkingSpot.detail.description}</div>
+                <div><span className="bold">Rating:</span> {reviewLength} Reviews { stars } </div>
+                <div><span className="bold">Address:</span> {this.props.parkingSpot.detail.address}</div>
+                <div><span className="bold">Price:</span> ${this.props.parkingSpot.detail.price}</div>
+                <div><span className="bold">Cancellation:</span> Full refund up to 7 days before reservation. </div>
+                <div><span className="bold">Amenities:</span> Electric Car charger included. </div>
               </div>
             </div>
           </div>
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <div className="card">
               <div className="card-body">
                 <h1 className="card-title boldBlueText">Availability</h1>
                 <div>
                   <SingleDatePicker
-                    numberOfMonths={1}
-                    isDayBlocked={isDayBlocked}
+                    numberOfMonths={ 1 }
+                    isDayBlocked={ isDayBlocked }
                     date={this.state.date}
                     onDateChange={date => this.setState({ date })}
                     focused={this.state.focused}
                     onFocusChange={({ focused }) => this.setState({ focused })}
                   />
                 </div>
-                {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="btn btn-primary blue">Request Reservation</div> : <div>Please Log In Or SignUp to Book</div>}
+                { localStorage.getItem('jwt') ? <div onClick={this.onClick} className="btn btn-primary blue reservationButton">Request Reservation</div> : <div>Please Log In Or Sign Up to Book</div> }
               </div>
             </div>
           </div>
@@ -151,19 +152,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return  bindActionCreators({getParkingSpot, postNewListing}, dispatch)
+  return  bindActionCreators({getParkingSpot, postNewListing}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail);
-
-
-
-
-// Add review
-// {localStorage.getItem('jwt') ?
-//   <form className="ui reply form">
-//     <div className="field">
-//       <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
-//     </div>
-//     <button className="btn-primary blue">Add Review</button>
-//   </form>: null}

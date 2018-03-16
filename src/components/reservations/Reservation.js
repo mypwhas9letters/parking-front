@@ -5,7 +5,7 @@ import noImage from '../../images/no-image.jpg';
 
 const Reservation = (props) => {
   const profileImg = props.reservation.guest.profile_pic ? props.reservation.guest.profile_pic : noImage
-  const statusButtons = props.reservation.status === "pending" ? (<div className="right floated content"><button name="approved" value={props.reservation.id} onClick={props.onclick} className="ui primary button">Confirm</button><button name="denied" value={props.reservation.id} onClick={props.onclick} className="ui red button">Deny</button></div>) : null
+  const statusButtons = props.reservation.status === "pending" ? (<div className="right floated content"><button name="approved" value={props.reservation.id} onClick={props.onclick} className="btn btn-primary blue">Confirm</button><button name="denied" value={props.reservation.id} onClick={props.onclick} className="btn btn-danger">Deny</button></div>) : null
   const currentStep = props.reservation.status
   const detailLink = `/parkingSpot/${props.reservation.parking_spot.id}`
   return (

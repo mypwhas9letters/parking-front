@@ -33,7 +33,7 @@ const YourReservation = (props) => {
               <i className="payment icon"></i>
               <div className="content">
                 {currentStep === "approved" ? <div className="title" style={{color:"white"}}>Billing</div> : <div className="title">Billing</div> }
-                {currentStep === "approved" ? <div className="description" style={{color:"white"}}>Enter billing information</div> : <div className="description">Enter billing information</div> }
+                {currentStep === "approved" ? <NavLink className="button"to={"./billing"}>Enter billing information</NavLink> : <div className="description">Enter billing information</div> }
               </div>
             </div>
             <div className="step disabled">

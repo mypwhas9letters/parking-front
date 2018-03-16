@@ -6,11 +6,9 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) => {
   return(
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={
-        { lat: 40.705253, lng: -74.01407 }
-      }
+      defaultCenter={{ lat: 40.705253, lng: -74.01407 }}
     >
-    { markers }
+      { markers }
     </GoogleMap>
   )}
 ))

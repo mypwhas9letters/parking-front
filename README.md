@@ -13,6 +13,7 @@ TODO List:
   - Allow to sort by ASC and DESC
   - Add reviews for previous renters
   - Clickable markers on the map
+  - Footer Links
 
   Owners
   - Block out dates

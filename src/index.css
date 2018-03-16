@@ -5,7 +5,7 @@ html {
 
 body {
   font-family: 'Exo 2', sans-serif;
-  margin-bottom: 90px;
+  margin-bottom: 200px;
 }
 
 .blue {
@@ -14,7 +14,7 @@ body {
 
 .pageMargin {
   margin-top: 20px;
-  margin-bottom: 140px;
+  margin-bottom: 220px;
 }
 
 .boldBlueText {
@@ -48,7 +48,12 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 90px;
+  height: 200px;
+  padding-top: 30px;
+}
+
+.whiteText {
+  color: white;
 }
 
 
@@ -73,7 +78,16 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Using steps from Semantic UI */
+
+/* Parking Spot Detail Page */
+.reservationButton {
+  margin-top: 10px
+}
+.bold {
+  font-weight: bold;
+}
+
+/* Reservations - Using steps from Semantic UI */
 .ui.steps .step {
   position: relative;
   display: -webkit-box;
@@ -126,6 +140,9 @@ body {
 
 /*
 Redoing some CSS
+
+
+
  .smallSize {
    height:180px
  }
@@ -143,11 +160,6 @@ Redoing some CSS
 .textSize {
     font-weight: bold;
     font-size: 1.2em
-}
-
-
-.whiteText {
-  color: white;
 }
 
  .landing-image {

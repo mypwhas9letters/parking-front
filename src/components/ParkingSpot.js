@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import ReactStars from 'react-stars';
 
 const ParkingSpot = (props) => {
-  console.log(props)
   const detailLink = `/parkingSpot/${props.spot.id}`
   const roundedRating = (Math.round(props.spot.rating*2)/2).toFixed(1)
   let stars = <ReactStars
