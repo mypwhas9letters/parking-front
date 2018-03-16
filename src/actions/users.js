@@ -1,10 +1,10 @@
-// const herokuServer = "https://parallelp-server.herokuapp.com"
+const herokuServer = "https://parallelp-server.herokuapp.com"
 const testServer = "http://localhost:3000"
 
 export function login(usersParams) {
   const body = JSON.stringify(usersParams)
   return function(dispatch){
-    fetch(`${testServer}/api/v1/login`, {
+    fetch(`${herokuServer}/api/v1/login`, {
       method: 'post',
       body: body,
       headers: {
@@ -26,7 +26,7 @@ export function login(usersParams) {
 
 export function getCurrentUser(jwt){
     return function(dispatch) {
-      fetch(`${testServer}/api/v1/users/me`,{
+      fetch(`${herokuServer}/api/v1/users/me`,{
         method: 'get',
         headers: {
           "Authorization":`Bearer ${jwt}`,
@@ -50,7 +50,7 @@ export function logoutUser() {
 export function signup(usersParams) {
   const body = JSON.stringify(usersParams)
   return function(dispatch){
-    fetch(`${testServer}/api/v1/users`, {
+    fetch(`${herokuServer}/api/v1/users`, {
       method: 'post',
       body: body,
       headers: {

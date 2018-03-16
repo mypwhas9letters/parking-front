@@ -17,8 +17,8 @@ class Profile extends Component {
               <div className="card">
                 <div className="card-body">
                   <h4>About Me</h4>
-                  {this.props.currentUser.bio}
-                  Parking Spaces: {this.props.parkingSpots.length}
+                  <p>{this.props.currentUser.bio}</p>
+                  <p>Parking Spaces: {this.props.parkingSpots.length}</p>
                 </div>
               </div>
             </div>

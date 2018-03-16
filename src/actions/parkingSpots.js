@@ -1,4 +1,4 @@
-// const herokuServer = "https://parallelp-server.herokuapp.com"
+const herokuServer = "https://parallelp-server.herokuapp.com"
 const testServer = "http://localhost:3000"
 
 function fetchingSpots() {
@@ -24,7 +24,7 @@ function addNewListing(newListing){
 export function fetchParkingSpots(){
   return function(dispatch){
     dispatch(fetchingSpots())
-    fetch(`${testServer}/api/v1/parking_spots`)
+    fetch(`${herokuServer}/api/v1/parking_spots`)
       .then((res) => res.json())
       .then((json) => {
         dispatch(fetchedSpots(json))
@@ -36,7 +36,7 @@ export function fetchParkingSpots(){
 export function postNewListing(listingParams) {
   const body = JSON.stringify(listingParams)
   return function(dispatch){
-    fetch(`${testServer}/api/v1/newparkingspot`, {
+    fetch(`${herokuServer}/api/v1/newparkingspot`, {
       method: 'post',
       body: body,
       headers: {
@@ -53,7 +53,7 @@ export function postNewListing(listingParams) {
 
 export function getParkingSpot(id){
   return function(dispatch){
-    fetch(`${testServer}/api/v1/parking_spots/${id}`)
+    fetch(`${herokuServer}/api/v1/parking_spots/${id}`)
     .then(res => res.json())
     .then(json => {
         dispatch({type: "GET_PARKING_SPOT", payload: json})
@@ -66,7 +66,7 @@ export function getParkingSpot(id){
 //   const body = JSON.stringify(zip)
 //   return function(dispatch) {
 //     dispatch(fetchingSpots())
-//     fetch(`${testServer}/api/v1/filterbyzip`,{
+//     fetch(`${herokuServer}/api/v1/filterbyzip`,{
 //       method: 'post',
 //       body: body,
 //       headers: {
@@ -99,7 +99,7 @@ export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
   return async function(dispatch) {
     dispatch(fetchingSpots())
-    let data = await (await fetch(`${testServer}/api/v1/filterbyzip`,{
+    let data = await (await fetch(`${herokuServer}/api/v1/filterbyzip`,{
       method: 'post',
       body: body,
       headers: {
