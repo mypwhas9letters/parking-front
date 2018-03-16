@@ -10,7 +10,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers';
 import './index.css';
-// import 'semantic-ui-css/semantic.min.css';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 

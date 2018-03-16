@@ -5,9 +5,9 @@ import reservationReducer from './reservationReducer';
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-    parkingSpots: parkingSpotsReducer,
-    user: userReducer,
-    reservations: reservationReducer
-  });
+  parkingSpots: parkingSpotsReducer,
+  user: userReducer,
+  reservations: reservationReducer
+});
 
 export default rootReducer;

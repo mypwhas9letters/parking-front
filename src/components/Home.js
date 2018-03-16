@@ -13,8 +13,8 @@ class ParkingSpotsContainer extends Component {
     this.state = {
       zip: "",
       distance: "",
-      price: true,
-      rating: true
+      price: "asc",
+      rating: "asc"
     }
   }
 
@@ -22,7 +22,7 @@ class ParkingSpotsContainer extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  onClick = (event) => {
+  onSubmit = (event) => {
     event.preventDefault()
     this.props.getFilterByZip(this.state)
   }
@@ -34,11 +34,9 @@ class ParkingSpotsContainer extends Component {
 
   onSort = (event) => {
     event.preventDefault()
-    let ascOrDsc = !event.target.value
-    this.setState({[event.target.name]: ascOrDsc})
-
-    this.props.sortBy(event.target.name)
-    // this.props.sortBy({by:event.target.name, ascOrDec: event.target.value})
+    let ascOrDesc = this.state[event.target.name]
+    this.props.sortBy([event.target.name, ascOrDesc])
+    event.target.value === "asc" ? this.setState({[event.target.name]: "desc"}) : this.setState({[event.target.name]: "asc"})
   }
 
   render(){
@@ -48,16 +46,16 @@ class ParkingSpotsContainer extends Component {
           <div className="card-body">
             <h1 className="boldBlueText">Search for nearby parking spaces</h1>
             <p>Currently only serving the NYC area. Please use NYC zip codes (ex. 10004, 11217)</p>
-            <form className="form-inline">
+            <form className="form-inline" onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label>Zip</label>
-                <input type="text" className="form-control mx-sm-3" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} required/>
+                <input type="number" className="form-control mx-sm-3" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} required/>
               </div>
               <div className="form-group">
                 <label>Distance</label>
-                <input type="text" className="form-control mx-sm-3" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance} required/>
+                <input type="number" className="form-control mx-sm-3" name="distance" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
               </div>
-              <button className="btn btn-primary blue" onClick={this.onClick}>Search</button>
+              <button type="submit" className="btn btn-primary blue">Search</button>
             </form>
           </div>
         </div>
@@ -112,8 +110,8 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ getFilterByZip, fetchParkingSpots, filterBy, sortBy }, dispatch)
+  return bindActionCreators({ getFilterByZip, fetchParkingSpots, filterBy, sortBy }, dispatch);
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotsContainer);

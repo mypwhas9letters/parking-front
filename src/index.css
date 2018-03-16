@@ -73,43 +73,7 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
-
-/*
-
- .smallSize {
-   height:180px
- }
-
- .smallimg {
-   height:160px
- }
-
-.divImg {
-  height: 100%;
-  width: 100%;
-  object-fit: contain
-}
-
-.textSize {
-    font-weight: bold;
-    font-size: 1.2em
-}
-
-
-.whiteText {
-  color: white;
-}
-
- .landing-image {
-  background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
-   background-size: 100%;
-   width: 100%;
-   padding-top: 54.166666666667%;
-   height: 0;
-}
-
-*/
+/* Using steps from Semantic UI */
 .ui.steps .step {
   position: relative;
   display: -webkit-box;
@@ -158,7 +122,42 @@ body {
   background: #ef2867;
 }
 
+
+
 /*
+Redoing some CSS
+ .smallSize {
+   height:180px
+ }
+
+ .smallimg {
+   height:160px
+ }
+
+.divImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain
+}
+
+.textSize {
+    font-weight: bold;
+    font-size: 1.2em
+}
+
+
+.whiteText {
+  color: white;
+}
+
+ .landing-image {
+  background-image: url('http://www.bestfon.info/images/joomgallery/originals/coches_1/coche_166_20120509_1866664784.jpg');
+   background-size: 100%;
+   width: 100%;
+   padding-top: 54.166666666667%;
+   height: 0;
+}
+
 @media only screen and (max-width: 767px) {
     .mobile-hide{
         display: none !important;

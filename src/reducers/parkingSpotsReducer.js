@@ -12,10 +12,14 @@ function parkingSpotsReducer(state = {isFetching: false, parkingSpots:[], detail
         return Object.assign({}, state, {sortedSpaces: [...filtered]})
       case "SORT_BY":
         var sorted = []
-        if(action.payload === "price"){
+        if(action.payload[0] === "price" && action.payload[1] === "asc"){
           sorted = state.sortedSpaces.sort((a,b) => a.price > b.price )
-        }else if(action.payload === "rating"){
+        }else if(action.payload[0] === "price" && action.payload[1] === "desc"){
+          sorted = state.sortedSpaces.sort((a,b) => a.price < b.price )
+        }else if(action.payload[0] === "rating" && action.payload[1] === "asc"){
           sorted = state.sortedSpaces.sort((a,b) => a.rating > b.rating )
+        }else if(action.payload[0] === "rating" && action.payload[1] === "desc"){
+          sorted = state.sortedSpaces.sort((a,b) => a.rating < b.rating )
         }
         return Object.assign({}, state, {sortedSpaces: [...sorted]})
       case "ADD_NEW_LISTING":
@@ -27,4 +31,4 @@ function parkingSpotsReducer(state = {isFetching: false, parkingSpots:[], detail
     }
   }
 
-export default parkingSpotsReducer
+export default parkingSpotsReducer;

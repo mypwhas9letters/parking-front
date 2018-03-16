@@ -5,7 +5,7 @@ import { getFilterByZip } from '../actions/parkingSpots';
 
 class LandingPage extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
     this.state = {
       zip: "",
@@ -18,7 +18,7 @@ class LandingPage extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  onClick = (event) => {
+  onSubmit = (event) => {
     event.preventDefault();
     this.props.getFilterByZip(this.state);
     this.props.history.push("/home");
@@ -30,17 +30,17 @@ class LandingPage extends Component {
         <div className="container">
           <div className="text-center"><br/>
             <h1 className="boldBlueText">Search For Available Parking Spaces</h1><br/>
-            <form>
+            <form onSubmit={this.onSubmit}>
               <p>Currently only serving the NYC area. <br/> Please use NYC zip codes (ex. 10004, 11217)</p>
               <div className="form-row">
                 <div className="form-group col-md-6">
-                  <input type="text" name="zip" className="form-control" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} maxLength="5" required/>
+                  <input type="number" name="zip" className="form-control" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} minLength="5" required/>
                 </div>
                 <div className="form-group col-md-6">
-                  <input type="text" name="distance" className="form-control" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
+                  <input type="number" name="distance" className="form-control" placeholder="Distance (mi)" onChange={this.onChange} value={this.state.distance} required/>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary btn-lg btn-block blue" onClick={this.onClick}>Search</button>
+              <button type="submit" className="btn btn-primary btn-lg btn-block blue">Search</button>
             </form>
           </div>
         </div>
