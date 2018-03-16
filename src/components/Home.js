@@ -51,11 +51,11 @@ class ParkingSpotsContainer extends Component {
             <form className="form-inline">
               <div className="form-group">
                 <label>Zip</label>
-                <input type="text" className="form-control mx-sm-3" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip}/>
+                <input type="text" className="form-control mx-sm-3" name="zip" placeholder="Zip Code" onChange={this.onChange} value={this.state.zip} required/>
               </div>
               <div className="form-group">
                 <label>Distance</label>
-                <input type="text" className="form-control mx-sm-3" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance}/>
+                <input type="text" className="form-control mx-sm-3" name="distance" placeholder="Distance(mi)" onChange={this.onChange} value={this.state.distance} required/>
               </div>
               <button className="btn btn-primary blue" onClick={this.onClick}>Search</button>
             </form>

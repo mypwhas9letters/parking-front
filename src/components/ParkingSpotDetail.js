@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SingleDatePicker } from 'react-dates';
+import ReactStars from 'react-stars';
 
 import { getParkingSpot } from '../actions/parkingSpots';
 import { postNewListing } from '../actions/reservations';
@@ -63,77 +64,79 @@ class ParkingSpotDetail extends Component{
    let reviews = ""
 
     if (this.props.parkingSpot.reviews !== null ) {
-      reviews = this.props.parkingSpot.reviews.map((each) => (<li key={each.id}>{each.review}</li>))
+      reviews = this.props.parkingSpot.reviews.map((each) => (<li className="list-group-item" key={each.id}>{each.review}</li>))
     }
+    console.log(this.props)
+
+    const roundedRating = (Math.round(this.props.parkingSpot.detail.rating*2)/2).toFixed(1)
+    let stars = <ReactStars
+      count={5}
+      value={Number(roundedRating)}
+      edit={false}
+      half={true}
+      size={20}
+      color2={'#ffd700'}/>
 
 
     return(
       <div className="container pageMargin">
+        <div className="card">
+          <div className="card-body">
+            <h1 className="card-title boldBlueText">{this.props.parkingSpot.detail.title}</h1>
+            <img className="card-img-bottom" src={this.props.parkingSpot.detail.photo} alt=""/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-6">
+            <div className="card">
+              <div className="card-body">
+                <h1 className="card-title boldBlueText">Detail</h1>
+
+                <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
+                <div className="description">Rating: { stars } </div>
+                <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
+                <div className="description">Price: ${this.props.parkingSpot.detail.price}</div>
+                <div className="description">Cancellation: Full refund up to 7 days before reservation. </div>
+                <div className="description">Amenities: Electric Car charger included. </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="card">
+              <div className="card-body">
+                <h1 className="card-title boldBlueText">Availability</h1>
+                <div>
+                  <SingleDatePicker
+                    numberOfMonths={1}
+                    isDayBlocked={isDayBlocked}
+                    date={this.state.date}
+                    onDateChange={date => this.setState({ date })}
+                    focused={this.state.focused}
+                    onFocusChange={({ focused }) => this.setState({ focused })}
+                  />
+                </div>
+                {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="btn btn-primary blue">Request Reservation</div> : <div>Please Log In Or SignUp to Book</div>}
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="card">
-          <div className="ui header"><h1>{this.props.parkingSpot.detail.title}</h1></div>
-          <img className="divImg" src={this.props.parkingSpot.detail.photo} alt=""/>
-      </div>
-
-
-      <div className="row">
-        <div className="col-sm-6">
-          <div className="card">
-            <div className="content">
-              <h1>Detail</h1>
-              <div className="ui rating" data-rating="3" data-max-rating="5"></div>
-              <div className="ui star rating" data-rating="4"></div>
-              <div className="description">Description: {this.props.parkingSpot.detail.description}</div>
-              <div className="description">Rating: {this.props.parkingSpot.detail.rating}</div>
-              <div className="description">Address: {this.props.parkingSpot.detail.address}</div>
-              <div className="description">Price: ${this.props.parkingSpot.detail.price}</div>
-              <div className="description">Cancellation: Full refund up to 7 days before reservation. </div>
-              <div className="description">Amenities: Electric Car charger included. </div>
-            </div>
-          </div>
+          <iframe
+            title="map"
+            width="100%"
+            height="700px"
+            src={ mapAddress }>
+          </iframe>
         </div>
 
-        <div className="col-sm-6">
-          <div className="card">
-            <h1 className="ui header">Availability</h1>
-            <div className="content">
-              <SingleDatePicker
-                numberOfMonths={1}
-                isDayBlocked={isDayBlocked}
-                date={this.state.date}
-                onDateChange={date => this.setState({ date })}
-                focused={this.state.focused}
-                onFocusChange={({ focused }) => this.setState({ focused })}
-              />
-              {localStorage.getItem('jwt') ? <div onClick={this.onClick} className="ui primary button right floated content">Request Reservation</div> : <div className="right floated content">Please Log In Or SignUp to Book</div>}
-            </div>
+        <div className="card">
+          <div className="card-body">
+            <h1 className="card-title boldBlueText">Reviews</h1>
+            <ul className="list-group list-group-flush">
+              { reviews }
+            </ul>
           </div>
-        </div>
-      </div>
-
-
-      <div className="card">
-        <iframe
-          title="map"
-          width="100%"
-          height="700px"
-          src={mapAddress}>
-        </iframe>
-      </div>
-
-
-      <div className="card">
-        <h1>Reviews</h1>
-        <ul className="list">
-          {reviews}
-        </ul>
-        {localStorage.getItem('jwt') ?
-          <form className="ui reply form">
-            <div className="field">
-              <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
-            </div>
-            <button className="btn-primary blue">Add Review</button>
-          </form>: null}
         </div>
       </div>
     )
@@ -152,3 +155,15 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkingSpotDetail);
+
+
+
+
+// Add review
+// {localStorage.getItem('jwt') ?
+//   <form className="ui reply form">
+//     <div className="field">
+//       <textarea type="text" name="review" placeholder="Please write your review..." onChange={this.onChange} value={this.state.city}/>
+//     </div>
+//     <button className="btn-primary blue">Add Review</button>
+//   </form>: null}
