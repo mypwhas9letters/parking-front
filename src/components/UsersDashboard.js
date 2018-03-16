@@ -19,19 +19,23 @@ class UsersDashboard extends Component {
   }
 
   onClick = (event) => {
-    this.setState({ activeItem: event.target.name })
+    this.setState({ activeItem: event.target.name });
     switch (event.target.name){
       case "AddNew":
-        return this.setState({tab: <AddNew />})
+        return this.setState({tab: <AddNew />});
       case "Requests":
-        return this.setState({tab: <ReservationsContainer />})
+        return this.setState({tab: <ReservationsContainer />});
       case "Your Reservations":
-        return this.setState({tab: <YourReservationsContainer />})
+        return this.setState({tab: <YourReservationsContainer />});
       case "EditProfile":
-        return this.setState({tab: <EditProfile />})
+        return this.setState({tab: <EditProfile />});
       default:
-        return this.setState({tab: <Profile/>})
+        return this.setState({tab: <Profile/>});
     }
+  }
+
+  isActive = (tab) => {
+    return "nav-item nav-link " + (tab === this.state.activeItem ? "active" : "");
   }
 
   render(){
@@ -40,11 +44,11 @@ class UsersDashboard extends Component {
     return(
       <div className="container pageMargin">
         <div className="nav nav-tabs">
-          <a className="nav-item nav-link active" name="Profile" onClick={this.onClick}>Profile Page</a>
-          <a className="nav-item nav-link" name="Requests" onClick={this.onClick}>Requests</a>
-          <a className="nav-item nav-link" name="Your Reservations" onClick={this.onClick}>Your Reservations</a>
-          <a className="nav-item nav-link" name="AddNew" onClick={this.onClick}>AddNew</a>
-          <a className="nav-item nav-link" name="EditProfile" onClick={this.onClick}>EditProfile</a>
+          <a className={this.isActive("Profile")} name="Profile" onClick={this.onClick}>Profile Page</a>
+          <a className={this.isActive("Requests")} name="Requests" onClick={this.onClick}>Requests</a>
+          <a className={this.isActive("Your Reservations")} name="Your Reservations" onClick={this.onClick}>Your Reservations</a>
+          <a className={this.isActive("AddNew")} name="AddNew" onClick={this.onClick}>AddNew</a>
+          <a className={this.isActive("EditProfile")} name="EditProfile" onClick={this.onClick}>EditProfile</a>
         </div>
         <div>
           { tabToRender }
