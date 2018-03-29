@@ -13,7 +13,7 @@ const ParkingSpot = (props) => {
     size={20}
     color2={'#ffd700'}/>
   return (
-      <div className="col-sm-12 col-md-6 col-lg-4">
+      <div className="col-sm-12 col-md-6 col-lg-4 card-body">
         <div className="card">
           <NavLink to={detailLink}><img className="card-img-top" src={props.spot.photo} alt=""/></NavLink>
           <div className="card-body">
