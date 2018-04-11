@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import MyMapComponent from './MyMapComponent';
-import ParkingSpotsList from './ParkingSpotsList';
+import ParkingSpot from './ParkingSpot';
 import { getFilterByZip, fetchParkingSpots, filterBy, sortBy } from '../actions/parkingSpots';
 
 class ParkingSpotsContainer extends Component {
@@ -40,6 +40,7 @@ class ParkingSpotsContainer extends Component {
   }
 
   render(){
+    const parkingSpotsList = this.props.parkingSpots.parkingSpots ? this.props.parkingSpots.parkingSpots.map((spots) => <ParkingSpot key={spots.id} spot={spots} />)  : null
     return (
       <div className="container pageMargin">
         <div className="card">
@@ -80,7 +81,9 @@ class ParkingSpotsContainer extends Component {
                 Loading...<br/>Due to inactivity on Heroku Servers, the first load may take a couple of seconds.
               </div>
               :
-              <ParkingSpotsList spots={this.props.parkingSpots.sortedSpaces}/>
+              <div className="row">
+                {parkingSpotsList}
+              </div>
             }
           </div>
         </div>

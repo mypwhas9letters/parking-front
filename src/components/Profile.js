@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import ParkingSpotsList from './ParkingSpotsList';
+import ParkingSpot from './ParkingSpot';
 import { connect } from 'react-redux';
 import noImage from '../images/no-image.jpg';
 
 class Profile extends Component {
   render(){
     const profileImg = this.props.currentUser.profile_pic ? this.props.currentUser.profile_pic : noImage
+    const parkingSpotsList = this.props.parkingSpots ? this.props.parkingSpots.map((spots) => <ParkingSpot key={spots.id} spot={spots} />)  : null
     return(
       <div>
         <h1 className="boldBlueText">Welcome Back {this.props.currentUser.username}</h1>
@@ -25,7 +26,9 @@ class Profile extends Component {
           </div>
         <h1 className="boldBlueText">Your Listings</h1>
         <div className="card">
-          <ParkingSpotsList spots={this.props.parkingSpots}/>
+          <div className="row">
+            {parkingSpotsList}
+          </div>
         </div>
       </div>
     );
