@@ -1,4 +1,4 @@
-const herokuServer = "https://parallelp-server.herokuapp.com"
+const baseUrl = "https://parallelp-server.herokuapp.com"
 // const testServer = "http://localhost:3000"
 
 function fetchingSpots() {
@@ -24,7 +24,7 @@ function addNewListing(newListing){
 export function fetchParkingSpots(){
   return function(dispatch){
     dispatch(fetchingSpots())
-    fetch(`${herokuServer}/api/v1/parking_spots`)
+    fetch(`${baseUrl}/api/v1/parking_spots`)
       .then((res) => res.json())
       .then((json) => {
         dispatch(fetchedSpots(json))
@@ -36,7 +36,7 @@ export function fetchParkingSpots(){
 export function postNewListing(listingParams) {
   const body = JSON.stringify(listingParams)
   return function(dispatch){
-    fetch(`${herokuServer}/api/v1/newparkingspot`, {
+    fetch(`${baseUrl}/api/v1/newparkingspot`, {
       method: 'post',
       body: body,
       headers: {
@@ -53,7 +53,7 @@ export function postNewListing(listingParams) {
 
 export function getParkingSpot(id){
   return function(dispatch){
-    fetch(`${herokuServer}/api/v1/parking_spots/${id}`)
+    fetch(`${baseUrl}/api/v1/parking_spots/${id}`)
     .then(res => res.json())
     .then(json => {
         dispatch({type: "GET_PARKING_SPOT", payload: json})
@@ -61,26 +61,6 @@ export function getParkingSpot(id){
   }
 }
 
-
-// export function getFilterByZip(zip){
-//   const body = JSON.stringify(zip)
-//   return function(dispatch) {
-//     dispatch(fetchingSpots())
-//     fetch(`${herokuServer}/api/v1/filterbyzip`,{
-//       method: 'post',
-//       body: body,
-//       headers: {
-//         "Accept":"application/json",
-//         "Content-Type":"application/json"
-//       }
-//     })
-//     .then(res => res.json())
-//     .then(json => {
-//       dispatch(fetchedSpots(json)
-//     )})
-//
-//   }
-// }
 
 export function filterBy(type) {
   return function(dispatch) {
@@ -98,15 +78,30 @@ export function sortBy(type) {
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
   return async function(dispatch) {
-    dispatch(fetchingSpots())
-    let data = await (await fetch(`${herokuServer}/api/v1/filterbyzip`,{
-      method: 'post',
-      body: body,
-      headers: {
-        "Accept":"application/json",
-        "Content-Type":"application/json"
-      }
-    })).json()
-    dispatch(fetchedSpots(data))
+    try {
+      dispatch(fetchingSpots())
+      const data = await fetch(`${baseUrl}/api/v1/filterbyzip`,{
+        method: 'post',
+        body: body,
+        headers: {
+          "Accept":"application/json",
+          "Content-Type":"application/json"
+        }
+      })
+      const json = await data.json()
+      dispatch(fetchedSpots(json))
+    }catch(error){
+  		dispatch(fetchedSpots(null))
+  	}
   }
 }
+//
+// const fetchedData = async() => {
+// 	try {
+// 		const response = await fetch(baseURL)
+// 		const json = await response.json()
+// 		console.log(json)
+// 	} catch(error){
+// 		console.log(error)
+// 	}
+// }
