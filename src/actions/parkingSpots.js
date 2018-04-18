@@ -78,30 +78,15 @@ export function sortBy(type) {
 export function getFilterByZip(zip){
   const body = JSON.stringify(zip)
   return async function(dispatch) {
-    try {
-      dispatch(fetchingSpots())
-      const data = await fetch(`${baseUrl}/api/v1/filterbyzip`,{
-        method: 'post',
-        body: body,
-        headers: {
-          "Accept":"application/json",
-          "Content-Type":"application/json"
-        }
-      })
-      const json = await data.json()
-      dispatch(fetchedSpots(json))
-    }catch(error){
-  		dispatch(fetchedSpots(null))
-  	}
+    dispatch(fetchingSpots())
+    let data = await (await fetch(`${baseUrl}/api/v1/filterbyzip`,{
+      method: 'post',
+      body: body,
+      headers: {
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+      }
+    })).json()
+    dispatch(fetchedSpots(data))
   }
 }
-//
-// const fetchedData = async() => {
-// 	try {
-// 		const response = await fetch(baseURL)
-// 		const json = await response.json()
-// 		console.log(json)
-// 	} catch(error){
-// 		console.log(error)
-// 	}
-// }

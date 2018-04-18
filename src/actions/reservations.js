@@ -44,22 +44,22 @@ export function fetchReservations(jwt){
     }
   }
 
-  export function fetchTrips(jwt){
-    return function(dispatch){
-      dispatch(fetchingReservations())
-      fetch(`${baseUrl}/api/v1/trips`,{
-        method: 'get',
-        headers: {
-          "Authorization":`Bearer ${jwt}`,
-          "Accept":"application/json"
-        }
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          dispatch({type: "FETCHED_TRIPS", payload: json})
-        })
+export function fetchTrips(jwt){
+  return function(dispatch){
+    dispatch(fetchingReservations())
+    fetch(`${baseUrl}/api/v1/trips`,{
+      method: 'get',
+      headers: {
+        "Authorization":`Bearer ${jwt}`,
+        "Accept":"application/json"
       }
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch({type: "FETCHED_TRIPS", payload: json})
+      })
     }
+  }
 
   // export function getCurrentUser(jwt){
   //     return function(dispatch) {
@@ -131,5 +131,5 @@ export function updateReservation(updateParams){
     .then((json) => {
       dispatch(updateRes(json))
     })
-    }
   }
+}
