@@ -26,7 +26,7 @@ class NavBar extends Component{
       <div className="navbar-nav">
         <Link className="nav-item nav-link" to="/home">Home</Link>
         <Link className="nav-item nav-link" to="/UsersDashboard">Profile</Link>
-        <a className="nav-item nav-link" onClick={this.onClick}>Logout</a>
+        <div className="nav-item nav-link" onClick={this.onClick}>Logout</div>
       </div>
     );
     const guestLinks = (

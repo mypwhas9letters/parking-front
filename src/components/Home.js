@@ -93,7 +93,7 @@ class ParkingSpotsContainer extends Component {
             <MyMapComponent
               markers={this.props.parkingSpots}
               isMarkerShown
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOf9SR36Oz4MaKIBqhN5S4TBxcbRr75TE&v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyALfDWZD5yl3D9gMtjFYCHe-eXGb_BU3GQ&v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `400px` }} />}
               mapElement={<div style={{ height: `100%` }} />}

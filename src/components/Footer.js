@@ -9,21 +9,21 @@ const Footer = () => {
         <div className="row">
           <ul className="col-4 list-unstyled">
             <h4 className="whiteText">Links</h4>
-            <li><a>Home</a></li>
-            <li><a>Profile</a></li>
-            <li><a>Search</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Profile</a></li>
+            <li><a href="/">Search</a></li>
           </ul>
           <ul className="col-4 list-unstyled">
             <h4 className="whiteText">About the App</h4>
-            <li><a>Github</a></li>
-            <li><a>Terms</a></li>
-            <li><a>Support</a></li>
+            <li><a href="/">Github</a></li>
+            <li><a href="/">Terms</a></li>
+            <li><a href="/">Support</a></li>
           </ul>
           <ul className="col-4 list-unstyled">
             <h4 className="whiteText">Connect With Us</h4>
-            <li><a>Twitter</a></li>
-            <li><a>Instagram</a></li>
-            <li><a>Facebook</a></li>
+            <li><a href="/">Twitter</a></li>
+            <li><a href="/">Instagram</a></li>
+            <li><a href="/">Facebook</a></li>
           </ul>
         </div>
 

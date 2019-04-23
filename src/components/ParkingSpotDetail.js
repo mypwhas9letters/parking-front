@@ -51,7 +51,7 @@ class ParkingSpotDetail extends Component{
       let city = this.props.parkingSpot.detail.city
       let state = this.props.parkingSpot.detail.state
       let zip = this.props.parkingSpot.detail.zip
-      mapAddress = `https://www.google.com/maps/embed/v1/place?key=AIzaSyCNUIlhwaQ4xLbNM5Qs2of7wx7pcw8yjaM&q=${address},${city}+${state}+${zip}`
+      mapAddress = `https://www.google.com/maps/embed/v1/place?key=AIzaSyALfDWZD5yl3D9gMtjFYCHe-eXGb_BU3GQ&q=${address},${city}+${state}+${zip}`
     }
 
     // Block out unavailable dates
