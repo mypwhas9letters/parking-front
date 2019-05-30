@@ -7,15 +7,11 @@ import ParkingSpot from './ParkingSpot';
 import { getFilterByZip, fetchParkingSpots, filterBy, sortBy } from '../actions/parkingSpots';
 
 class ParkingSpotsContainer extends Component {
-  constructor(props){
-    super(props)
-
-    this.state = {
+  state = {
       zip: "",
       distance: "",
       price: "asc",
       rating: "asc"
-    }
   }
 
   onChange = (event) => {

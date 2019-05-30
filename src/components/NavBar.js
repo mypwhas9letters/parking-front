@@ -6,12 +6,8 @@ import logo from '../images/logo.png';
 import { logoutUser } from '../actions/users';
 
 class NavBar extends Component{
-  constructor(props){
-    super(props)
-
-    this.state = {
+  state = {
     loggedIn: this.props.auth
-    }
   }
 
   onClick = (event) => {

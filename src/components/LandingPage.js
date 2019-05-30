@@ -4,14 +4,10 @@ import { connect } from 'react-redux';
 import { getFilterByZip } from '../actions/parkingSpots';
 
 class LandingPage extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
+  state = {
       zip: "",
       distance: "",
-      history: this.props.history
-    }
+      history: this.props.history,
   }
 
   onChange = (event) => {

@@ -10,14 +10,10 @@ import { getParkingSpot } from '../actions/parkingSpots';
 import { postNewListing } from '../actions/reservations';
 
 class ParkingSpotDetail extends Component{
-  constructor(props){
-    super(props);
-
-    this.state = {
+  state = {
       review: "",
       date: null,
       focusedInput: null,
-    }
   }
 
   onChange = (event) => {
